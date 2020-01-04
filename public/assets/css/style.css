@@ -1,0 +1,310 @@
+body {
+  margin: 0;
+  padding: 0; }
+
+a, a:hover, a:focus, a:visited {
+  color: inherit;
+  text-decoration: none; }
+
+.imgw {
+  width: 100%;
+  margin: 0 auto;
+  transition: all 1s ease; }
+
+@font-face {
+  font-family: "Hind";
+  src: url("https://fonts.googleapis.com/css?family=Hind&display=swap"); }
+header {
+  font-family: 'Hind', sans-serif; }
+
+.full {
+  height: 100vh; }
+
+#top_bar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 3px 0 12px black;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 600; }
+
+#logo {
+  display: block;
+  margin-left: 30px; }
+  #logo img {
+    width: 110px; }
+
+.menu_item, #connect {
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 10px 30px;
+  list-style-type: none;
+  position: relative; }
+  .menu_item::after, #connect::after {
+    content: "";
+    width: 90%;
+    height: 4px;
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    visibility: hidden;
+    background-color: #43A9FF;
+    z-index: 1;
+    transform: scaleX(0);
+    transition: all .3s ease-in-out 0s; }
+
+.active li, .active span, .menu_item:hover li, .menu_item:hover span, #connect:hover li, #connect:hover span, #logo:hover li, #logo:hover span {
+  color: #43A9FF; }
+.active .menu_icon, .active img, .menu_item:hover .menu_icon, .menu_item:hover img, #connect:hover .menu_icon, #connect:hover img, #logo:hover .menu_icon, #logo:hover img {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
+.active::after, .menu_item:hover::after, #connect:hover::after, #logo:hover::after {
+  visibility: visible;
+  transform: scaleX(1); }
+
+.menu_icon {
+  width: 20px;
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%); }
+
+.insight_zone {
+  height: calc(100% - 70px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url(../img/wood.jpg);
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; }
+  .insight_zone .insight {
+    width: 45%;
+    box-sizing: border-box; }
+    .insight_zone .insight article {
+      padding: 20px 0;
+      margin: 0  auto;
+      background-color: rgba(238, 238, 238, 0.8);
+      border: 1px solid silver;
+      border-radius: 20px; }
+      .insight_zone .insight article h2 {
+        text-align: center;
+        font-size: 3em;
+        margin: 16px 0; }
+      .insight_zone .insight article hr {
+        width: 65%;
+        margin: 0 auto; }
+      .insight_zone .insight article .image {
+        margin-top: 16px;
+        overflow: hidden; }
+      .insight_zone .insight article p {
+        width: 80%;
+        margin: 20px auto; }
+      .insight_zone .insight article .press {
+        width: 80%;
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #43A9FF;
+        text-transform: uppercase;
+        font-weight: bold;
+        color: white;
+        transition: all 1s ease; }
+    .insight_zone .insight .imgw {
+      transform: scale(1.1); }
+    .insight_zone .insight:hover .imgw {
+      transform: scale(1.2); }
+    .insight_zone .insight:hover .press {
+      width: 90%; }
+
+#aboutGEM {
+  background-image: url(../img/gem_groupe1.jpg);
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: calc(100% - 70px);
+  position: relative; }
+  #aboutGEM .about {
+    position: absolute;
+    left: 0;
+    top: 85%;
+    transform: translateY(-85%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; }
+    #aboutGEM .about article {
+      width: 50%;
+      background-color: rgba(238, 238, 238, 0.8);
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 0 30px 30px 0;
+      color: #1d496d; }
+    #aboutGEM .about ul {
+      list-style-type: none; }
+      #aboutGEM .about ul li {
+        margin: 15px 0; }
+        #aboutGEM .about ul li a {
+          text-decoration: underline;
+          font-weight: bold; }
+          #aboutGEM .about ul li a:hover, #aboutGEM .about ul li a:focus {
+            color: #43A9FF; }
+    #aboutGEM .about .redirect {
+      padding: 20px;
+      width: 33%;
+      box-sizing: border-box; }
+      #aboutGEM .about .redirect .bouton {
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;
+        background-color: #43A9FF;
+        color: white;
+        text-transform: uppercase;
+        list-style-type: none;
+        position: relative; }
+        #aboutGEM .about .redirect .bouton span {
+          margin-left: 40px; }
+        #aboutGEM .about .redirect .bouton .menu_icon {
+          left: 20px; }
+        #aboutGEM .about .redirect .bouton .arrow_icon {
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: 50%;
+          right: 20px;
+          transform: translateY(-50%); }
+        #aboutGEM .about .redirect .bouton:hover {
+          background-color: #1d496d; }
+
+.manage {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; }
+  .manage table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px #43A9FF solid; }
+    .manage table caption {
+      font-size: 1.3em;
+      font-weight: bold;
+      padding: 20px;
+      background-color: #43A9FF;
+      color: white;
+      text-transform: uppercase;
+      border-radius: 20px 20px 0 0; }
+    .manage table th {
+      padding: 5px;
+      border: black 1px solid; }
+    .manage table tr:nth-child(odd) {
+      background-color: #CCC; }
+    .manage table td {
+      text-align: center;
+      padding: 20px; }
+
+.success {
+  color: darkgreen;
+  background-color: lightgreen; }
+
+.manage a, .neobtn, .pwbut {
+  background-color: #43A9FF;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  font: inherit;
+  cursor: pointer; }
+  .manage a:hover, .neobtn:hover, .pwbut:hover {
+    background-color: #1d496d; }
+
+#top_bar_admin {
+  width: 100%;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #cccccc;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 600; }
+
+.atelier, .event {
+  width: calc(50% - 30px);
+  margin: 0 15px 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 2px #43A9FF solid;
+  border-radius: 10px;
+  text-align: center; }
+
+.add {
+  width: 80%;
+  margin: 30px auto 0; }
+  .add h1 {
+    text-align: center;
+    color: #1d496d; }
+
+.add form {
+  width: 40%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #CCC;
+  padding: 20px;
+  border-radius: 10px; }
+
+.add label {
+  color: #1d496d;
+  margin-right: 20px; }
+
+.add input[type=text], .add input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box; }
+
+.add input[type=checkbox], .add input[type=file] {
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box; }
+
+.add button {
+  width: 100%;
+  background-color: #43A9FF;
+  border: none;
+  color: white;
+  padding: 16px;
+  cursor: pointer;
+  border-radius: 30px; }
+
+.add button:hover {
+  background-color: #1d496d; }
+
+.add select {
+  width: 33%;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box; }
+
+.add textarea {
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  box-sizing: border-box; }
+
+/*# sourceMappingURL=style.css.map */

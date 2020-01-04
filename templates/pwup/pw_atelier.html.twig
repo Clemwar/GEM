@@ -1,0 +1,59 @@
+{% extends('base.html.twig') %}
+
+{% block insight %}
+    {% include('pwup/_topbar.html.twig') %}
+{% endblock %}
+
+{% block main %}
+    <section class="manage">
+            <article class="atelier">
+                <h2>{{ atelier.nom }}</h2>
+                <h4>{% if atelier.visibility %}Publié{% else %}Non publié{% endif %}</h4>
+                <p>{{ atelier.description }}</p>
+                <a href="{{ path('updateAtelier', {'id':atelier.id}) }}" class="pwbut">Modifier</a>
+                <a href="{% if admin_menu is defined and admin_menu == 'events' %}{{ path('admin_events') }}{% else %}{{path('admin')}}{% endif %}" class="pwbut">Retour</a>
+            </article>
+
+        <table class="atelier">
+            <caption>Les ateliers</caption>
+            <thead>
+            <tr>
+                {% for message in app.flashes('success') %}
+                    <th colspan="7" class="success">
+                        {{ message }}
+                    </th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Nbre places</th>
+                <th>Prix</th>
+                <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for detail in atelier.details %}
+                <tr>
+                    <td><strong>{{ detail.date | date('D d-m-Y') }}</strong></td>
+                    <td>{{ detail.date | date('H:i') }}</td>
+                    <td>{{ detail.places }}</td>
+                    <td>{% if detail.price > 0 %}{{ detail.price }}€{% else %}Gratuit{% endif %}</td>
+                    <td><a href="{{path('update_date', {'id':detail.id})}}">Modifier</a></td>
+                    <td>
+                        <form method="post" action="{{ path('delDate', {'id':detail.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ detail.id) }}">
+                            <button class="neobtn">Suppr.</button>
+                        </form>
+                    </td>
+                    <td><a href="{{ path('getDetails', {'id':detail.id}) }}">Voir</a></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td  colspan="7"> <a href="{{path('add_date', {'id':atelier.id})}}">Ajouter une date</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

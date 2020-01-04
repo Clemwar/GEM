@@ -1,0 +1,48 @@
+{% extends('base.html.twig') %}
+
+{% block class %}class="full"{% endblock %}
+
+{% block insight %}
+    <section id="aboutGEM">
+
+        <div class="about">
+            <article>
+                <h1>Groupe d'Entraide Mutuelle</h1>
+                <ul>
+                    <li> Le <strong>GEM</strong> est un espace d'accueil, d'échanges et de convivialité, ouvert à toutes personnes adultes en situation d'isolement.</li>
+                    <li> Le <strong>GEM</strong> a pour objectifs d'aider à rompre l'isolement, de restaurer et maintenir les liens sociaux et de redonner confiance en soi.</li>
+                    <li> Le <strong>GEM</strong> est une passerelle d'inclusion sociale. Les adhérents s'engagent à participer à la vie du groupe. Chaque adhérent est concerné par le fonctionnement et la vie du GEM avec le soutien d'un animateur salarié et de bénévoles: accueil, gestion du local, organisation des activités et des sorties...</li>
+                    <li>Le <strong>GEM du Bassin d'Arcachon</strong> est une association parrainée par l'<a href="http://www.adapei33.com/" target="_blank">adapei</a> de la Gironde et soutenue par l'<a
+                                href="https://www.nouvelle-aquitaine.ars.sante.fr/" target="_blank">ARS Nouvelle Aquitaine</a>.</li>
+                </ul>
+            </article>
+            <div class="redirect">
+                <nav>
+                    <ul>
+                        <a href="{{ path('showActivites') }}" class="bouton">
+                            <li>
+                                <img src="{{ asset('assets/img/SVG/brush_white.svg')}}" alt="" class="menu_icon">
+                                <span>Découvrir nos activités</span>
+                                <img src="{{ asset('assets/img/SVG/arrow_white.svg')}}" alt="" class="arrow_icon">
+                            </li>
+                        </a>
+                        <a href="#" class="bouton">
+                            <li>
+                                <img src="{{ asset('assets/img/SVG/heart_white.svg')}}" alt="" class="menu_icon">
+                                <span>Nous soutenir</span>
+                                <img src="{{ asset('assets/img/SVG/arrow_white.svg')}}" alt="" class="arrow_icon">
+                            </li>
+                        </a>
+                        <a href="#" class="bouton">
+                            <li>
+                                <img src="{{ asset('assets/img/SVG/bulle_white.svg')}}" alt="" class="menu_icon">
+                                <span>Nous découvrir</span>
+                                <img src="{{ asset('assets/img/SVG/arrow_down_white.svg')}}" alt="" class="arrow_icon">
+                            </li>
+                        </a>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+{% endblock %}

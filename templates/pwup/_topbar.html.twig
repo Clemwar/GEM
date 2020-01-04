@@ -1,0 +1,22 @@
+<div id="top_bar_admin">
+
+    <nav id="main_menu" role="navigation">
+        <ul class="menu_list">
+            <a href="{{path('admin')}}" class="menu_item {% if admin_menu is defined and admin_menu == 'atelier' %}active{% endif %}">
+                <li>
+                    Ateliers
+                </li>
+            </a>
+            <a href="{{path('admin_events')}}" class="menu_item {% if admin_menu is defined and admin_menu == 'events' %}active{% endif %}">
+                <li>
+                    Événements
+                </li>
+            </a>
+            <a href="#" class="menu_item {% if admin_menu is defined and admin_menu == 'user' %}active{% endif %}">
+                <li>
+                    Utilisateurs
+                </li>
+            </a>
+        </ul>
+    </nav>
+</div>

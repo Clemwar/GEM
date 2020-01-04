@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    {% include('elements/_head.html.twig') %}
+    <title>{% block title %}GEM, Bassin d'Arcachon{% endblock %}</title>
+</head>
+
+<body>
+<header {% block class %}{% endblock %}>
+    {% include('elements/_topBar.html.twig') %}
+    {% block insight %}{% endblock %}
+</header>
+<main>
+    {% block main %}{% endblock %}
+</main>
+    {% block footer %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

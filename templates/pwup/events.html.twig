@@ -1,0 +1,52 @@
+{% extends('base.html.twig') %}
+
+{% block insight %}
+    {% include('pwup/_topbar.html.twig') %}
+{% endblock %}
+
+{% block main %}
+
+    <section class="manage">
+        <table>
+            <caption>Les Événements</caption>
+            <thead>
+            <tr>
+                {% for message in app.flashes('success') %}
+                    <th colspan="7" class="success">
+                        {{ message }}
+                    </th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Événements programmés</th>
+                <th>Montrer</th>
+                <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for event in events %}
+                <tr>
+                    <td>{{ event.nom }}</td>
+                    <td>{{ event.description }}</td>
+                    <td>{{ event.details | length }}</td>
+                    <td><a href="{{ path('toggleVisibility', {'id':event.id}) }}">{% if event.visibility %}Oui{% else %}Non{% endif %}</a></td>
+                    <td><a href="{{ path('updateAtelier', {'id':event.id}) }}">Modifier</a></td>
+                    <td>
+                        <form method="post" action="{{ path('delAtelier', {'id':event.id}) }}" onsubmit="return confirm('Êtes-vous sûr ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ event.id) }}">
+                            <button class="neobtn">Suppr.</button>
+                        </form>
+                    </td>
+                    <td><a href="{{ path('pwAtelier', {'id':event.id}) }}">Voir</a></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td  colspan="7"> <a href="{{ path('addActivite', {'event':'1'}) }}">Ajouter un événement</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

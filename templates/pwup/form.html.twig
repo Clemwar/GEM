@@ -1,0 +1,12 @@
+{% extends('base.html.twig') %}
+
+{% block insight %}
+    {% include('pwup/_topbar.html.twig') %}
+{% endblock %}
+
+{% block main %}
+    <section class="add">
+        <h1>{{ titre }} {% if atelier is defined %}dans {{ atelier.nom }}{% elseif nom is defined %} dans {{ nom }}{% endif %}</h1>
+    {{ form(form) }}
+    </section>
+{% endblock %}

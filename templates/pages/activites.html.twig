@@ -1,0 +1,54 @@
+{% extends('base.html.twig') %}
+
+{% block class %}class="full"{% endblock %}
+
+{% block insight %}
+    <section class="insight_zone">
+        <div class="insight">
+            <a href="#">
+                <article>
+                    <h2>Ateliers</h2>
+                    <hr>
+                    <div class="image">
+                        <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="imgw">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia laborum ducimus amet natus reiciendis eum eius voluptatum, beatae hic ipsam, velit obcaecati, cumque ea similique necessitatibus.</p>
+                    <p class="press">
+                        Découvrir les ateliers
+                    </p>
+                </article>
+            </a>
+        </div>
+        <div class="insight">
+            <a href="#">
+                <article>
+                    <h2>Événements</h2>
+                    <hr>
+                    <div class="image">
+                        <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="imgw">
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia laborum ducimus amet natus reiciendis eum eius voluptatum, beatae hic ipsam, velit obcaecati, cumque ea similique necessitatibus.</p>
+                    <p class="press">
+                        Découvrir les événements
+                    </p>
+                </article>
+            </a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block main %}
+
+    <section class="show">
+        {% for atelier in ateliers %}
+            {% if atelier.visibility %}
+        <article class="activite">
+            <h2>{{ atelier.nom }}</h2>
+            <p>{{ atelier.description }}</p>
+            <a href="{{ path('getAtelier', {'id':atelier.id}) }}">Voir</a>
+        </article>
+            {% endif %}
+        {% endfor %}
+    </section>
+
+{% endblock %}
