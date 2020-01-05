@@ -38,13 +38,13 @@ header {
   #logo img {
     width: 110px; }
 
-.menu_item, #connect {
+.menu_item, .connect {
   text-transform: uppercase;
   display: inline-block;
   padding: 10px 30px;
   list-style-type: none;
   position: relative; }
-  .menu_item::after, #connect::after {
+  .menu_item::after, .connect::after {
     content: "";
     width: 90%;
     height: 4px;
@@ -59,11 +59,11 @@ header {
     transform: scaleX(0);
     transition: all .3s ease-in-out 0s; }
 
-.active li, .active span, .menu_item:hover li, .menu_item:hover span, #connect:hover li, #connect:hover span, #logo:hover li, #logo:hover span {
+.active li, .active span, .menu_item:hover li, .menu_item:hover span, .connect:hover li, .connect:hover span, #logo:hover li, #logo:hover span {
   color: #43A9FF; }
-.active .menu_icon, .active img, .menu_item:hover .menu_icon, .menu_item:hover img, #connect:hover .menu_icon, #connect:hover img, #logo:hover .menu_icon, #logo:hover img {
+.active .menu_icon, .active img, .menu_item:hover .menu_icon, .menu_item:hover img, .connect:hover .menu_icon, .connect:hover img, #logo:hover .menu_icon, #logo:hover img {
   filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
-.active::after, .menu_item:hover::after, #connect:hover::after, #logo:hover::after {
+.active::after, .menu_item:hover::after, .connect:hover::after, #logo:hover::after {
   visibility: visible;
   transform: scaleX(1); }
 
@@ -271,7 +271,7 @@ header {
   color: #1d496d;
   margin-right: 20px; }
 
-.add input[type=text], .add input[type=number] {
+.add input[type=text], .add input[type=number], .add input[type=email], .add input[type=password] {
   width: 100%;
   padding: 12px 20px;
   margin-bottom: 20px;
@@ -306,5 +306,9 @@ header {
   padding: 12px 20px;
   margin-bottom: 20px;
   box-sizing: border-box; }
+
+.error {
+  color: red;
+  text-align: center; }
 
 /*# sourceMappingURL=style.css.map */

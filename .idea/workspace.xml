@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="" />
+    <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pwup/users.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GEM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GEM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/_topbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/_topbar.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +30,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -88,9 +109,16 @@
       <path value="$PROJECT_DIR$/vendor/symfony/profiler-pack" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-csrf" />
       <path value="$PROJECT_DIR$/vendor/symfony/security-core" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-guard" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-http" />
+      <path value="$PROJECT_DIR$/vendor/symfony/security-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1VZkZyjyOQd7QzoUtjqMzToAf5n" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -98,8 +126,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pwup" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -139,7 +169,8 @@
       <workItem from="1577896618005" duration="14950000" />
       <workItem from="1577920721819" duration="183000" />
       <workItem from="1577920912109" duration="2814000" />
-      <workItem from="1578157415157" duration="19777000" />
+      <workItem from="1578157415157" duration="20211000" />
+      <workItem from="1578243052131" duration="11987000" />
     </task>
     <servers />
   </component>
@@ -147,10 +178,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1577898137616">
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1578247251216">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577898137616" />
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578247251216" />
     <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577896580221">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -159,17 +190,21 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577907496615" />
-    <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1577906558801">
+    <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1578250037933">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577906558801" />
-    <state x="271" y="76" width="737" height="894" key="find.popup" timestamp="1577737050772">
+    <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578250037933" />
+    <state x="271" y="76" width="737" height="894" key="find.popup" timestamp="1578252321238">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="271" y="76" width="737" height="894" key="find.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577737050772" />
+    <state x="271" y="76" width="737" height="894" key="find.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578252321238" />
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup" timestamp="1577547074710">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577547074710" />
+    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578252382511">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578252382511" />
   </component>
 </project>

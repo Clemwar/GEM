@@ -26,14 +26,23 @@
         </ul>
     </nav>
 
+    {% if is_granted('ROLE_ADMIN') %}
     <a href="{{path('admin')}}" class="menu_item {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}">
         <li>
             admin
         </li>
     </a>
+    {% endif %}
 
-    <a href="#" id="connect">
-        <img src="{{ asset('assets/img/SVG/user_ico.svg')}}" alt="" class="menu_icon">
-        <span>Se connecter</span>
-    </a>
+    {% if app.user %}
+        <a href="{{path('logout')}}" class="connect">
+            <img src="{{ asset('assets/img/SVG/user_ico.svg')}}" alt="" class="menu_icon">
+            <span>Se déconnecter</span>
+        </a>
+        {% else %}
+            <a href="{{path('login')}}" class="connect {% if current_menu is defined and current_menu == 'login' %}active{% endif %}">
+                <img src="{{ asset('assets/img/SVG/user_ico.svg')}}" alt="" class="menu_icon">
+                <span>Se connecter</span>
+            </a>
+    {% endif %}
 </div>

@@ -1,0 +1,58 @@
+{% extends('base.html.twig') %}
+
+{% block insight %}
+    {% include('pwup/_topbar.html.twig') %}
+{% endblock %}
+
+{% block main %}
+
+
+
+    <section class="manage">
+        <table>
+            <caption>Les utilisateurs</caption>
+            <thead>
+            <tr>
+                {% for message in app.flashes('success') %}
+                    <th colspan="7" class="success">
+                        {{ message }}
+                    </th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Role</th>
+                <th colspan="4"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.telephone }}</td>
+                    <td>
+                        TODO
+                    </td>
+                    <td><a href="#">Modifier</a></td>
+                    <td>
+                        <form method="post" action="#" onsubmit="return confirm('Êtes-vous sûr ?')">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+                            <button class="pwbut">Suppr.</button>
+                        </form>
+                    </td>
+                    <td><a href="#">Voir</a></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td  colspan="8"> <a href="#">Ajouter un utilisateur</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+{% endblock %}

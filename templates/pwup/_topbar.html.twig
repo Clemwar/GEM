@@ -12,7 +12,7 @@
                     Événements
                 </li>
             </a>
-            <a href="#" class="menu_item {% if admin_menu is defined and admin_menu == 'user' %}active{% endif %}">
+            <a href="{{ path('admin_users') }}" class="menu_item {% if admin_menu is defined and admin_menu == 'users' %}active{% endif %}">
                 <li>
                     Utilisateurs
                 </li>
