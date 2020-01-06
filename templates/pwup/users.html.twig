@@ -25,6 +25,7 @@
                 <th>Email</th>
                 <th>Téléphone</th>
                 <th>Role</th>
+                <th>Photo</th>
                 <th colspan="4"></th>
             </tr>
             </thead>
@@ -36,11 +37,20 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.telephone }}</td>
                     <td>
-                        TODO
+                        <form method="post" action="#">
+                            <input type="hidden" name="_token" value="{{ csrf_token('role' ~ user.id) }}">
+                            <select name="role" id="role-select">
+                                <option value="ROLE_ADMIN">Administrateur</option>
+                                <option value="ROLE_TEAM">Encadrement</option>
+                                <option value="ROLE_ADH">Adhérent</option>
+                                <option value="ROLE_USER">Utilisateur</option>
+                            </select>
+                        </form>
                     </td>
-                    <td><a href="#">Modifier</a></td>
+                    <td>{% if user.photo %}<img src="{{ asset('assets/upl/photos/'~ user.photo) }}" class="thumb" alt="">{% endif %}</td>
+                    <td><a href="{{ path('update_user', {'id':user.id}) }}">Modifier</a></td>
                     <td>
-                        <form method="post" action="#" onsubmit="return confirm('Êtes-vous sûr ?')">
+                        <form method="post" action="{{path('admin_delete_user', {'id':user.id})}}" onsubmit="return confirm('Êtes-vous sûr ?')">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
                             <button class="pwbut">Suppr.</button>
@@ -50,7 +60,7 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td  colspan="8"> <a href="#">Ajouter un utilisateur</a></td>
+                <td  colspan="8"> <a href="{{path('add_user')}}">Ajouter un utilisateur</a></td>
             </tr>
             </tbody>
         </table>

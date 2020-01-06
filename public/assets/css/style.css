@@ -213,9 +213,14 @@ header {
       text-align: center;
       padding: 20px; }
 
+select {
+  padding: 10px;
+  color: #1d496d; }
+
 .success {
   color: darkgreen;
-  background-color: lightgreen; }
+  background-color: lightgreen;
+  text-align: center; }
 
 .manage a, .neobtn, .pwbut {
   background-color: #43A9FF;
@@ -227,7 +232,8 @@ header {
   font: inherit;
   cursor: pointer; }
   .manage a:hover, .neobtn:hover, .pwbut:hover {
-    background-color: #1d496d; }
+    background-color: #1d496d;
+    color: white; }
 
 #top_bar_admin {
   width: 100%;
@@ -250,6 +256,10 @@ header {
   border-radius: 10px;
   text-align: center; }
 
+.thumb {
+  width: 90px;
+  height: auto; }
+
 .add {
   width: 80%;
   margin: 30px auto 0; }
@@ -271,7 +281,7 @@ header {
   color: #1d496d;
   margin-right: 20px; }
 
-.add input[type=text], .add input[type=number], .add input[type=email], .add input[type=password] {
+.add input[type=text], .add input[type=number], .add input[type=email], .add input[type=password], .add input[type=tel] {
   width: 100%;
   padding: 12px 20px;
   margin-bottom: 20px;
@@ -289,7 +299,8 @@ header {
   color: white;
   padding: 16px;
   cursor: pointer;
-  border-radius: 30px; }
+  border-radius: 30px;
+  margin-bottom: 20px; }
 
 .add button:hover {
   background-color: #1d496d; }
@@ -307,7 +318,7 @@ header {
   margin-bottom: 20px;
   box-sizing: border-box; }
 
-.error {
+.error, .warning {
   color: red;
   text-align: center; }
 
