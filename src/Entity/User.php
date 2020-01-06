@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -67,16 +68,30 @@ class User implements UserInterface,\Serializable
      */
     private $photo;
 
+    /**
+     * @var array
+     * @ORM\Column(type="json")
+     * @Assert\Choice({"['ROLE_ADMIN']", "['ROLE_TEAM']", "['ROLE_ADH']", "['ROLE_USER']"})
+     */
+    private $roles = ['ROLE_USER'];
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getNom(): ?string
     {
         return $this->nom;
     }
 
+    /**
+     * @param string $nom
+     * @return $this
+     */
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
@@ -84,11 +99,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPrenom(): ?string
     {
         return $this->prenom;
     }
 
+    /**
+     * @param string $prenom
+     * @return $this
+     */
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
@@ -96,11 +118,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param string $email
+     * @return $this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -108,11 +137,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
+    /**
+     * @param string|null $telephone
+     * @return $this
+     */
     public function setTelephone(?string $telephone): self
     {
         $this->telephone = $telephone;
@@ -120,11 +156,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getAdresse(): ?string
     {
         return $this->adresse;
     }
 
+    /**
+     * @param string|null $adresse
+     * @return $this
+     */
     public function setAdresse(?string $adresse): self
     {
         $this->adresse = $adresse;
@@ -132,11 +175,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getComplement(): ?string
     {
         return $this->complement;
     }
 
+    /**
+     * @param string|null $complement
+     * @return $this
+     */
     public function setComplement(?string $complement): self
     {
         $this->complement = $complement;
@@ -144,11 +194,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return int|null
+     */
     public function getCodepostal(): ?int
     {
         return $this->codepostal;
     }
 
+    /**
+     * @param int|null $codepostal
+     * @return $this
+     */
     public function setCodepostal(?int $codepostal): self
     {
         $this->codepostal = $codepostal;
@@ -156,11 +213,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getVille(): ?string
     {
         return $this->ville;
     }
 
+    /**
+     * @param string|null $ville
+     * @return $this
+     */
     public function setVille(?string $ville): self
     {
         $this->ville = $ville;
@@ -168,11 +232,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return $this
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -180,11 +251,18 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return string|null
+     */
     public function getPhoto(): ?string
     {
         return $this->photo;
     }
 
+    /**
+     * @param string|null $photo
+     * @return $this
+     */
     public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
@@ -192,25 +270,45 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    /**
+     * @return array|string[]
+     */
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        $roles = $this->roles;
+
+        return array_unique($roles);
     }
 
-    public function getSalt()
+    /**
+     * @param array $roles
+     */
+    public function setRoles(array $roles): void
+    {
+        $this->roles = $roles;
+    }
+
+    public function getSalt(): ?string
     {
         return null;
     }
 
-    public function eraseCredentials()
+
+    public function eraseCredentials(): void
     {
     }
 
+    /**
+     * @return string
+     */
     public function getUsername()
     {
         return $this->email;
     }
 
+    /**
+     * @return string
+     */
     public function serialize()
     {
         return serialize([
@@ -220,6 +318,9 @@ class User implements UserInterface,\Serializable
         ]);
     }
 
+    /**
+     * @param string $serialized
+     */
     public function unserialize($serialized)
     {
         list (

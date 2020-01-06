@@ -37,13 +37,13 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.telephone }}</td>
                     <td>
-                        <form method="post" action="#">
-                            <input type="hidden" name="_token" value="{{ csrf_token('role' ~ user.id) }}">
-                            <select name="role" id="role-select">
-                                <option value="ROLE_ADMIN">Administrateur</option>
-                                <option value="ROLE_TEAM">Encadrement</option>
-                                <option value="ROLE_ADH">Adhérent</option>
-                                <option value="ROLE_USER">Utilisateur</option>
+                        <form method="post" action="{{path('add_role', {'id':user.id})}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('roles' ~ user.id) }}">
+                            <select name="role" id="role-select" onchange="this.form.submit();">
+                                <option value="ROLE_ADMIN" {% if user.roles == '["ROLE_ADMIN"]' %}selected="selected"{% endif %}>Administrateur</option>
+                                <option value="ROLE_TEAM" {% if user.roles == '["ROLE_TEAM"]' %}selected="selected"{% endif %}>Encadrement</option>
+                                <option value="ROLE_ADH" {% if user.roles == '["ROLE_ADH"]' %}selected="selected"{% endif %}>Adhérent</option>
+                                <option value="ROLE_USER" {% if user.roles == '["ROLE_USER"]' %}selected="selected"{% endif %}>Utilisateur</option>
                             </select>
                         </form>
                     </td>
@@ -60,7 +60,7 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td  colspan="8"> <a href="{{path('add_user')}}">Ajouter un utilisateur</a></td>
+                <td  colspan="9"> <a href="{{path('add_user')}}">Ajouter un utilisateur</a></td>
             </tr>
             </tbody>
         </table>

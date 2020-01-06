@@ -232,4 +232,25 @@ class UserController extends AbstractController
             'current_menu' => 'login'
         ]);
     }
+
+    /**
+     * @Route("/pwup/user/addRole/{id}", name="add_role")
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addRole($id, Request $request)
+    {
+        $user = $this->repository->find($id);
+        $value = $request->get('role');
+
+        $user->setRoles([$value]);
+
+        if ($this->isCsrfTokenValid('roles' . $id, $request->get('_token'))) {
+            $this->em->persist($user);
+            $this->em->flush();
+        }
+
+        return $this->redirectToRoute('admin_users');
+    }
 }

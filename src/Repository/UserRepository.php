@@ -28,7 +28,7 @@ class UserRepository extends ServiceEntityRepository
         $conn = $this->getEntityManager()->getConnection();
 
         $sql = '
-        SELECT id, nom, prenom, email, telephone, photo FROM USER
+        SELECT id, nom, prenom, email, telephone, photo, roles FROM USER
         ';
 
         $stmt = $conn->prepare($sql);
