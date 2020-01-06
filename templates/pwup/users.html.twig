@@ -13,10 +13,12 @@
             <caption>Les utilisateurs</caption>
             <thead>
             <tr>
-                {% for message in app.flashes('success') %}
-                    <th colspan="7" class="success">
-                        {{ message }}
-                    </th>
+                {% for label, messages in app.flashes(['success', 'warning']) %}
+                    {% for message in messages %}
+                        <th colspan="9" class="{{ label }}">
+                            {{ message }}
+                        </th>
+                    {% endfor %}
                 {% endfor %}
             </tr>
             <tr>

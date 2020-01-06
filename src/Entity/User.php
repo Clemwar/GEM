@@ -71,7 +71,7 @@ class User implements UserInterface,\Serializable
     /**
      * @var array
      * @ORM\Column(type="json")
-     * @Assert\Choice({"['ROLE_ADMIN']", "['ROLE_TEAM']", "['ROLE_ADH']", "['ROLE_USER']"})
+     * @Assert\Choice(choices = {"ROLE_ADMIN", "ROLE_TEAM", "ROLE_ADH", "ROLE_USER"}, max={1}, multiple = true)<
      */
     private $roles = ['ROLE_USER'];
 

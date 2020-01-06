@@ -15,6 +15,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserController extends AbstractController
 {
@@ -239,16 +241,25 @@ class UserController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addRole($id, Request $request)
+    public function addRole($id, Request $request, ValidatorInterface $validator)
     {
         $user = $this->repository->find($id);
-        $value = $request->get('role');
+        $role = $request->get('role');
 
-        $user->setRoles([$value]);
+        $user->setRoles([$role]);
 
-        if ($this->isCsrfTokenValid('roles' . $id, $request->get('_token'))) {
-            $this->em->persist($user);
-            $this->em->flush();
+        $listErrors = $validator->validate($user);
+
+        if (count($listErrors) === 0) {
+            if ($this->isCsrfTokenValid('roles' . $id, $request->get('_token'))) {
+                $this->em->persist($user);
+                $this->em->flush();
+                $this->addFlash('success', 'Changement de rôle réussi');
+            }
+        }
+        else
+        {
+            $this->addFlash('warning', 'Le rôle n\'existe pas');
         }
 
         return $this->redirectToRoute('admin_users');
