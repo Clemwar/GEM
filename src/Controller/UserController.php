@@ -67,7 +67,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function addUser(Request $request)
+    public function addUser(Request $request, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
 
@@ -107,6 +107,10 @@ class UserController extends AbstractController
                     // On ajoute le nom de l'image à l'utilisateur concerné
                     $user->setPhoto($newFilename);
                 }
+
+                //On traite l'encodage du mot de passe
+                $password = $form['password']->getData();
+                $user->setPassword($this->encoder->encodePassword($user, $password));
 
                 $this->addFlash('success', 'Bienvenue, inscription terminée');
 
@@ -213,7 +217,11 @@ class UserController extends AbstractController
                     $user->setPhoto($newFilename);
                 }
 
-                $this->addFlash('success', 'Bienvenue, inscription terminée');
+                //On traite l'encodage du mot de passe
+                $password = $form['password']->getData();
+                $user->setPassword($this->encoder->encodePassword($user, $password));
+
+                $this->addFlash('success', 'Mise à jour de contact terminée');
 
                 // On enregistre notre objet $user dans la base de données, par exemple
                 $this->em->persist($user);
