@@ -38,20 +38,81 @@
 {% endblock %}
 
 {% block main %}
-
     <section class="show" id="ateliers">
         <h1>Les ateliers</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
             illum ipsa laboriosam.</p>
-        {% for atelier in ateliers %}
-            {% if atelier.visibility %}
-        <article class="atelier">
-            <h2>{{ atelier.nom }}</h2>
-            <p>{{ atelier.description }}</p>
-            <a href="{{ path('getAtelier', {'id':atelier.id}) }}">Voir</a>
-        </article>
+        <div class="flex">
+            {% for atelier in ateliers %}
+                {% if atelier.visibility %}
+                    <div class="showActivite">
+                        <div class="content">
+                            <div class="cover">
+                            <img src="{% if atelier.cover %}{{ asset('assets/img/upl/'~atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if atelier.alt %}{{ atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                            </div>
+                                <article class="description">
+                                <h2>{{ atelier.nom }}</h2>
+                                <p>{{ atelier.description }}</p>
+                            </article>
+                        </div>
+                        <div class="soon">
+                            <h2>Prochain Atelier</h2>
+                            {% if atelier.details |length > 0 %}
+                                {% for detail in atelier.details |slice(0,1) %}
+                                    <p>{{ detail.date | date('D') }}</p>
+                                    <p>{{ detail.date | date('d') }}</p>
+                                    <p>{{ detail.date | date('M') }}</p>
+                                    <p>{{ detail.date | date('H:i') }}</p>
+                                {% endfor %}
+                            {% else %}
+                                <p>Aucune date prévue</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    <section class="show" id="events">
+        <h1>Les événements</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
+            illum ipsa laboriosam.</p>
+        <div class="flex">
+            {% if events |length >0 %}
+            {% for event in events %}
+                {% if event.visibility %}
+                    <div class="showActivite">
+                        <div class="content">
+                            <div class="cover">
+                                <img src="{% if event.cover %}{{ asset('assets/img/upl/'~event.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if event.alt %}{{ event.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                            </div>
+                            <article class="description">
+                                <h2>{{ event.nom }}</h2>
+                                <p>{{ event.description }}</p>
+                            </article>
+                        </div>
+                        <div class="soon">
+                            <h2>Prochain Événement</h2>
+                            {% if event.details |length > 0 %}
+                                {% for detail in event.details |slice(0,1) %}
+                                    <p>{{ detail.date | date('D') }}</p>
+                                    <p>{{ detail.date | date('d') }}</p>
+                                    <p>{{ detail.date | date('M') }}</p>
+                                    <p>{{ detail.date | date('H:i') }}</p>
+                                {% endfor %}
+                            {% else %}
+                                <p>Aucune date prévue</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            {% else %}
+            <div class="content">
+                <h2>Aucun événement prévu</h2>
+            </div>
             {% endif %}
-        {% endfor %}
+        </div>
     </section>
 
 {% endblock %}

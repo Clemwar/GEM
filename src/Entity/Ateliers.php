@@ -48,7 +48,7 @@ class Ateliers
 
     /**
      * @ORM\Column(type="string", nullable=true)
-     * @Assert\Length(max=20)
+     * @Assert\Length(max=30)
      */
     private $alt;
 

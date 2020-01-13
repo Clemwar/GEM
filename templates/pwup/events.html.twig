@@ -11,7 +11,7 @@
             <thead>
             <tr>
                 {% for message in app.flashes('success') %}
-                    <th colspan="7" class="success">
+                    <th colspan="8" class="success">
                         {{ message }}
                     </th>
                 {% endfor %}
@@ -20,6 +20,7 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Événements programmés</th>
+                <th>Image</th>
                 <th>Montrer</th>
                 <th colspan="3"></th>
             </tr>
@@ -30,6 +31,7 @@
                     <td>{{ event.nom }}</td>
                     <td>{{ event.description }}</td>
                     <td>{{ event.details | length }}</td>
+                    <td><img class="thumb" src="{% if event.cover %}{{ asset('assets/img/upl/'~event.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{{ event.alt }}"></td>
                     <td><a href="{{ path('toggleVisibility', {'id':event.id}) }}">{% if event.visibility %}Oui{% else %}Non{% endif %}</a></td>
                     <td><a href="{{ path('updateAtelier', {'id':event.id}) }}">Modifier</a></td>
                     <td>
@@ -43,7 +45,7 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td  colspan="7"> <a href="{{ path('addActivite', {'event':'1'}) }}">Ajouter un événement</a></td>
+                <td  colspan="8"> <a href="{{ path('addActivite', {'event':'1'}) }}">Ajouter un événement</a></td>
             </tr>
             </tbody>
         </table>

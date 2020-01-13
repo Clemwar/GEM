@@ -215,6 +215,59 @@ header {
         #aboutGEM .about .redirect .bouton:hover {
           background-color: #1d496d; }
 
+.show {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  color: #1d496d; }
+  .show h1 {
+    font-size: 2em;
+    margin-bottom: 0; }
+  .show p {
+    margin-top: 5px; }
+
+.flex {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-sizing: border-box; }
+
+.showActivite {
+  width: 48%;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+  border: #1d496d 2px solid;
+  border-radius: 25px;
+  overflow: hidden; }
+
+.content {
+  width: 100%;
+  overflow: hidden; }
+
+.cover {
+  max-height: 25vh;
+  overflow: hidden; }
+
+.imgh {
+  width: 100%;
+  height: auto;
+  margin: 0 auto; }
+
+.description {
+  padding: 20px;
+  background-color: #1d496d;
+  color: white; }
+
+.soon {
+  width: calc(100% / 3);
+  height: 100%;
+  background-color: white;
+  color: #1d496d; }
+
 .manage {
   width: 90%;
   margin: 0 auto 30px;
@@ -353,17 +406,6 @@ select {
   color: red;
   text-align: center; }
 
-.show {
-  width: 80%;
-  margin: 0 auto; }
-  .show h1 {
-    text-align: center;
-    font-size: 2em;
-    margin-bottom: 0; }
-  .show p {
-    text-align: center;
-    margin-top: 5px; }
-
 footer {
   padding: 0 30px;
   display: flex;
@@ -391,6 +433,19 @@ footer {
     border-top: white 1px solid; }
 
   footer {
-    margin-bottom: 53px; } }
+    margin-bottom: 53px; }
+
+  .showActivite {
+    width: 100%; } }
+@media screen and (max-width: 768px) {
+  .insight_zone .insight article {
+    padding: 10px; }
+    .insight_zone .insight article h2 {
+      font-size: 1.5rem; }
+    .insight_zone .insight article p {
+      font-size: 0.8rem;
+      text-align: center; }
+    .insight_zone .insight article .image {
+      display: none; } }
 
 /*# sourceMappingURL=style.css.map */
