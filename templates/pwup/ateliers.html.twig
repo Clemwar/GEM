@@ -5,9 +5,6 @@
 {% endblock %}
 
 {% block main %}
-
-
-
     <section class="manage">
         <table>
             <caption>Les ateliers</caption>
@@ -23,6 +20,7 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Ateliers programmés</th>
+                <th>Image</th>
                 <th>Montrer</th>
                 <th colspan="3"></th>
             </tr>
@@ -33,6 +31,7 @@
                     <td>{{ atelier.nom }}</td>
                     <td>{{ atelier.description }}</td>
                     <td>{{ atelier.details | length }}</td>
+                    <td><img class="thumb" src="{% if atelier.cover %}{{ asset('assets/img/upl/'~atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{{ atelier.alt }}"></td>
                     <td><a href="{{ path('toggleVisibility', {'id':atelier.id}) }}">{% if atelier.visibility %}Oui{% else %}Non{% endif %}</a></td>
                     <td><a href="{{ path('updateAtelier', {'id':atelier.id}) }}">Modifier</a></td>
                     <td>
@@ -46,9 +45,10 @@
                 </tr>
             {% endfor %}
             <tr>
-                <td  colspan="7"> <a href="{{ path('addActivite', {'event':'0'}) }}">Ajouter un atelier</a></td>
+                <td  colspan="8"> <a href="{{ path('addActivite', {'event':'0'}) }}">Ajouter un atelier</a></td>
             </tr>
             </tbody>
         </table>
     </section>
 {% endblock %}
+{% block footer %}{% endblock %}

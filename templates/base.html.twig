@@ -13,7 +13,8 @@
 <main>
     {% block main %}{% endblock %}
 </main>
-    {% block footer %}{% endblock %}
+    {% block footer %}{% include('elements/_footer.html.twig') %}{% endblock %}
+    {% include('elements/_navbar.html.twig') %}
     {% block javascripts %}{% endblock %}
 </body>
 </html>

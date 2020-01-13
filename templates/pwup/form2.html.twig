@@ -1,0 +1,95 @@
+{% extends('base.html.twig') %}
+
+{% block insight %}
+    {% include('pwup/_topbar.html.twig') %}
+{% endblock %}
+
+{% block main %}
+    <section class="add">
+        <h1>{{ titre }} {% if atelier is defined %}dans {{ atelier.nom }}{% elseif nom is defined %} dans {{ nom }}{% endif %}</h1>
+        {{ form_start(form) }}
+        <div>
+            {{ form_row(form.nom) }}
+        </div>
+        <div>
+            {{ form_row(form.description) }}
+        </div>
+        <div>
+            {{ form_row(form.visibility) }}
+        </div>
+
+        <div id="filesProto" data-prototype="{{ form_widget(form.medias.vars.prototype)|e }}"></div>
+
+        <div id="filesBox"></div>
+        <div class="js-use" data-id="{{ form.medias | length }}"></div>
+        {{ form_row(form.Enregistrer) }}
+
+        {{ form_end(form) }}
+    </section>
+{% endblock %}
+{% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+</script>
+
+
+    <script type="text/javascript">
+        var fileCount = '{{ form.medias|length }}';
+        var removeButton = "<button type='button' onclick='removeFile($(this));'>Suppr</button>";
+
+        function removeFile(ob)
+        {
+            ob.parent().parent().remove();
+        }
+
+        function createAddFile(fileCount)
+        {
+            // grab the prototype template
+            var newWidget = $("#filesProto").attr('data-prototype');
+            // replace the "__name__" used in the id and name of the prototype
+            newWidget = newWidget.replace(/__name__/g, fileCount);
+
+            newWidget = "<div style='display:none'>" + newWidget + "</div>";
+
+            hideStuff = "";
+            hideStuff += "<div id='jsRemove" + fileCount + "' style='display: none;'>";
+            hideStuff += removeButton;
+            hideStuff += "</div>";
+
+            hideStuff += "<div id='jsPreview" + fileCount + "'>";
+            hideStuff += "</div>";
+
+            hideStuff += "<div>";
+            hideStuff += "<button type='button' id='jsBtnUpload" + fileCount +"'>";
+            hideStuff += "Ajouter une image";
+            hideStuff += "</button>";
+            hideStuff += "</div>";
+
+            $("#filesBox").append("<div>" + hideStuff + newWidget + "</div>");
+
+            // On click => Simulate file behaviour
+            $("#jsBtnUpload" + fileCount).on('click', function(e){
+                $('#ateliers_medias_' + fileCount).trigger('click');
+            });
+
+            // Once the file is added
+            $('#ateliers_medias_' + fileCount).on('change', function() {
+                // Show its name
+                fileName = $(this).prop('files')[0].name;
+                $("#jsPreview" + fileCount).append(fileName);
+                // Hide the add file button
+                $("#jsBtnUpload" + fileCount).hide();
+                // Show the remove file button
+                $("#jsRemove" + fileCount).show();
+
+                // Create another instance of add file button and company
+                createAddFile(parseInt(fileCount)+1);
+            });
+        }
+
+        $(document).ready(function(){
+            createAddFile(fileCount);
+            fileCount++;
+        });
+    </script>
+{% endblock %}

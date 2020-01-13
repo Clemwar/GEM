@@ -2,32 +2,32 @@
 
 {% block main %}
     <section class="add">
+       <form action="{{ path('login') }}" method="post">
 
-           <form action="{{ path('login') }}" method="post">
+           <h1>Connexion</h1>
 
-               <h1>Connexion</h1>
-
-               {% if error %}
-                   <p class="error">{{ error.messageKey | trans(error.messagedata, 'security') }}</p>
-               {% endif %}
-               {% for label, messages in app.flashes(['success', 'warning']) %}
-                   {% for message in messages %}
-                       <p class="{{ label }}">
-                           {{ message }}
-                       </p>
-                   {% endfor %}
+           {% if error %}
+               <p class="error">{{ error.messageKey | trans(error.messagedata, 'security') }}</p>
+           {% endif %}
+           {% for label, messages in app.flashes(['success', 'warning']) %}
+               {% for message in messages %}
+                   <p class="{{ label }}">
+                       {{ message }}
+                   </p>
                {% endfor %}
+           {% endfor %}
 
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="_username" value="{{ last_username }}" >
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_username" value="{{ last_username }}" >
 
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="_password" >
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="_password" >
 
-                <button type="submit">Se connecter</button>
+            <button type="submit">Se connecter</button>
 
-               <button type="button" onclick="window.location.href = '{{ path('add_user') }}';">S'enregistrer</button>
+           <button type="button" onclick="window.location.href = '{{ path('add_user') }}';">S'enregistrer</button>
         </form>
     </section>
 {% endblock %}
+{% block footer %}{% endblock %}

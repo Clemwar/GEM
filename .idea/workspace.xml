@@ -2,8 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/elements/_footer.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/elements/_navbar.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pwup/form2.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AteliersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AteliersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Ateliers.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ateliers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AteliersType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AteliersType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/DetailsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DetailsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/ateliers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/ateliers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/events.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/events.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/pw_atelier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/pw_atelier.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/pw_date.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/pw_date.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/users.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +69,7 @@
         <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="user: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="ateliers: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -151,14 +172,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/elements" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\GEM\templates\pages" />
-      <recent name="C:\wamp64\www\GEM\templates\pwup" />
       <recent name="C:\wamp64\www\GEM\templates\elements" />
+      <recent name="C:\wamp64\www\GEM\templates\pwup" />
+      <recent name="C:\wamp64\www\GEM\templates\pages" />
       <recent name="C:\wamp64\www\GEM" />
     </key>
   </component>
@@ -167,17 +188,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:MySQL - gem_ba@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:MySQL - gem_ba@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@7c4f18ea" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -206,7 +217,9 @@
       <workItem from="1578243052131" duration="12075000" />
       <workItem from="1578323650157" duration="6462000" />
       <workItem from="1578338858299" duration="10136000" />
-      <workItem from="1578413710881" duration="913000" />
+      <workItem from="1578413710881" duration="15196000" />
+      <workItem from="1578756609069" duration="8005000" />
+      <workItem from="1578929471367" duration="10230000" />
     </task>
     <servers />
   </component>
@@ -218,26 +231,34 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341783428" />
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1578341031252">
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1578936967268">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341031252" />
-    <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577896580221">
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578936967268" />
+    <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578435824611">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577896580221" />
-    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578327178240">
+    <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578435824611" />
+    <state x="919" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1578418415824">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578327178240" />
+    <state x="919" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578418415824" />
+    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578939319792">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578939319792" />
     <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1578341459694">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341459694" />
-    <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1578250037933">
+    <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1578419924035">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578250037933" />
+    <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578419924035" />
+    <state x="1114" y="444" key="NewPhpFileDialog" timestamp="1578419503868">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1114" y="444" key="NewPhpFileDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578419503868" />
     <state x="271" y="76" width="737" height="894" key="find.popup" timestamp="1578252321238">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -246,9 +267,9 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577547074710" />
-    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578348439632">
+    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578420207341">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578348439632" />
+    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578420207341" />
   </component>
 </project>

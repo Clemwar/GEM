@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class UserController extends AbstractController
@@ -67,7 +66,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function addUser(Request $request, UserPasswordEncoderInterface $encoder)
+    public function addUser(Request $request)
     {
         $user = new User();
 
@@ -252,13 +251,19 @@ class UserController extends AbstractController
     public function addRole($id, Request $request, ValidatorInterface $validator)
     {
         $user = $this->repository->find($id);
+
+        //On récupère les données du formulaire
         $role = $request->get('role');
 
+        //On insert les données dans l'objet avant la validation
         $user->setRoles([$role]);
 
+        //On vérifie si les données sont conformes en listant les erreurs
         $listErrors = $validator->validate($user);
 
+        //Les données sont conformes
         if (count($listErrors) === 0) {
+            //On vérifie le token pour valider le persist
             if ($this->isCsrfTokenValid('roles' . $id, $request->get('_token'))) {
                 $this->em->persist($user);
                 $this->em->flush();
@@ -267,6 +272,7 @@ class UserController extends AbstractController
         }
         else
         {
+            //il y'a des erreurs, les données ne sont pas conformes
             $this->addFlash('warning', 'Le rôle n\'existe pas');
         }
 

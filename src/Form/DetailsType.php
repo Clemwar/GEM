@@ -20,6 +20,7 @@ class DetailsType extends AbstractType
             ->add('date', DateTimeType::class, [
                 'label' => 'Date',
                 'years' => range(date('Y'), date('Y') + 5),
+                'days' => range(date('d'), 31)
             ])
             ->add('places', IntegerType::class, [
                 'label' => 'Nombre de places',

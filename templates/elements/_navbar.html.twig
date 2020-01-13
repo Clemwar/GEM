@@ -1,0 +1,17 @@
+<nav id="mobile_menu" role="navigation">
+    <ul class="menu_list">
+        <a href="{{path('showActivites')}}" class="mobile_item {% if current_menu is defined and current_menu == 'activites' %}glow{% endif %}">
+            <li>
+                <img src="{{ asset('assets/img/SVG/brush_white.svg')}}" alt="" class="mobile_icon">
+            </li>
+        </a><a href="#" class="mobile_item {% if current_menu is defined and current_menu == 'soutenir' %}glow{% endif %}">
+            <li>
+                <img src="{{ asset('assets/img/SVG/heart_white.svg')}}" alt="" class="mobile_icon">
+            </li>
+        </a><a href="#" class="mobile_item {% if current_menu is defined and current_menu == 'contact' %}glow{% endif %}">
+            <li>
+                <img src="{{ asset('assets/img/SVG/contact_white.svg')}}" alt="" class="mobile_icon">
+            </li>
+        </a>
+    </ul>
+</nav>

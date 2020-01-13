@@ -9,6 +9,9 @@ use App\Form\AteliersType;
 use App\Repository\AteliersRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -86,7 +89,7 @@ class AteliersController extends AbstractController
 
             if ($event)
             {
-            $atelier->setEvent(true);
+                $atelier->setEvent(true);
             }
             else
             {
@@ -95,6 +98,31 @@ class AteliersController extends AbstractController
 
             //On vérifie les données envoyées
             if ($form->isValid()){
+
+                //On traite l'ajout d'image
+                /** @var UploadedFile $image */
+                $image = $form['cover']->getData();
+
+                // On vérifie la présence d'un fichier uploadé
+                if ($image) {
+                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                    //On place le fichier dans le dossier prévu sur le serveur
+                    try {
+                        $image->move(
+                            $this->getParameter('images_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash('warning', 'L\'envoi de la photo a échoué');
+                    }
+
+                    $atelier->setCover($newFilename);
+                }
+
                 //on enregistre l'objet obtenu dans la bdd
                $this->em->persist($atelier);
                $this->em->flush();
@@ -111,12 +139,9 @@ class AteliersController extends AbstractController
             }
         }
 
-        //On crée la vue
-        $formView = $form->createView();
-
         //Le formulaire n'est pas valide ou n'a pas été soumis > on reste sur le formulaire
         return $this->render('/pwup/form.html.twig', [
-            'form' => $formView,
+            'form' => $form->createView(),
             'titre' => 'Ajouter',
             'current_menu' => 'admin',
             'admin_menu' => $menu
@@ -131,11 +156,21 @@ class AteliersController extends AbstractController
      */
     public function delAtelier($id, Request $request)
     {
-
         $atelier = $this->repository->find($id);
         $event = $atelier->getEvent() ? true:false;
 
         if ($this->isCsrfTokenValid('delete' . $id, $request->get('_token'))) {
+
+            //Je m'assure qu'une image est liée à l'utilisateur
+            if ($atelier->getCover() !== null) {
+                //J'appelle le gestionnaire de fichier
+                $filesystem = new Filesystem();
+                //Je vérifie si le fichier existe, si oui, symfony le supprime
+                if ($filesystem->exists($imageURL = $this->getParameter('images_directory') . "/" . $atelier->getCover())) {
+                    $filesystem->remove([$imageURL]);
+                }
+            }
+
             $this->em->remove($atelier);
             $this->em->flush();
 
@@ -147,8 +182,6 @@ class AteliersController extends AbstractController
             return $this->redirectToRoute('admin_events');
         }
         return $this->redirectToRoute('admin');
-
-
     }
 
     /**
@@ -166,12 +199,46 @@ class AteliersController extends AbstractController
         $form = $this->createForm(AteliersType::class, $atelier);
 
         //On vérifie que la requête est en POST
-        if ($request->isMethod('POST')){
+        if ($request->isMethod('POST')) {
             //On lie la requête au formulaire
             $form->handleRequest($request);
 
             //On vérifie les données envoyées
-            if ($form->isValid()){
+            if ($form->isValid()) {
+
+                //On traite l'ajout d'image
+                /** @var UploadedFile $image */
+                $image = $form['cover']->getData();
+
+                // On vérifie la présence d'un fichier uploadé
+                if ($image) {
+                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                    // this is needed to safely include the file name as part of the URL
+                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                    //Je m'assure qu'une image est liée à l'utilisateur
+                    if ($atelier->getCover() !== null) {
+                        //J'appelle le gestionnaire de fichier
+                        $filesystem = new Filesystem();
+                        //Je vérifie si le fichier existe, si oui, symfony le supprime
+                        if ($filesystem->exists($imageURL = $this->getParameter('images_directory') . "/" . $atelier->getCover())) {
+                            $filesystem->remove([$imageURL]);
+                        }
+                    }
+
+                    //On place le fichier dans le dossier prévu sur le serveur
+                    try {
+                        $image->move(
+                            $this->getParameter('images_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash('warning', 'L\'envoi de la photo a échoué');
+                    }
+
+                    $atelier->setCover($newFilename);
+                }
 
                 //on enregistre l'objet obtenu dans la bdd
                 $this->em->flush();
@@ -179,8 +246,7 @@ class AteliersController extends AbstractController
                 $this->addFlash('success', 'Mise à jour réussie');
 
                 //On redirige vers la page d'admin
-                if (!$atelier->getEvent())
-                {
+                if (!$atelier->getEvent()) {
                     return $this->redirectToRoute('admin');
                 }
 
@@ -188,12 +254,9 @@ class AteliersController extends AbstractController
             }
         }
 
-        //On crée la vue
-        $formView = $form->createView();
-
         //Le formulaire n'est pas valide ou n'a pas été soumis > on reste sur le formulaire
         return $this->render('/pwup/form.html.twig', [
-            'form' => $formView,
+            'form' => $form->createView(),
             'titre' => 'Modifier',
             'current_menu' => 'admin',
             'admin_menu' => $menu

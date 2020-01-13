@@ -3,9 +3,9 @@
 {% block class %}class="full"{% endblock %}
 
 {% block insight %}
-    <section class="insight_zone">
+    <section class="insight_zone activites">
         <div class="insight">
-            <a href="#">
+            <a href="#ateliers">
                 <article>
                     <h2>Ateliers</h2>
                     <hr>
@@ -20,7 +20,7 @@
             </a>
         </div>
         <div class="insight">
-            <a href="#">
+            <a href="#events">
                 <article>
                     <h2>Événements</h2>
                     <hr>
@@ -39,10 +39,13 @@
 
 {% block main %}
 
-    <section class="show">
+    <section class="show" id="ateliers">
+        <h1>Les ateliers</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
+            illum ipsa laboriosam.</p>
         {% for atelier in ateliers %}
             {% if atelier.visibility %}
-        <article class="activite">
+        <article class="atelier">
             <h2>{{ atelier.nom }}</h2>
             <p>{{ atelier.description }}</p>
             <a href="{{ path('getAtelier', {'id':atelier.id}) }}">Voir</a>

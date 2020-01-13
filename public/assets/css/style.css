@@ -11,6 +11,9 @@ a, a:hover, a:focus, a:visited {
   margin: 0 auto;
   transition: all 1s ease; }
 
+.menu_list {
+  list-style-type: none; }
+
 @font-face {
   font-family: "Hind";
   src: url("https://fonts.googleapis.com/css?family=Hind&display=swap"); }
@@ -42,7 +45,6 @@ header {
   text-transform: uppercase;
   display: inline-block;
   padding: 10px 30px;
-  list-style-type: none;
   position: relative; }
   .menu_item::after, .connect::after {
     content: "";
@@ -74,13 +76,44 @@ header {
   left: 3px;
   transform: translateY(-50%); }
 
+#mobile_menu {
+  display: none;
+  width: 100%;
+  background-color: #1d496d;
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+  #mobile_menu .menu_list {
+    padding: 0;
+    margin: 0 auto; }
+  #mobile_menu .mobile_item {
+    display: inline-block;
+    width: calc(100% / 3);
+    margin: 0 auto; }
+    #mobile_menu .mobile_item:hover {
+      background: linear-gradient(0deg, rgba(179, 221, 255, 0.8) 20%, rgba(179, 221, 255, 0.1) 100%); }
+    #mobile_menu .mobile_item li {
+      width: 50px;
+      max-height: 50px;
+      overflow: hidden;
+      margin: 0 auto;
+      box-sizing: border-box;
+      padding: 10px; }
+  #mobile_menu .glow {
+    background: linear-gradient(0deg, rgba(67, 169, 255, 0.8) 20%, rgba(67, 169, 255, 0.1) 100%); }
+  #mobile_menu .mobile_icon {
+    width: 100%;
+    margin: 0 auto; }
+
+.activites {
+  background-image: url(../img/larros.jpg); }
+
 .insight_zone {
   height: calc(100% - 70px);
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: url(../img/wood.jpg);
   background-size: cover;
   background-position-y: center;
   background-repeat: no-repeat;
@@ -148,15 +181,13 @@ header {
       box-sizing: border-box;
       border-radius: 0 30px 30px 0;
       color: #1d496d; }
-    #aboutGEM .about ul {
-      list-style-type: none; }
-      #aboutGEM .about ul li {
-        margin: 15px 0; }
-        #aboutGEM .about ul li a {
-          text-decoration: underline;
-          font-weight: bold; }
-          #aboutGEM .about ul li a:hover, #aboutGEM .about ul li a:focus {
-            color: #43A9FF; }
+    #aboutGEM .about ul li {
+      margin: 15px 0; }
+      #aboutGEM .about ul li a {
+        text-decoration: underline;
+        font-weight: bold; }
+        #aboutGEM .about ul li a:hover, #aboutGEM .about ul li a:focus {
+          color: #43A9FF; }
     #aboutGEM .about .redirect {
       padding: 20px;
       width: 33%;
@@ -169,7 +200,6 @@ header {
         background-color: #43A9FF;
         color: white;
         text-transform: uppercase;
-        list-style-type: none;
         position: relative; }
         #aboutGEM .about .redirect .bouton span {
           margin-left: 40px; }
@@ -187,7 +217,7 @@ header {
 
 .manage {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -262,6 +292,7 @@ select {
 
 .add {
   width: 80%;
+  height: 80vh;
   margin: 30px auto 0; }
   .add h1 {
     text-align: center;
@@ -321,5 +352,45 @@ select {
 .error, .warning {
   color: red;
   text-align: center; }
+
+.show {
+  width: 80%;
+  margin: 0 auto; }
+  .show h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 0; }
+  .show p {
+    text-align: center;
+    margin-top: 5px; }
+
+footer {
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1d496d;
+  color: white; }
+  footer h4 {
+    margin-bottom: 5px; }
+  footer a:hover {
+    color: #43A9FF; }
+
+@media screen and (max-width: 1024px) {
+  #logo {
+    margin-left: 10px; }
+
+  #main_menu {
+    display: none; }
+
+  .connect span {
+    display: none; }
+
+  #mobile_menu {
+    display: block;
+    border-top: white 1px solid; }
+
+  footer {
+    margin-bottom: 53px; } }
 
 /*# sourceMappingURL=style.css.map */

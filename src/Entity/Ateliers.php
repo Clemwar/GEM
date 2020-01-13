@@ -22,9 +22,6 @@ class Ateliers
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Assert\Regex(
-     *     pattern="/^[\w ]+$/",
-     *     message="Le nom ne peut avoir que des lettres ou des nombres")
      * @Assert\Length(min = 2, max=100)
      */
     private $nom;
@@ -45,10 +42,24 @@ class Ateliers
     private $visibility;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $cover;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Length(max=20)
+     */
+    private $alt;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Details", mappedBy="atelier", cascade={"remove"})
      */
     private $details;
 
+    /**
+     * Ateliers constructor.
+     */
     public function __construct()
     {
         $this->details = new ArrayCollection();
@@ -113,6 +124,38 @@ class Ateliers
         $this->visibility = $visibility;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    /**
+     * @param mixed $cover
+     */
+    public function setCover($cover): void
+    {
+        $this->cover = $cover;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAlt()
+    {
+        return $this->alt;
+    }
+
+    /**
+     * @param mixed $alt
+     */
+    public function setAlt($alt): void
+    {
+        $this->alt = $alt;
     }
 
 }
