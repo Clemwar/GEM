@@ -35,8 +35,6 @@ class UserRepository extends ServiceEntityRepository
         $stmt->execute();
 
         return $stmt->fetchAll();
-
-
     }
 
     // /**

@@ -44,8 +44,8 @@ class AteliersController extends AbstractController
      */
     public function showActivites()
     {
-        $ateliers = $this->repository->getAteliers();
-        $events = $this->repository->getEvents();
+        $ateliers = $this->repository->getAteliersV();
+        $events = $this->repository->getEventsV();
 
         return $this->render('/pages/activites.html.twig', [
             'ateliers' => $ateliers,
@@ -87,17 +87,10 @@ class AteliersController extends AbstractController
             //On lie la requête au formulaire
             $form->handleRequest($request);
 
-            if ($event)
-            {
-                $atelier->setEvent(true);
-            }
-            else
-            {
-                $atelier->setEvent(false);
-            }
+            $atelier->setEvent($event);
 
             //On vérifie les données envoyées
-            if ($form->isValid()){
+            if ($form->isValid()) {
 
                 //On traite l'ajout d'image
                 /** @var UploadedFile $image */
@@ -124,18 +117,14 @@ class AteliersController extends AbstractController
                 }
 
                 //on enregistre l'objet obtenu dans la bdd
-               $this->em->persist($atelier);
-               $this->em->flush();
+                $this->em->persist($atelier);
+                $this->em->flush();
 
-               $this->addFlash('success', 'Ajout réussi');
+                $this->addFlash('success', 'Ajout réussi');
 
                 //On redirige vers la page d'admin
-                if (!$event)
-                {
-                return $this->redirectToRoute('admin');
-                }
-
-                return $this->redirectToRoute('admin_events');
+                $route = ($event) ? 'admin_events':'admin';
+                return $this->redirectToRoute($route);
             }
         }
 
@@ -246,11 +235,8 @@ class AteliersController extends AbstractController
                 $this->addFlash('success', 'Mise à jour réussie');
 
                 //On redirige vers la page d'admin
-                if (!$atelier->getEvent()) {
-                    return $this->redirectToRoute('admin');
-                }
-
-                return $this->redirectToRoute('admin_events');
+                $route = ($atelier->getEvent()) ? 'admin_events' : 'admin';
+                return $this->redirectToRoute($route);
             }
         }
 
@@ -278,12 +264,8 @@ class AteliersController extends AbstractController
 
         $this->em->flush();
 
-        if (!$atelier->getEvent())
-        {
-            return $this->redirectToRoute('admin');
-        }
-
-        return $this->redirectToRoute('admin_events');
+        $route = ($atelier->getEvent()) ? 'admin_events' : 'admin';
+        return $this->redirectToRoute($route);
     }
 
     /**

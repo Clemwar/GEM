@@ -56,13 +56,13 @@ header {
     right: 0;
     margin: 0 auto;
     visibility: hidden;
-    background-color: #43A9FF;
+    background-color: #43a9ff;
     z-index: 1;
     transform: scaleX(0);
     transition: all .3s ease-in-out 0s; }
 
 .active li, .active span, .menu_item:hover li, .menu_item:hover span, .connect:hover li, .connect:hover span, #logo:hover li, #logo:hover span {
-  color: #43A9FF; }
+  color: #43a9ff; }
 .active .menu_icon, .active img, .menu_item:hover .menu_icon, .menu_item:hover img, .connect:hover .menu_icon, .connect:hover img, #logo:hover .menu_icon, #logo:hover img {
   filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
 .active::after, .menu_item:hover::after, .connect:hover::after, #logo:hover::after {
@@ -145,7 +145,7 @@ header {
         text-align: center;
         padding: 10px;
         border-radius: 10px;
-        background-color: #43A9FF;
+        background-color: #43a9ff;
         text-transform: uppercase;
         font-weight: bold;
         color: white;
@@ -187,7 +187,7 @@ header {
         text-decoration: underline;
         font-weight: bold; }
         #aboutGEM .about ul li a:hover, #aboutGEM .about ul li a:focus {
-          color: #43A9FF; }
+          color: #43a9ff; }
     #aboutGEM .about .redirect {
       padding: 20px;
       width: 33%;
@@ -197,7 +197,7 @@ header {
         padding: 10px;
         margin: 10px 0;
         box-sizing: border-box;
-        background-color: #43A9FF;
+        background-color: #43a9ff;
         color: white;
         text-transform: uppercase;
         position: relative; }
@@ -278,12 +278,12 @@ header {
   .manage table {
     border-collapse: collapse;
     width: 100%;
-    border: 2px #43A9FF solid; }
+    border: 2px #43a9ff solid; }
     .manage table caption {
       font-size: 1.3em;
       font-weight: bold;
       padding: 20px;
-      background-color: #43A9FF;
+      background-color: #43a9ff;
       color: white;
       text-transform: uppercase;
       border-radius: 20px 20px 0 0; }
@@ -306,7 +306,7 @@ select {
   text-align: center; }
 
 .manage a, .neobtn, .pwbut {
-  background-color: #43A9FF;
+  background-color: #43a9ff;
   border: none;
   color: white;
   padding: 10px;
@@ -335,7 +335,7 @@ select {
   margin: 0 15px 30px;
   padding: 20px;
   box-sizing: border-box;
-  border: 2px #43A9FF solid;
+  border: 2px #43a9ff solid;
   border-radius: 10px;
   text-align: center; }
 
@@ -378,7 +378,7 @@ select {
 
 .add button {
   width: 100%;
-  background-color: #43A9FF;
+  background-color: #43a9ff;
   border: none;
   color: white;
   padding: 16px;
@@ -416,7 +416,7 @@ footer {
   footer h4 {
     margin-bottom: 5px; }
   footer a:hover {
-    color: #43A9FF; }
+    color: #43a9ff; }
 
 @media screen and (max-width: 1024px) {
   #logo {

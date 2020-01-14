@@ -17,6 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+
 class UserController extends AbstractController
 {
     /**
@@ -263,9 +264,8 @@ class UserController extends AbstractController
 
         //Les données sont conformes
         if (count($listErrors) === 0) {
-            //On vérifie le token pour valider le persist
+            //On vérifie le token pour valider le flush
             if ($this->isCsrfTokenValid('roles' . $id, $request->get('_token'))) {
-                $this->em->persist($user);
                 $this->em->flush();
                 $this->addFlash('success', 'Changement de rôle réussi');
             }

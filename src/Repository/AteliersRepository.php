@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Ateliers;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Ateliers|null find($id, $lockMode = null, $lockVersion = null)
@@ -28,10 +29,45 @@ class AteliersRepository extends ServiceEntityRepository
             ;
     }
 
+    public function getAteliersV()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.event = false')
+            ->andWhere('a.visibility = true')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+    public function getAteliersNext()
+    {
+        return $this->createQueryBuilder('a')
+            ->leftJoin('App\Entity\Details', 'd', join::WITH, 'a.id = d.atelier')
+            ->andWhere('a.event = false')
+            ->andWhere('a.visibility = true')
+            ->orderBy('d.date', 'DESC')
+            ->andWhere('d.date > :now')
+            ->setParameter('now', new \DateTime())
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function getEvents()
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.event = true')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function getEventsV()
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.event = true')
+            ->andWhere('a.visibility = true')
             ->getQuery()
             ->getResult()
             ;
