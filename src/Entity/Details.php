@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +36,17 @@ class Details
      * @ORM\ManyToOne(targetEntity="App\Entity\Ateliers", inversedBy="details")
      */
     private $atelier;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="reservations")
+     * @ORM\JoinTable(name="reservation_ateliers")
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -88,4 +100,26 @@ class Details
 
         return $this;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getParticipants(): ArrayCollection
+    {
+        return $this->participants;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setParticipants(User $user)
+    {
+        if ($this->participants->contains($user))
+        {
+            return;
+        }
+        $this->participants[] = $user;
+    }
+
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -76,6 +77,16 @@ class User implements UserInterface,\Serializable
      * @Assert\Choice(choices = {"ROLE_ADMIN", "ROLE_TEAM", "ROLE_ADH", "ROLE_USER"}, max={1}, multiple = true)
      */
     private $roles = ['ROLE_USER'];
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Details", mappedBy="participants")
+     */
+    private $reservations;
+
+    public function __construct()
+    {
+        $this->reservations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -331,4 +342,26 @@ class User implements UserInterface,\Serializable
             $this->password
             ) = unserialize($serialized, ['allowed_classes' => false]);
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getReservations(): ArrayCollection
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * @param Details $details
+     */
+    public function setReservations(Details $details)
+    {
+        if ($this->reservations->contains($details))
+        {
+            return;
+        }
+        $this->reservations[] = $details;
+    }
+
+
 }

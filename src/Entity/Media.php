@@ -40,7 +40,7 @@ class Media extends AbstractController
 
     public function __construct()
     {
-        $this->ateliers = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -72,35 +72,6 @@ class Media extends AbstractController
         return $this;
     }
 
-    /**
-     * Set folder
-     *
-     * @param \App\Entity\Ateliers $atelier
-     *
-     * @return Media
-     */
-    public function setAtelier(\App\Entity\Ateliers $atelier = null)
-    {
-        $this->ateliers[] = $atelier;
-
-        return $this;
-    }
-
-    /**
-     * @return array
-     */
-    public function getAtelier()
-    {
-        return $this->ateliers;
-    }
-
-    /**
-     * @param Ateliers $atelier
-     */
-    public function removeAtelier(Ateliers $atelier)
-    {
-        $this->ateliers->removeElement($atelier);
-    }
 
     //Gestionnaire de fichier
 

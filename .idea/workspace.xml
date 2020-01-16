@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AteliersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AteliersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Ateliers.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ateliers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Details.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Media.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/AteliersRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AteliersRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/users.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +61,13 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="details: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="reservation_ateliers: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -217,7 +220,8 @@
       <workItem from="1578413710881" duration="15196000" />
       <workItem from="1578756609069" duration="8005000" />
       <workItem from="1578929471367" duration="20324000" />
-      <workItem from="1579007673040" duration="19949000" />
+      <workItem from="1579007673040" duration="20558000" />
+      <workItem from="1579196843384" duration="3106000" />
     </task>
     <servers />
   </component>
@@ -233,10 +237,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341783428" />
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1578936967268">
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1579197466901">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578936967268" />
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579197466901" />
     <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578435824611">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

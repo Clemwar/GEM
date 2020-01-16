@@ -54,6 +54,7 @@ class Ateliers
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Details", mappedBy="atelier", cascade={"remove"})
+     * @ORM\OrderBy({"date" = "ASC"})
      */
     private $details;
 

@@ -44,8 +44,8 @@ class AteliersController extends AbstractController
      */
     public function showActivites()
     {
-        $ateliers = $this->repository->getAteliersV();
-        $events = $this->repository->getEventsV();
+        $ateliers = $this->repository->getAteliersVisible();
+        $events = $this->repository->getEventsVisible();
 
         return $this->render('/pages/activites.html.twig', [
             'ateliers' => $ateliers,

@@ -29,7 +29,7 @@ class AteliersRepository extends ServiceEntityRepository
             ;
     }
 
-    public function getAteliersV()
+    public function getAteliersVisible()
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.event = false')
@@ -39,14 +39,12 @@ class AteliersRepository extends ServiceEntityRepository
             ;
     }
 
-
     public function getAteliersNext()
     {
         return $this->createQueryBuilder('a')
-            ->leftJoin('App\Entity\Details', 'd', join::WITH, 'a.id = d.atelier')
+            ->leftJoin('App\Entity\Details', 'd', join::ON, 'a.id = d.atelier')
             ->andWhere('a.event = false')
             ->andWhere('a.visibility = true')
-            ->orderBy('d.date', 'DESC')
             ->andWhere('d.date > :now')
             ->setParameter('now', new \DateTime())
             ->getQuery()
@@ -63,7 +61,7 @@ class AteliersRepository extends ServiceEntityRepository
             ;
     }
 
-    public function getEventsV()
+    public function getEventsVisible()
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.event = true')
