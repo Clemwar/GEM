@@ -346,7 +346,7 @@ class User implements UserInterface,\Serializable
     /**
      * @return ArrayCollection
      */
-    public function getReservations(): ArrayCollection
+    public function getReservations()
     {
         return $this->reservations;
     }
@@ -363,5 +363,9 @@ class User implements UserInterface,\Serializable
         $this->reservations[] = $details;
     }
 
+    public function removeReservation($details)
+    {
+        $this->reservations->removeElement($details);
+    }
 
 }

@@ -44,8 +44,7 @@
             illum ipsa laboriosam.</p>
         <div class="flex">
             {% for atelier in ateliers %}
-
-                    <div class="showActivite">
+                <div class="showActivite">
                         <div class="content">
                             <div class="cover">
                             <img src="{% if atelier.cover %}{{ asset('assets/img/upl/'~atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if atelier.alt %}{{ atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
@@ -63,6 +62,16 @@
                                     <p>{{ detail.date | date('d') }}</p>
                                     <p>{{ detail.date | date('M') }}</p>
                                     <p>{{ detail.date | date('H:i') }}</p>
+                                    {% if app.user in detail.participants %}
+                                        <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}" class="neobtn">Se désinscrire</a>
+                                    {% else %}
+                                        <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                    {% endif %}
+                                    <ul>
+                                        {% for participant in detail.participants %}
+                                            <li>{{ participant.prenom }} {{ participant.nom }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 {% endfor %}
                             {% else %}
                                 <p>Aucune date prévue</p>
@@ -99,6 +108,11 @@
                                     <p>{{ detail.date | date('d') }}</p>
                                     <p>{{ detail.date | date('M') }}</p>
                                     <p>{{ detail.date | date('H:i') }}</p>
+                                    {% if app.user in detail.participants %}
+                                        <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}" class="neobtn">Se désinscrire</a>
+                                    {% else %}
+                                        <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                    {% endif %}
                                 {% endfor %}
                             {% else %}
                                 <p>Aucune date prévue</p>

@@ -4,8 +4,10 @@
 namespace App\Controller;
 
 
+use App\Entity\Details;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\DetailsRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -277,5 +279,42 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('admin_users');
+    }
+
+    /**
+     * @Route("pages/reservation/{userID}/{detailID}/{event}", name="reservation")
+     * @param $id
+     * @param Details $details
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function addReservation($userID, $detailID, DetailsRepository $detailsRepository, $event)
+    {
+        $details = $detailsRepository->find($detailID);
+        $user= $this->repository->find($userID);
+        $fragment = ($event) ? 'events':'ateliers';
+
+        $user->setReservations($details);
+        $details->setParticipants($user);
+
+        $this->em->flush();
+
+        return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
+    }
+
+    /**
+     * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
+     */
+    public function delReservation($userID, $detailID, DetailsRepository$detailsRepository, $event)
+    {
+        $participant = $this->repository->find($userID);
+        $reservation = $detailsRepository->find($detailID);
+        $fragment = ($event) ? 'events':'ateliers';
+
+        $participant->removeReservation($reservation);
+        $reservation->removeParticipant($participant);
+
+        $this->em->flush();
+
+        return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
     }
 }

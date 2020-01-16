@@ -101,10 +101,8 @@ class Details
         return $this;
     }
 
-    /**
-     * @return ArrayCollection
-     */
-    public function getParticipants(): ArrayCollection
+
+    public function getParticipants()
     {
         return $this->participants;
     }
@@ -119,6 +117,11 @@ class Details
             return;
         }
         $this->participants[] = $user;
+    }
+
+    public function removeParticipant($user)
+    {
+        $this->participants->removeElement($user);
     }
 
 

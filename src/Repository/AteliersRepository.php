@@ -42,7 +42,7 @@ class AteliersRepository extends ServiceEntityRepository
     public function getAteliersNext()
     {
         return $this->createQueryBuilder('a')
-            ->leftJoin('App\Entity\Details', 'd', join::ON, 'a.id = d.atelier')
+            ->leftJoin('App\Entity\Details', 'd', join::WITH, 'a.id = d.atelier')
             ->andWhere('a.event = false')
             ->andWhere('a.visibility = true')
             ->andWhere('d.date > :now')
