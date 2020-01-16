@@ -16,7 +16,7 @@
         <article class="atelier">
             <h2>Date : {{ detail.date | date('D d/m/Y') }}</h2>
             <h4>Heure : {{ detail.date | date('H:i') }}</h4>
-            <p>Places : {{ detail.places }} Prix : {% if detail.price > 0 %}{{ detail.price }}€{% else %}Gratuit{% endif %}</p>
+            <p>Places : {{ detail.participants |length }}/{% if detail.places %}{{ detail.places }}{% else %}illimité{% endif %} - Prix : {% if detail.price > 0 %}{{ detail.price }}€{% else %}Gratuit{% endif %}</p>
             <a href="{{path('update_date', {'id':detail.id})}}" class="pwbut">Modifier</a>
             <a href="{{ path('pwAtelier', {'id':detail.atelier.id}) }}" class="pwbut">Retour</a>
         </article>

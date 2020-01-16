@@ -37,7 +37,7 @@
                 <tr>
                     <td><strong>{{ detail.date | date('D d-m-Y') }}</strong></td>
                     <td>{{ detail.date | date('H:i') }}</td>
-                    <td>{{ detail.places }}</td>
+                    <td>{{ detail.participants |length }} / {% if detail.places %}{{ detail.places }}{% else %}illimité{% endif %}</td>
                     <td>{% if detail.price > 0 %}{{ detail.price }}€{% else %}Gratuit{% endif %}</td>
                     <td><a href="{{path('update_date', {'id':detail.id})}}">Modifier</a></td>
                     <td>
