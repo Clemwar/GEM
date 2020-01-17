@@ -46,10 +46,12 @@ class AteliersController extends AbstractController
     {
         $ateliers = $this->repository->getAteliersVisible();
         $events = $this->repository->getEventsVisible();
+        $now = new \DateTime('NOW');
 
         return $this->render('/pages/activites.html.twig', [
             'ateliers' => $ateliers,
             'events' => $events,
+            'now' => $now,
             'current_menu' => 'activites'
         ]);
     }

@@ -305,7 +305,7 @@ select {
   background-color: lightgreen;
   text-align: center; }
 
-.manage a, .neobtn, .pwbut {
+.manage a, .neobtn, .pwbut, .neobtn:visited {
   background-color: #43a9ff;
   border: none;
   color: white;
@@ -314,7 +314,7 @@ select {
   text-decoration: none;
   font: inherit;
   cursor: pointer; }
-  .manage a:hover, .neobtn:hover, .pwbut:hover {
+  .manage a:hover, .neobtn:hover, .pwbut:hover, .neobtn:visited:hover {
     background-color: #1d496d;
     color: white; }
 
@@ -447,5 +447,8 @@ footer {
       text-align: center; }
     .insight_zone .insight article .image {
       display: none; } }
+@media screen and (min-width: 1920px) {
+  .imgh {
+    margin: -100px auto 0; } }
 
 /*# sourceMappingURL=style.css.map */

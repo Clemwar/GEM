@@ -25,6 +25,7 @@ security:
 
             form_login:
                 check_path: login
+                use_referer: true
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
