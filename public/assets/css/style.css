@@ -263,7 +263,7 @@ header {
   color: white; }
 
 .soon {
-  width: calc(100% / 3);
+  width: calc(100% / 2.5);
   height: 100%;
   background-color: white;
   color: #1d496d; }

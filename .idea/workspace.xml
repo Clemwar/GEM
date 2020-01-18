@@ -2,11 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/Contact.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Notification/ContactNotification.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/emails/contact.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/form2.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GEM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GEM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AteliersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AteliersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Newsletter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Newsletter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/_head.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_head.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,6 +170,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1VZkZyjyOQd7QzoUtjqMzToAf5n" />
@@ -170,15 +188,21 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/elements" />
+    <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\GEM\src\Notification" />
+      <recent name="C:\wamp64\www\GEM\src\Controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\GEM\templates\pages" />
+      <recent name="C:\wamp64\www\GEM\src\Form" />
       <recent name="C:\wamp64\www\GEM\templates\elements" />
       <recent name="C:\wamp64\www\GEM\templates\pwup" />
-      <recent name="C:\wamp64\www\GEM\templates\pages" />
       <recent name="C:\wamp64\www\GEM" />
     </key>
   </component>
@@ -223,7 +247,8 @@
       <workItem from="1579196843384" duration="6162000" />
       <workItem from="1579208075570" duration="3602000" />
       <workItem from="1579215532569" duration="713000" />
-      <workItem from="1579221917880" duration="5241000" />
+      <workItem from="1579221917880" duration="5927000" />
+      <workItem from="1579369773272" duration="13729000" />
     </task>
     <servers />
   </component>
@@ -239,10 +264,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341783428" />
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1579197466901">
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1579376477901">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579197466901" />
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579376477901" />
     <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578435824611">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -259,14 +284,14 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341459694" />
-    <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1578419924035">
+    <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1579375528413">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578419924035" />
-    <state x="1114" y="444" key="NewPhpFileDialog" timestamp="1578419503868">
+    <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579375528413" />
+    <state x="1114" y="444" key="NewPhpFileDialog" timestamp="1579370182828">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1114" y="444" key="NewPhpFileDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578419503868" />
+    <state x="1114" y="444" key="NewPhpFileDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579370182828" />
     <state x="1122" y="145" key="SettingsEditor" timestamp="1579036683548">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -279,9 +304,9 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577547074710" />
-    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1578420207341">
+    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup" timestamp="1579382959257">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="943" y="225" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578420207341" />
+    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579382959257" />
   </component>
 </project>

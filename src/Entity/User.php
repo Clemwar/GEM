@@ -33,11 +33,13 @@ class User implements UserInterface,\Serializable
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Email()
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
+     * @Assert\Regex("/^0[1-9]([-. ]?[0-9]{2}){4}$/")
      */
     private $telephone;
 

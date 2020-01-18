@@ -4,8 +4,12 @@
 namespace App\Controller;
 
 
+use App\Entity\Contact;
+use App\Form\ContactType;
+use App\Notification\ContactNotification;
 use App\Repository\AteliersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -50,6 +54,38 @@ class MainController extends AbstractController
             'events' => $events,
             'current_menu' => 'admin',
             'admin_menu' => 'events'
+        ]);
+    }
+
+    /**
+     * @Route("/pages/contact", name="contact")
+     * @param Request $request
+     * @param ContactNotification $notification
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ContactPage(Request $request, ContactNotification $notification)
+    {
+        $contact = new Contact();
+
+        $form = $this->createForm(ContactType::class, $contact);
+
+        if ($request->isMethod('POST'))
+        {
+            $form->handleRequest($request);
+
+            if ($form->isValid())
+            {
+                $notification->notify($contact);
+                $this->addFlash('success', 'Votre message a bien été envoyé');
+                return $this->redirectToRoute('contact', [
+                    '_fragment' => 'form'
+                ]);
+            }
+        }
+
+        return $this->render('/pages/form2.html.twig', [
+            'form' => $form->createView(),
+            'current_menu' => 'contact'
         ]);
     }
 }

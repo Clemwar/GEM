@@ -1,0 +1,8 @@
+<h1>Un nouveau message de la part de {{ contact.firstname }} {{ contact.lastname }}</h1>
+
+<h3>Contenu du message :</h3>
+<p>
+    {{ contact.message |nl2br }}
+</p>
+
+<p>Vous pouvez répondre à {{ contact.firstname }} {{ contact.lastname }} via son email {{ contact.email }} ou par téléphone au {{ contact.phone }}</p>

@@ -61,26 +61,26 @@
                                 {% for detail in atelier.details %}
                                     {% if detail.date > now %}
                                         {% if i == 0 %}
-                                    <p>{{ detail.date | date('D') }}</p>
-                                    <p>{{ detail.date | date('d') }}</p>
-                                    <p>{{ detail.date | date('M') }}</p>
-                                    <p>{{ detail.date | date('H:i') }}</p>
-                                    {% if app.user in detail.participants %}
-                                        <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}" class="neobtn">Se désinscrire</a>
-                                    {% else %}
-                                        {% if detail.participants |length >= detail.places %}
-                                            <p>Complet</p>
-                                        {% else %}
-                                            <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
-                                        {% endif %}
-                                    {% endif %}
-                                    <ul>
-                                        {% for participant in detail.participants %}
-                                            <li>{{ participant.prenom }} {{ participant.nom }}</li>
-                                        {% endfor %}
-                                    </ul>
+                                            <p>{{ detail.date | date('D') }}</p>
+                                            <p>{{ detail.date | date('d') }}</p>
+                                            <p>{{ detail.date | date('M') }}</p>
+                                            <p>{{ detail.date | date('H:i') }}</p>
+                                            {% if app.user in detail.participants %}
+                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}" class="neobtn">Se désinscrire</a>
+                                            {% else %}
+                                                {% if detail.participants |length >= detail.places %}
+                                                    <p>Complet</p>
+                                                {% else %}
+                                                    <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                                {% endif %}
+                                            {% endif %}
+                                                <ul>
+                                                    {% for participant in detail.participants %}
+                                                        <li>{{ participant.prenom }} {{ participant.nom }}</li>
+                                                    {% endfor %}
+                                                </ul>
                                             {% set i = i + 1 %}
-                                    {% endif %}
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             {% else %}
@@ -116,18 +116,18 @@
                                 {% set i = 0 %}
                                 {% for detail in event.details %}
                                     {% if detail.date > now %}
-                                    {% if i == 0 %}
-                                    <p>{{ detail.date | date('D') }}</p>
-                                    <p>{{ detail.date | date('d') }}</p>
-                                    <p>{{ detail.date | date('M') }}</p>
-                                    <p>{{ detail.date | date('H:i') }}</p>
-                                    {% if app.user in detail.participants %}
-                                        <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}" class="neobtn">Se désinscrire</a>
-                                    {% else %}
-                                        <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
-                                    {% endif %}
-                                        {% set i = i + 1 %}
-                                    {% endif %}
+                                        {% if i == 0 %}
+                                            <p>{{ detail.date | date('D') }}</p>
+                                            <p>{{ detail.date | date('d') }}</p>
+                                            <p>{{ detail.date | date('M') }}</p>
+                                            <p>{{ detail.date | date('H:i') }}</p>
+                                            {% if app.user in detail.participants %}
+                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}" class="neobtn">Se désinscrire</a>
+                                            {% else %}
+                                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                            {% endif %}
+                                            {% set i = i + 1 %}
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
                             {% else %}

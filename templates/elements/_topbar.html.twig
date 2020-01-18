@@ -17,7 +17,7 @@
                     Nous soutenir
                 </li>
             </a>
-            <a href="#" class="menu_item {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
+            <a href="{{path('contact')}}" class="menu_item {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/contact_ico.svg')}}" alt="" class="menu_icon">
                     contact
