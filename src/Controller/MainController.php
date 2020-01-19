@@ -83,7 +83,7 @@ class MainController extends AbstractController
             }
         }
 
-        return $this->render('/pages/form2.html.twig', [
+        return $this->render('/pages/contact.html.twig', [
             'form' => $form->createView(),
             'current_menu' => 'contact'
         ]);

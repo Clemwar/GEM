@@ -2,7 +2,24 @@
 {% block link %}<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">{% endblock %}
 
 {% block main %}
-    <div class="container mt-4 mb-4">
+    <div class="container-fluid py-5" id="coordonnees">
+        <div class="container my-4">
+            <div class="row">
+                <h1 class="h1 col-12 text-center mb-4 text-white">Nos coordonnées</h1>
+                <div class="col-md-6 d-flex flex-column justify-content-center align-items-md-start align-items-sm-center">
+                    <h3>GEM du Bassin d'Arcachon</h3>
+                    <p>108 place de la Claire</p>
+                    <p>33470 Gujan-Mestras</p>
+                    <p>Téléphone fixe : 09 61 60 43 32</p>
+                    <p>Téléphone portable : 06 20 04 37 31</p>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2838.933545301704!2d-1.0622589840607097!3d44.63927517909991!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5499e07727ffaf%3A0xd3909ccb6690f11!2sPlace%20de%20la%20Claire%2C%2033470%20Gujan-Mestras!5e0!3m2!1sfr!2sfr!4v1579408463476!5m2!1sfr!2sfr" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container my-4">
         <h1 class="h1 text-center mb-4 text-primary" id="form">Nous contacter</h1>
         {{ form_start(form) }}
         <div class="form-row">
