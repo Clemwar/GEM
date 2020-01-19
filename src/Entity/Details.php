@@ -38,7 +38,7 @@ class Details
     private $atelier;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="reservations")
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="reservations", cascade={"remove"})
      * @ORM\JoinTable(name="reservation_ateliers")
      */
     private $participants;

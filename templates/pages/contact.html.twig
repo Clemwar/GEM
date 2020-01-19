@@ -21,6 +21,13 @@
     </div>
     <div class="container my-4">
         <h1 class="h1 text-center mb-4 text-primary" id="form">Nous contacter</h1>
+        {% for label, messages in app.flashes(['success', 'warning']) %}
+            {% for message in messages %}
+                <p class="{{ label }}">
+                    {{ message }}
+                </p>
+            {% endfor %}
+        {% endfor %}
         {{ form_start(form) }}
         <div class="form-row">
             <div class="form-group col">

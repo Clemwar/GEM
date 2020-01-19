@@ -74,11 +74,6 @@
                                                     <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
                                                 {% endif %}
                                             {% endif %}
-                                                <ul>
-                                                    {% for participant in detail.participants %}
-                                                        <li>{{ participant.prenom }} {{ participant.nom }}</li>
-                                                    {% endfor %}
-                                                </ul>
                                             {% set i = i + 1 %}
                                         {% endif %}
                                     {% endif %}

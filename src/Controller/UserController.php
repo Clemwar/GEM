@@ -305,8 +305,8 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
-     */
+ * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
+ */
     public function delReservation($userID, $detailID, DetailsRepository$detailsRepository, $event)
     {
         $participant = $this->repository->find($userID);
@@ -319,5 +319,25 @@ class UserController extends AbstractController
         $this->em->flush();
 
         return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
+    }
+
+    /**
+     * @Route("pwup/annulation/{userID}/{detailID}", name="admin_annulation")
+     */
+    public function rmvReservation($userID, $detailID, DetailsRepository$detailsRepository)
+    {
+        $participant = $this->repository->find($userID);
+        $reservation = $detailsRepository->find($detailID);
+
+        $participant->removeReservation($reservation);
+        $reservation->removeParticipant($participant);
+
+        $this->em->flush();
+
+        $this->addFlash('success', 'Participant retiré');
+
+        return $this->redirectToRoute('getDetails', [
+            'id'=> $detailID
+        ]);
     }
 }

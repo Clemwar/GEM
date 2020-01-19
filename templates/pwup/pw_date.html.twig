@@ -21,5 +21,44 @@
             <a href="{{ path('pwAtelier', {'id':detail.atelier.id}) }}" class="pwbut">Retour</a>
         </article>
     </section>
+    <section class="manage">
+        <table>
+            <caption>Les participants</caption>
+            <thead>
+            <tr>
+                {% for message in app.flashes('success') %}
+                    <th colspan="7" class="success">
+                        {{ message }}
+                    </th>
+                {% endfor %}
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Photo</th>
+                <th colspan="2"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for participant in detail.participants %}
+                <tr>
+                    <td>{{ participant.nom }}</td>
+                    <td>{{ participant.prenom }}</td>
+                    <td>{{ participant.email }}</td>
+                    <td>{{ participant.telephone }}</td>
+                    <td>{% if participant.photo %}<img src="{{ asset('assets/upl/photos/'~ participant.photo) }}" class="thumb" alt="">{% endif %}</td>
+                    <td>
+                        <form action="{{ path('admin_annulation', {'userID' : participant.id, 'detailID' : detail.id, 'event':'0' }) }}">
+                        <button class="pwbut">Suppr.</button>
+                        </form>
+                    </td>
+                    <td><a href="#">Voir</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
 {% endblock %}
 {% block footer %}{% endblock %}
