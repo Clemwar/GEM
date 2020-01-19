@@ -372,8 +372,7 @@ select {
 
 .add {
   width: 80%;
-  height: 80vh;
-  margin: 30px auto 0; }
+  margin: 30px auto; }
   .add h1 {
     text-align: center;
     color: #1d496d; }
