@@ -5,8 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +237,7 @@
       <workItem from="1579221917880" duration="5927000" />
       <workItem from="1579369773272" duration="13729000" />
       <workItem from="1579408084002" duration="4310000" />
-      <workItem from="1579462192817" duration="2837000" />
+      <workItem from="1579462192817" duration="5682000" />
     </task>
     <servers />
   </component>
@@ -290,9 +293,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577547074710" />
-    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup" timestamp="1579382959257">
+    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup" timestamp="1579466545480">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579382959257" />
+    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1579466545480" />
   </component>
 </project>

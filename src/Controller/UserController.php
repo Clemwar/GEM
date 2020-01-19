@@ -300,7 +300,7 @@ class UserController extends AbstractController
 
             $this->em->flush();
         }
-        
+
         return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
     }
 

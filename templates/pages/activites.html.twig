@@ -71,7 +71,7 @@
                                                 {% if detail.places and detail.participants |length >= detail.places %}
                                                     <p class="soldout">Complet</p>
                                                 {% else %}
-                                                    <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                                    <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login', {'anchor':'ateliers'}) }}{% endif %}" class="neobtn">S'inscrire</a>
                                                 {% endif %}
                                             {% endif %}
                                             {% set i = i + 1 %}
@@ -122,7 +122,7 @@
                                                 {% if detail.places and detail.participants |length >= detail.places %}
                                                     <p class="soldout">Complet</p>
                                                 {% else %}
-                                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login', {'anchor':'events'}) }}{% endif %}" class="neobtn">S'inscrire</a>
                                                 {% endif %}
                                             {% endif %}
                                             {% set i = i + 1 %}
