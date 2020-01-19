@@ -292,15 +292,15 @@ class UserController extends AbstractController
         $details = $detailsRepository->find($detailID);
         $user= $this->repository->find($userID);
         $fragment = ($event) ? 'events':'ateliers';
+        $places = $details->getPlaces();
 
-        if (count($details->getParticipants()) < $details->getPlaces()) {
+        if ((isset($places) && (count($details->getParticipants()) < $places)) || (empty($places))) {
             $user->setReservations($details);
             $details->setParticipants($user);
 
             $this->em->flush();
         }
-
-
+        
         return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
     }
 

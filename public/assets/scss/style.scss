@@ -1,0 +1,756 @@
+// Specs
+$base-color : rgb(67,169,255);
+$deep-color : rgb(29, 73, 109);
+
+@font-face
+{
+    font-family: "Hind";
+    src : url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+}
+
+@font-face
+{
+    font-family: "EasyReadingPRO";
+    src : url('../fonts/EasyReadingPRO.ttf');
+    src: url('../fonts/EasyReadingPRO.woff');
+}
+
+body
+{
+    margin : 0;
+    padding: 0;
+    font-family: 'EasyReadingPRO', sans-serif;
+}
+
+a, a:hover, a:focus, a:visited
+{
+    color : inherit;
+    text-decoration: none;
+}
+
+.imgw
+{
+    width : 100%;
+    margin: 0 auto;
+    transition: all 1s ease;
+}
+
+.menu_list
+{
+    list-style-type: none;
+}
+
+//Header ------------------------------------------------------------------
+.full
+{
+    height: 100vh;
+}
+
+
+#top_bar
+{
+    font-family: 'Hind', sans-serif;
+    width : 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba($color: #FFFFFF, $alpha: 0.9);
+    box-shadow:  3px 0 12px black;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 600;
+}
+
+#logo
+{
+    display: block;
+    margin-left: 30px;
+
+    img
+    {
+        width: 110px;
+    }
+}
+
+
+.menu_item, .connect
+{
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 10px 30px;
+    position: relative;
+
+    &::after
+    {
+        content: "";
+        width: 90%;
+        height: 4px;
+        position: absolute;
+        bottom: -16px;
+        left: 0;
+        right: 0;
+        margin : 0 auto;
+        visibility: hidden;
+        background-color:$base-color;
+        z-index: 1;
+        transform: scaleX(0);
+        transition: all .3s ease-in-out 0s;
+    }
+}
+
+.active, .menu_item:hover, .connect:hover, #logo:hover
+{
+    li, span
+    {
+        color:$base-color;
+    }
+    .menu_icon, img
+    {
+        filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+    }
+
+    &::after
+    {
+        visibility: visible;
+        transform: scaleX(1);
+    }
+}
+
+.menu_icon
+{
+    width : 20px;
+    position: absolute;
+    top : 50%;
+    left : 3px;
+    transform: translateY(-50%);
+}
+
+//Mobile Nav Bar
+#mobile_menu
+{
+    display: none;
+    width: 100%;
+    background-color: $deep-color;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    
+    .menu_list
+    {
+        padding :0;
+        margin: 0 auto;
+    }
+
+    .mobile_item
+    {
+        display: inline-block;
+        width:calc(100% / 3);
+        margin : 0 auto;
+
+        &:hover
+        {
+            background: linear-gradient(0deg, rgba(179, 221, 255, 0.8) 20%, rgba(179,221,255,0.1) 100%);
+        }
+
+        li
+        {
+            width: 50px;
+            max-height: 50px;
+            overflow: hidden;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 10px;
+        }
+    }
+
+    .glow
+    {
+        background: linear-gradient(0deg, rgba(67,169,255,0.8) 20%, rgba(67,169,255,0.1) 100%);
+    }
+
+    .mobile_icon
+    {
+        width: 100%;
+        margin : 0 auto;
+    }
+}
+
+
+//Insight ------------------------
+
+.activites
+{
+    background-image: url(../img/larros.jpg);
+}
+
+.insight_zone
+{
+    height : calc(100% - 70px);
+    margin : 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    .insight
+    {
+        width : 45%;
+        box-sizing: border-box;
+
+        article
+        {
+            padding: 20px 0;
+            margin : 0  auto;
+            background-color: rgba($color: rgb(238, 238, 238), $alpha: 0.8);
+            border: 1px solid silver;
+            border-radius: 20px;
+
+            h2
+            {
+                text-align: center;
+                font-size: 3em;
+                margin : 16px 0;
+            }
+
+            hr
+            {
+                width: 65%;
+                margin : 0 auto;
+            }
+
+            .image
+            {
+                margin-top: 16px;
+                overflow: hidden;
+            }
+
+            p
+            {
+                width : 80%;
+                margin: 20px auto;
+            }
+
+            .press {
+                width: 80%;
+                text-align: center;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $base-color;
+                text-transform: uppercase;
+                font-weight: bold;
+                color: white;
+                transition: all 1s ease; 
+            }
+        }
+
+        .imgw
+        {
+            transform: scale(1.1);
+        }
+
+        &:hover .imgw
+        {
+            transform: scale(1.2);
+        }
+
+        &:hover .press 
+        {
+            width: 90%;
+        }
+    }
+}
+
+//Page Home ---------------------------------------
+#aboutGEM
+{
+    background-image: url(../img/gem_groupe1.jpg);
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: calc(100% - 70px);
+    position: relative;
+
+    .about
+    {
+        position: absolute;
+        left :0;
+        top : 85%;
+        transform: translateY(-85%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+
+        article
+        {
+            width: 50%;
+            background-color: rgba($color: rgb(238, 238, 238), $alpha: 0.8);
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 0 30px 30px 0;
+            color :$deep-color;
+        }
+
+        ul
+        {
+            li
+            {
+                margin : 15px 0;
+
+                a
+                {
+                    text-decoration: underline;
+                    font-weight: bold;
+
+                    &:hover, &:focus
+                    {
+                        color : $base-color;
+                    }
+                    
+                }
+            }
+        }
+    
+        .redirect
+        {
+            padding: 20px;
+            width: 33%;
+            box-sizing: border-box;
+
+            .bouton 
+            {
+                display: block;
+                padding: 10px;
+                margin: 10px 0;
+                box-sizing: border-box;
+                background-color: $base-color;
+                color: white;
+                text-transform: uppercase;
+                position: relative;
+
+                span
+                {
+                margin-left: 40px;
+                }
+
+                .menu_icon
+                {
+                    left:20px;
+                }
+
+                .arrow_icon
+                    {
+                        width : 20px;
+                        height: 20px;
+                        position: absolute;
+                        top : 50%;
+                        right : 20px;
+                        transform: translateY(-50%);
+                    }
+
+                &:hover
+                {
+                    background-color: $deep-color;
+                }
+            }
+        }
+    }
+}
+
+//Page Activités -----------------------------------------
+.show
+{
+    width : 80%;
+    margin : 0 auto;
+    text-align: center;
+    color : $deep-color;
+
+    h1
+    {
+        font-size: 2em;
+        margin-bottom: 0;
+    }
+
+    p
+    {
+        margin-top : 5px;
+    }
+}
+
+.flex
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.showActivite
+{
+    width: 48%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    border: $deep-color 2px solid;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.content
+{
+    width: 100%;
+    overflow:hidden;
+}
+
+.cover
+{
+    max-height: 25vh;
+    overflow: hidden;
+}
+
+.imgh
+{
+    width: 100%;
+    height: auto;
+    margin : 0 auto;
+}
+
+.description
+{
+    padding : 20px;
+    background-color: $deep-color;
+    color : white;
+}
+
+.soon
+{
+    width:calc(100% / 2.5);
+    height: 100%;
+    background-color: white;
+    color : $deep-color;
+}
+
+.soldout
+{
+    background-color: red;
+    color : white;
+}
+
+//Page Contact
+#coordonnees
+{
+    background-color: $deep-color;
+    color:white;
+
+    iframe{
+        width : 100%;
+        height: 450px;
+        margin : 0 auto;
+        border-radius: 10%;
+    }
+}
+
+// Administration du site --------------------------------------
+.manage
+{
+    width:90%;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    table
+    {
+        border-collapse: collapse;
+        width:100%;
+        border : 2px $base-color solid;
+
+        caption
+        {
+            font-size: 1.3em;
+            font-weight: bold;
+            padding: 20px;
+            background-color: $base-color;
+            color:white;
+            text-transform: uppercase;
+            border-radius: 20px 20px 0 0;
+        }
+
+        th
+        {
+            padding:5px;
+            border: black 1px solid;
+        }
+
+        tr:nth-child(odd)
+        {
+            background-color: #CCC;
+        }
+
+        td
+        {
+            text-align: center;
+            padding:20px;
+        }
+    }
+}
+
+select
+{
+    padding: 10px;
+    color: $deep-color;
+}
+
+.success
+{
+    color :darkgreen;
+    background-color: lightgreen;
+    text-align: center;
+}
+
+.manage a, .neobtn, .pwbut, .neobtn:visited, .cancelbtn, .cancelbtn:visited
+{
+    background-color: $base-color;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font: inherit;
+    cursor: pointer;
+
+    &:hover
+    {
+        background-color: $deep-color;
+        color : white;
+    }
+}
+
+.cancelbtn, .cancelbtn:visited
+{
+    background-color: coral;
+
+    &:hover
+    {
+        background-color: chocolate;
+    }
+}
+
+#top_bar_admin
+{
+    font-family: 'Hind', sans-serif;
+    width : 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba($color: #CCC, $alpha: 1);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 600;
+}
+
+.atelier, .event
+{
+    width : calc(50% - 30px);
+    margin : 0 15px 30px;
+    padding : 20px;
+    box-sizing: border-box;
+    border : 2px $base-color solid;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.thumb
+{
+    width: 90px;
+    height: auto;
+}
+
+//FORM ----------------------------------------
+.add{
+    width:80%;
+    height: 80vh;
+    margin: 30px auto 0;
+
+    h1
+    {
+        text-align: center;
+        color :$deep-color;
+    }
+}
+
+.add form 
+{
+    width : 40%;
+    margin : 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #CCC;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.add label
+{
+    color:$deep-color;
+    margin-right : 20px;
+}
+
+.add input[type=text], .add input[type=number], .add input[type=email], .add input[type=password], .add input[type=tel] 
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.add input[type=checkbox], .add input[type=file]{
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.add button{
+    width: 100%;
+    background-color: $base-color;
+    border: none;
+    color: white;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+
+.add button:hover{
+    background-color: $deep-color;
+}
+
+.add select{
+    width: 33%;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.add textarea{
+    width:100%;
+    height: 150px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.error, .warning
+{
+    color:red;
+    text-align: center;
+}
+
+//footer
+footer
+{
+    padding : 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $deep-color;
+    color : white;
+
+    h4
+    {
+        margin-bottom: 5px;
+    }
+
+    a:hover
+    {
+        color:$base-color;
+    }
+}
+
+//Medias Queries
+@media screen and (max-width:1024px)
+{
+    #logo
+    {
+        margin-left: 10px;
+    }
+
+    #main_menu
+    {
+        display: none;
+    }
+
+    .connect {
+
+        span
+        {
+            display: none;
+        }
+    }
+
+    #mobile_menu
+    {
+        display: block;
+        border-top : white 1px solid;
+    }
+
+    footer
+    {
+        margin-bottom: 53px;
+    }
+    
+    .showActivite
+    {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:768px)
+{
+    .insight_zone
+    {
+        .insight
+        {
+            article
+            {
+                padding : 10px;
+
+                h2
+                {
+                    font-size: 1.5rem;
+                }
+
+                p
+                {
+                    font-size: 0.8rem;
+                    text-align: center;
+                }
+
+                .image
+                {
+                    display: none;
+                }
+            }
+        } 
+    }
+}
+
+@media screen and (min-width:1920px)
+{
+    .imgh
+    {
+    margin : -100px auto 0;
+    }
+}

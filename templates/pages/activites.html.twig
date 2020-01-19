@@ -66,10 +66,10 @@
                                             <p>{{ detail.date | date('M') }}</p>
                                             <p>{{ detail.date | date('H:i') }}</p>
                                             {% if app.user in detail.participants %}
-                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}" class="neobtn">Se désinscrire</a>
+                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}" class="cancelbtn">Se désinscrire</a>
                                             {% else %}
-                                                {% if detail.participants |length >= detail.places %}
-                                                    <p>Complet</p>
+                                                {% if detail.places and detail.participants |length >= detail.places %}
+                                                    <p class="soldout">Complet</p>
                                                 {% else %}
                                                     <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
                                                 {% endif %}
@@ -117,9 +117,13 @@
                                             <p>{{ detail.date | date('M') }}</p>
                                             <p>{{ detail.date | date('H:i') }}</p>
                                             {% if app.user in detail.participants %}
-                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}" class="neobtn">Se désinscrire</a>
+                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}" class="cancelbtn">Se désinscrire</a>
                                             {% else %}
+                                                {% if detail.places and detail.participants |length >= detail.places %}
+                                                    <p class="soldout">Complet</p>
+                                                {% else %}
                                                 <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login') }}{% endif %}" class="neobtn">S'inscrire</a>
+                                                {% endif %}
                                             {% endif %}
                                             {% set i = i + 1 %}
                                         {% endif %}
