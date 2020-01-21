@@ -271,6 +271,10 @@ class UserController extends AbstractController
                 $this->em->flush();
                 $this->addFlash('success', 'Changement de rôle réussi');
             }
+            else
+            {
+                $this->addFlash('warning', 'Vous ne pouvez pas changer le rôle de cette façon. Token invalide');
+            }
         }
         else
         {

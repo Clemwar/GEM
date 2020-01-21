@@ -55,6 +55,7 @@ class User implements UserInterface,\Serializable
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Regex("/\d{2}[ ]?\d{3}/")
      */
     private $codepostal;
 

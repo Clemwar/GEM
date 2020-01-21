@@ -445,6 +445,9 @@ footer {
     color: #43a9ff; }
 
 @media screen and (max-width: 1024px) {
+  body {
+    font-size: 0.9em; }
+
   #logo {
     margin-left: 10px; }
 
