@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/scss/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/scss/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style.css.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AteliersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AteliersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Ateliers.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ateliers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AteliersRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AteliersRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/DetailsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/DetailsRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/elements/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,44 +38,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="ateliers: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="details: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="MySQL - gem_ba@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="gem_ba: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="reservation_ateliers: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="Git.Settings">
@@ -176,7 +146,7 @@
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -239,6 +209,11 @@
       <workItem from="1579468666639" duration="103000" />
       <workItem from="1579475771101" duration="173000" />
       <workItem from="1579620781792" duration="6131000" />
+      <workItem from="1579679571243" duration="936000" />
+      <workItem from="1579687815815" duration="631000" />
+      <workItem from="1580477920111" duration="156000" />
+      <workItem from="1580889341140" duration="6770000" />
+      <workItem from="1580975811953" duration="5160000" />
     </task>
     <servers />
   </component>
@@ -246,9 +221,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="872" y="182" key="#SQL_Dialects" timestamp="1579031189251">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="523" y="144" key="#SQL_Dialects" timestamp="1580889841697">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="523" y="144" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1580889841697" />
     <state x="872" y="182" key="#SQL_Dialects/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579031189251" />
     <state x="872" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578341783428">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -270,9 +246,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578939319792" />
-    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1578341459694">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state width="189" height="363" key="HiddenNamespacesPopup" timestamp="1580889440886">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state width="189" height="363" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1580889440886" />
     <state width="196" height="457" key="HiddenNamespacesPopup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341459694" />
     <state x="1095" y="334" key="NewPhpClassDialog" timestamp="1579375528413">
       <screen x="0" y="0" width="2560" height="1040" />
@@ -282,9 +259,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1114" y="444" key="NewPhpFileDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579370182828" />
-    <state x="1122" y="145" key="SettingsEditor" timestamp="1579036683548">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="254" y="71" key="SettingsEditor" timestamp="1580975835179">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="254" y="71" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1580975835179" />
     <state x="1122" y="145" key="SettingsEditor/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579036683548" />
     <state x="271" y="76" width="737" height="894" key="find.popup" timestamp="1578252321238">
       <screen x="0" y="0" width="2560" height="1040" />

@@ -31,25 +31,14 @@ class AteliersRepository extends ServiceEntityRepository
 
     public function getAteliersVisible()
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.event = false')
-            ->andWhere('a.visibility = true')
-            ->getQuery()
-            ->getResult()
-            ;
-    }
+        $conn = $this->getEntityManager()->getConnection();
 
-    public function getAteliersNext()
-    {
-        return $this->createQueryBuilder('a')
-            ->leftJoin('App\Entity\Details', 'd', join::WITH, 'a.id = d.atelier')
-            ->andWhere('a.event = false')
-            ->andWhere('a.visibility = true')
-            ->andWhere('d.date > :now')
-            ->setParameter('now', new \DateTime())
-            ->getQuery()
-            ->getResult()
-            ;
+        $sql = '
+        SELECT * FROM ateliers LEFT JOIN details ON ateliers.id = details.atelier_id WHERE visibility = true AND event = false AND details.atelier_id is null';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 
     public function getEvents()

@@ -3,12 +3,14 @@
   src: url("https://fonts.googleapis.com/css?family=Hind&display=swap"); }
 @font-face {
   font-family: "EasyReadingPRO";
-  src: url("../fonts/EasyReadingPro.ttf");
-  src: url("../fonts/EasyReadingPro.woff"); }
+  src: url("../fonts/EasyReadingPRO.ttf");
+  src: url("../fonts/EasyReadingPRO.woff"); }
 body {
   margin: 0;
   padding: 0;
-  font-family: 'EasyReadingPRO', sans-serif; }
+  font-family: 'EasyReadingPRO', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.5; }
 
 a, a:hover, a:focus, a:visited {
   color: inherit;
@@ -21,6 +23,9 @@ a, a:hover, a:focus, a:visited {
 
 .menu_list {
   list-style-type: none; }
+
+ul {
+  margin: 1.1rem 0; }
 
 .full {
   height: 100vh; }
@@ -179,7 +184,7 @@ a, a:hover, a:focus, a:visited {
     flex-wrap: wrap; }
     #aboutGEM .about article {
       width: 50%;
-      background-color: rgba(238, 238, 238, 0.8);
+      background-color: rgba(238, 238, 238, 0.9);
       padding: 20px;
       box-sizing: border-box;
       border-radius: 0 30px 30px 0;
@@ -271,6 +276,10 @@ a, a:hover, a:focus, a:visited {
   background-color: white;
   color: #1d496d; }
 
+.soldout {
+  background-color: red;
+  color: white; }
+
 #coordonnees {
   background-color: #1d496d;
   color: white; }
@@ -317,7 +326,7 @@ select {
   background-color: lightgreen;
   text-align: center; }
 
-.manage a, .neobtn, .pwbut, .neobtn:visited {
+.manage a, .neobtn, .pwbut, .neobtn:visited, .cancelbtn, .cancelbtn:visited {
   background-color: #43a9ff;
   border: none;
   color: white;
@@ -326,11 +335,17 @@ select {
   text-decoration: none;
   font: inherit;
   cursor: pointer; }
-  .manage a:hover, .neobtn:hover, .pwbut:hover, .neobtn:visited:hover {
+  .manage a:hover, .neobtn:hover, .pwbut:hover, .neobtn:visited:hover, .cancelbtn:hover, .cancelbtn:visited:hover {
     background-color: #1d496d;
     color: white; }
 
+.cancelbtn, .cancelbtn:visited {
+  background-color: coral; }
+  .cancelbtn:hover, .cancelbtn:visited:hover {
+    background-color: chocolate; }
+
 #top_bar_admin {
+  font-family: 'Hind', sans-serif;
   width: 100%;
   margin-bottom: 30px;
   display: flex;
@@ -357,8 +372,7 @@ select {
 
 .add {
   width: 80%;
-  height: 80vh;
-  margin: 30px auto 0; }
+  margin: 30px auto; }
   .add h1 {
     text-align: center;
     color: #1d496d; }
@@ -431,6 +445,9 @@ footer {
     color: #43a9ff; }
 
 @media screen and (max-width: 1024px) {
+  body {
+    font-size: 0.9em; }
+
   #logo {
     margin-left: 10px; }
 

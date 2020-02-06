@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Ateliers;
 use App\Form\AteliersType;
 use App\Repository\AteliersRepository;
+use App\Repository\DetailsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
@@ -41,17 +42,31 @@ class AteliersController extends AbstractController
     /**
      * @Route("/activites", name="showActivites")
      * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\DBAL\DBALException
      */
-    public function showActivites()
+    public function showActivites(DetailsRepository $detailsRepository)
     {
         $ateliers = $this->repository->getAteliersVisible();
-        $events = $this->repository->getEventsVisible();
-        $now = new \DateTime('NOW');
+        $dates = $detailsRepository->findNextDates();
+        $events = $detailsRepository->findNextEvents();
+
+        $ateliersIDs = [];
+        foreach ($dates as $date => $details){
+
+            $atelierID = $details->getAtelier()->getID();
+
+            if (in_array($atelierID, $ateliersIDs)){
+                unset($dates[$date]);
+            }
+            else {
+                $ateliersIDs[] = $atelierID;
+            }
+        }
 
         return $this->render('/pages/activites.html.twig', [
             'ateliers' => $ateliers,
+            'dates' => $dates,
             'events' => $events,
-            'now' => $now,
             'current_menu' => 'activites'
         ]);
     }

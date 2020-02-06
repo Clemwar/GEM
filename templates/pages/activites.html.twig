@@ -12,7 +12,7 @@
                     <div class="image">
                         <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="imgw">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia laborum ducimus amet natus reiciendis eum eius voluptatum, beatae hic ipsam, velit obcaecati, cumque ea similique necessitatibus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut.</p>
                     <p class="press">
                         Découvrir les ateliers
                     </p>
@@ -27,7 +27,7 @@
                     <div class="image">
                         <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="imgw">
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia laborum ducimus amet natus reiciendis eum eius voluptatum, beatae hic ipsam, velit obcaecati, cumque ea similique necessitatibus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia.</p>
                     <p class="press">
                         Découvrir les événements
                     </p>
@@ -39,51 +39,62 @@
 
 {% block main %}
     <section class="show" id="ateliers">
-        <h1>Les ateliers</h1>
+        <h1>Les prochains ateliers</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
+            illum ipsa laboriosam.</p>
+        <div class="flex">
+            {% for date in dates %}
+                <div class="showActivite">
+                    <div class="content">
+                        <div class="cover">
+                            <img src="{% if date.atelier.cover %}{{ asset('assets/img/upl/'~date.atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if date.atelier.alt %}{{ date.atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                        </div>
+                        <article class="description">
+                            <h2>{{ date.atelier.nom }}</h2>
+                            <p>{{ date.atelier.description }}</p>
+                        </article>
+                    </div>
+                    <div class="soon">
+                        <h2>Prochain Atelier</h2>
+                        <p>{{ date.date | date('D') }}</p>
+                        <p>{{ date.date | date('d') }}</p>
+                        <p>{{ date.date | date('M') }}</p>
+                        <p>{{ date.date | date('H:i') }}</p>
+                        {% if app.user in date.participants %}
+                            <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}" class="cancelbtn">Se désinscrire</a>
+                        {% else %}
+                            {% if date.places and date.participants |length >= date.places %}
+                                <p class="soldout">Complet</p>
+                            {% else %}
+                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}{% else %}{{ path('login', {'anchor':'ateliers'}) }}{% endif %}" class="neobtn">S'inscrire</a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="show" id="ateliers">
+        <h1>Nos autres ateliers</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
             illum ipsa laboriosam.</p>
         <div class="flex">
             {% for atelier in ateliers %}
                 <div class="showActivite">
-                        <div class="content">
-                            <div class="cover">
+                    <div class="content">
+                        <div class="cover">
                             <img src="{% if atelier.cover %}{{ asset('assets/img/upl/'~atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if atelier.alt %}{{ atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
-                            </div>
-                                <article class="description">
-                                <h2>{{ atelier.nom }}</h2>
-                                <p>{{ atelier.description }}</p>
-                            </article>
                         </div>
-                        <div class="soon">
-                            <h2>Prochain Atelier</h2>
-                            {% if atelier.details |length > 0 %}
-                                {% set i = 0 %}
-                                {% for detail in atelier.details %}
-                                    {% if detail.date > now %}
-                                        {% if i == 0 %}
-                                            <p>{{ detail.date | date('D') }}</p>
-                                            <p>{{ detail.date | date('d') }}</p>
-                                            <p>{{ detail.date | date('M') }}</p>
-                                            <p>{{ detail.date | date('H:i') }}</p>
-                                            {% if app.user in detail.participants %}
-                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}" class="cancelbtn">Se désinscrire</a>
-                                            {% else %}
-                                                {% if detail.places and detail.participants |length >= detail.places %}
-                                                    <p class="soldout">Complet</p>
-                                                {% else %}
-                                                    <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'0' }) }}{% else %}{{ path('login', {'anchor':'ateliers'}) }}{% endif %}" class="neobtn">S'inscrire</a>
-                                                {% endif %}
-                                            {% endif %}
-                                            {% set i = i + 1 %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            {% else %}
-                                <p>Aucune date prévue</p>
-                            {% endif %}
-                        </div>
+                        <article class="description">
+                            <h2>{{ atelier.nom }}</h2>
+                            <p>{{ atelier.description }}</p>
+                        </article>
                     </div>
-
+                    <div class="soon">
+                        <h2>Prochain Atelier</h2>
+                        <p>Aucune date prévue</p>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </section>
@@ -93,55 +104,40 @@
             illum ipsa laboriosam.</p>
         <div class="flex">
             {% if events |length >0 %}
-            {% for event in events %}
-                {% if event.visibility %}
-                    <div class="showActivite">
+                {% for event in events %}
+                    <div class="showEvent">
                         <div class="content">
                             <div class="cover">
-                                <img src="{% if event.cover %}{{ asset('assets/img/upl/'~event.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if event.alt %}{{ event.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                                <img src="{% if event.atelier.cover %}{{ asset('assets/img/upl/'~event.atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if event.atelier.alt %}{{ event.atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
                             </div>
-                            <article class="description">
-                                <h2>{{ event.nom }}</h2>
-                                <p>{{ event.description }}</p>
+                            <article class="description" id="chocolate">
+                                <h2>{{ event.atelier.nom }}</h2>
+                                <p>{{ event.atelier.description }}</p>
                             </article>
                         </div>
                         <div class="soon">
                             <h2>Prochain Événement</h2>
-                            {% if event.details |length > 0 %}
-                                {% set i = 0 %}
-                                {% for detail in event.details %}
-                                    {% if detail.date > now %}
-                                        {% if i == 0 %}
-                                            <p>{{ detail.date | date('D') }}</p>
-                                            <p>{{ detail.date | date('d') }}</p>
-                                            <p>{{ detail.date | date('M') }}</p>
-                                            <p>{{ detail.date | date('H:i') }}</p>
-                                            {% if app.user in detail.participants %}
-                                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}" class="cancelbtn">Se désinscrire</a>
-                                            {% else %}
-                                                {% if detail.places and detail.participants |length >= detail.places %}
-                                                    <p class="soldout">Complet</p>
-                                                {% else %}
-                                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : detail.id, 'event':'1' }) }}{% else %}{{ path('login', {'anchor':'events'}) }}{% endif %}" class="neobtn">S'inscrire</a>
-                                                {% endif %}
-                                            {% endif %}
-                                            {% set i = i + 1 %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
+                            <p>{{ event.date | date('D') }}</p>
+                            <p>{{ event.date | date('d') }}</p>
+                            <p>{{ event.date | date('M') }}</p>
+                            <p>{{ event.date | date('H:i') }}</p>
+                            {% if app.user in event.participants %}
+                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}" class="cancelbtn">Se désinscrire</a>
                             {% else %}
-                                <p>Aucune date prévue</p>
+                                {% if event.places and event.participants |length >= event.places %}
+                                    <p class="soldout">Complet</p>
+                                {% else %}
+                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}{% else %}{{ path('login', {'anchor':'events'}) }}{% endif %}" class="neobtn" id="orange">S'inscrire</a>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
             {% else %}
-            <div class="content">
-                <h2>Aucun événement prévu</h2>
-            </div>
+                <div class="content">
+                    <h2>Aucun événement prévu</h2>
+                </div>
             {% endif %}
         </div>
     </section>
-
 {% endblock %}
