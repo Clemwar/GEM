@@ -61,12 +61,22 @@
                         <p>{{ date.date | date('M') }}</p>
                         <p>{{ date.date | date('H:i') }}</p>
                         {% if app.user in date.participants %}
-                            <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}" class="cancelbtn">Se désinscrire</a>
+                            <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler ?')">
+                                <input type="hidden" name="_token" value="{{ csrf_token('annulation' ~ app.user.id) }}">
+                                <button class="cancelbtn">Se désinscrire</button>
+                            </form>
                         {% else %}
                             {% if date.places and date.participants |length >= date.places %}
                                 <p class="soldout">Complet</p>
                             {% else %}
-                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}{% else %}{{ path('login', {'anchor':'ateliers'}) }}{% endif %}" class="neobtn">S'inscrire</a>
+                                {% if app.user %}
+                                    <form action="{{ path('reservation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('reservation' ~ app.user.id) }}">
+                                        <button class="neobtn">S'inscrire</button>
+                                    </form>
+                                {% else %}
+                                    <a href="{{ path('login', {'anchor':'ateliers'}) }}" class="neobtn">S'inscrire</a>
+                                {% endif %}
                             {% endif %}
                         {% endif %}
                     </div>
@@ -122,12 +132,22 @@
                             <p>{{ event.date | date('M') }}</p>
                             <p>{{ event.date | date('H:i') }}</p>
                             {% if app.user in event.participants %}
-                                <a href="{{ path('annulation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}" class="cancelbtn">Se désinscrire</a>
+                                <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler ?')">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('annulation' ~ app.user.id) }}">
+                                    <button class="cancelbtn">Se désinscrire</button>
+                                </form>
                             {% else %}
                                 {% if event.places and event.participants |length >= event.places %}
                                     <p class="soldout">Complet</p>
                                 {% else %}
-                                <a href="{% if app.user %}{{ path('reservation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}{% else %}{{ path('login', {'anchor':'events'}) }}{% endif %}" class="neobtn" id="orange">S'inscrire</a>
+                                    {% if app.user %}
+                                        <form action="{{ path('reservation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('reservation' ~ app.user.id) }}">
+                                            <button class="neobtn">S'inscrire</button>
+                                        </form>
+                                    {% else %}
+                                        <a href="{{ path('login', {'anchor':'ateliers'}) }}" class="neobtn">S'inscrire</a>
+                                    {% endif %}
                                 {% endif %}
                             {% endif %}
                         </div>

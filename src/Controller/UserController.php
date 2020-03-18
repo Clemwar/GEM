@@ -291,7 +291,7 @@ class UserController extends AbstractController
      * @param Details $details
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function addReservation($userID, $detailID, DetailsRepository $detailsRepository, $event)
+    public function addReservation($userID, $detailID, DetailsRepository $detailsRepository, $event, Request $request)
     {
         $details = $detailsRepository->find($detailID);
         $user= $this->repository->find($userID);
@@ -299,10 +299,12 @@ class UserController extends AbstractController
         $places = $details->getPlaces();
 
         if ((isset($places) && (count($details->getParticipants()) < $places)) || (empty($places))) {
-            $user->setReservations($details);
-            $details->setParticipants($user);
+            if ($this->isCsrfTokenValid('reservation' . $userID, $request->get('_token'))) {
+                $user->setReservations($details);
+                $details->setParticipants($user);
 
-            $this->em->flush();
+                $this->em->flush();
+            }
         }
 
         return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
@@ -311,16 +313,18 @@ class UserController extends AbstractController
     /**
  * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
  */
-    public function delReservation($userID, $detailID, DetailsRepository$detailsRepository, $event)
+    public function delReservation($userID, $detailID, DetailsRepository$detailsRepository, $event, Request $request)
     {
         $participant = $this->repository->find($userID);
         $reservation = $detailsRepository->find($detailID);
         $fragment = ($event) ? 'events':'ateliers';
 
-        $participant->removeReservation($reservation);
-        $reservation->removeParticipant($participant);
+        if ($this->isCsrfTokenValid('annulation' . $userID, $request->get('_token'))) {
+            $participant->removeReservation($reservation);
+            $reservation->removeParticipant($participant);
 
-        $this->em->flush();
+            $this->em->flush();
+        }
 
         return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
     }
