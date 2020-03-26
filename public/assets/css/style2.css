@@ -65,6 +65,29 @@ body {
       height: 2rem;
       width: 2rem; }
 
+.bouton {
+  display: block;
+  margin-bottom: 1rem;
+  background-color: #43a9ff;
+  color: white;
+  text-transform: uppercase;
+  position: relative;
+  text-align: center; }
+  .bouton:hover {
+    background-color: #1d496d;
+    text-decoration: none;
+    color: white; }
+  .bouton .menu_icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px; }
+  .bouton .arrow_icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px; }
+
 #coordonnees {
   background-color: #1d496d;
   color: white; }

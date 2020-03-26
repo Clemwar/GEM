@@ -122,6 +122,41 @@ font-family: 'EasyReadingPRO', sans-serif;
   }
 }
 
+//Bouton
+.bouton
+{
+  display: block;
+  margin-bottom: 1rem;
+  background-color: $base-color;
+  color: white;
+  text-transform: uppercase;
+  position : relative;
+  text-align: center;
+
+  &:hover
+  {
+    background-color: $deep-color;
+    text-decoration: none;
+    color : white;
+  }
+
+  .menu_icon
+  {
+    position :absolute;
+    top : 50%;
+    transform: translateY(-50%);
+    left : 10px;
+  }
+
+  .arrow_icon
+  {
+    position :absolute;
+    top : 50%;
+    transform: translateY(-50%);
+    right : 10px;
+  }
+}
+
 //Page Contact ------------------------
 #coordonnees
 {
