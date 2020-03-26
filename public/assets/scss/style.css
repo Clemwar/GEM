@@ -10,7 +10,7 @@ body {
   padding: 0;
   font-family: 'EasyReadingPRO', sans-serif;
   font-size: 1.2em;
-  line-height: 1.5; }
+  line-height: 1; }
 
 a, a:hover, a:focus, a:visited {
   color: inherit;
@@ -116,6 +116,17 @@ ul {
 .activites {
   background-image: url(../img/larros.jpg); }
 
+.press {
+  width: 80%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #43a9ff;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  transition: all 1s ease; }
+
 .insight_zone {
   height: calc(100% - 70px);
   margin: 0 auto;
@@ -148,16 +159,6 @@ ul {
       .insight_zone .insight article p {
         width: 80%;
         margin: 20px auto; }
-      .insight_zone .insight article .press {
-        width: 80%;
-        text-align: center;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: #43a9ff;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: white;
-        transition: all 1s ease; }
     .insight_zone .insight .imgw {
       transform: scale(1.1); }
     .insight_zone .insight:hover .imgw {
@@ -242,7 +243,7 @@ ul {
   flex-wrap: wrap;
   box-sizing: border-box; }
 
-.showActivite {
+.showActivite, .showEvent {
   width: 48%;
   display: flex;
   align-items: center;
@@ -251,6 +252,12 @@ ul {
   border: #1d496d 2px solid;
   border-radius: 25px;
   overflow: hidden; }
+
+.showEvent {
+  width: 100%;
+  border: chocolate 2px solid; }
+  .showEvent #chocolate {
+    background-color: chocolate; }
 
 .content {
   width: 100%;
@@ -327,6 +334,7 @@ select {
   text-align: center; }
 
 .manage a, .neobtn, .pwbut, .neobtn:visited, .cancelbtn, .cancelbtn:visited {
+  display: inline-block;
   background-color: #43a9ff;
   border: none;
   color: white;
@@ -338,6 +346,11 @@ select {
   .manage a:hover, .neobtn:hover, .pwbut:hover, .neobtn:visited:hover, .cancelbtn:hover, .cancelbtn:visited:hover {
     background-color: #1d496d;
     color: white; }
+
+#orange {
+  background-color: chocolate; }
+  #orange:hover {
+    background-color: orange; }
 
 .cancelbtn, .cancelbtn:visited {
   background-color: coral; }
@@ -446,7 +459,7 @@ footer {
 
 @media screen and (max-width: 1024px) {
   body {
-    font-size: 0.9em; }
+    font-size: 0.8em; }
 
   #logo {
     margin-left: 10px; }
@@ -469,13 +482,18 @@ footer {
 @media screen and (max-width: 768px) {
   .insight_zone .insight article {
     padding: 10px; }
+    .insight_zone .insight article .press {
+      transition: none; }
     .insight_zone .insight article h2 {
       font-size: 1.5rem; }
     .insight_zone .insight article p {
       font-size: 0.8rem;
       text-align: center; }
     .insight_zone .insight article .image {
-      display: none; } }
+      display: none; }
+  .insight_zone .insight:hover .press {
+    width: 80%;
+    background-color: #1d496d; } }
 @media screen and (min-width: 1920px) {
   .imgh {
     margin: -100px auto 0; } }

@@ -3,10 +3,10 @@
 {% block class %}class="full"{% endblock %}
 
 {% block insight %}
-    <section id="aboutGEM">
+    <section id="aboutGEM" class="container-fluid">
 
-        <div class="about">
-            <article>
+        <div class="about d-flex justify-content-around align-items-center">
+            <article class="col-lg-6 py-2 mr-2 mr-lg-0">
                 <h1>Groupe d'Entraide Mutuelle</h1>
                 <ul>
                     <li> Le <strong>GEM</strong> est un espace d'accueil, d'échanges et de convivialité, ouvert à toutes personnes adultes en situation d'isolement.</li>
@@ -16,7 +16,7 @@
                                 href="https://www.nouvelle-aquitaine.ars.sante.fr/" target="_blank">ARS Nouvelle Aquitaine</a>.</li>
                 </ul>
             </article>
-            <div class="redirect">
+            <div class="redirect col-md-4 d-none d-lg-block">
                 <nav>
                     <ul class="menu_list">
                         <a href="{{ path('showActivites') }}" class="bouton">

@@ -1,0 +1,151 @@
+// Specs
+$base-color : rgb(67,169,255);
+$deep-color : rgb(29, 73, 109);
+
+@font-face
+{
+  font-family: "Hind";
+  src : url('https://fonts.googleapis.com/css?family=Hind&display=swap');
+}
+
+@font-face
+{
+  font-family: "EasyReadingPRO";
+  src : url('../fonts/EasyReadingPRO.ttf');
+  src: url('../fonts/EasyReadingPRO.woff');
+}
+
+ul{
+  margin : 0;
+  li{
+    list-style-type: none;
+  }
+}
+
+body
+{
+font-family: 'EasyReadingPRO', sans-serif;
+}
+
+//Top Bar -------------------------------
+#top_bar{
+  
+  background-color:rgba($color: #FFF, $alpha: 0.85);
+  font-family: "Hind", sans-serif;
+  text-transform: uppercase;
+
+  #logo{
+    width: 8rem;
+    &:hover, .active{
+      filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+    }
+  }
+
+  .menu_icon
+  {
+    width : 2rem;
+  }
+
+  a{
+    color:black;
+    
+    &:hover
+    {
+      color: $base-color;
+      text-decoration: none;
+
+      .menu_icon
+      {
+        filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+      }
+    }
+  }
+  .active {
+    color: $base-color;
+    text-decoration: none;
+
+    .menu_icon
+    {
+      filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+    }
+  }
+}
+
+//Menu Mobile -------------------------
+#mobile_menu{
+  background-color: $deep-color;
+  box-shadow: 3px -3px 6px $base-color;
+
+  .glow{
+    background: linear-gradient(0deg, rgba(67,169,255,0.8) 20%, rgba(67,169,255,0.1) 100%);
+  }
+}
+
+//Header -------------------------------
+.full
+{
+  height: 100vh;
+}
+
+//Page Home
+#aboutGEM
+{
+  height: calc(100% - 70px);
+  background-image: url(../img/gem_groupe1.jpg);
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position : relative;
+
+  .about
+  {
+    position : absolute;
+    top : 45%;
+  
+    article
+    {
+      background-color: rgba($color: #FFF, $alpha: 0.95);
+      border-radius: 0 2rem 2rem 0;
+    }
+
+    .menu_icon
+    {
+      width : 3rem;
+    }
+
+    .arrow_icon
+    {
+      height: 2rem;
+      width: 2rem;
+    }
+  }
+}
+
+//Page Contact ------------------------
+#coordonnees
+{
+    background-color: $deep-color;
+    color:white;
+
+    iframe{
+        width : 100%;
+        height: 450px;
+        margin : 0 auto;
+        border-radius: 10%;
+    }
+}
+
+//Medias Queries
+@media screen and (max-width:992px)
+{
+  //Page Home
+  #aboutGEM
+  {
+    .about
+    {
+      top : 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

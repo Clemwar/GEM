@@ -1,23 +1,25 @@
-<div id="top_bar">
+<div id="top_bar" class="container-fluid d-flex justify-content-between align-items-center sticky-top py-2">
+    <div id="logo">
     <a href="{{path('home')}}" id="logo" {% if current_menu is defined and current_menu == 'home' %}class="active"{% endif %}>
-        <img src="{{ asset('assets/img/SVG/logo_GEM_full.svg')}}" alt="">
+        <img src="{{ asset('assets/img/SVG/logo_GEM_full.svg')}}" alt="" class="img-fluid">
     </a>
+    </div>
 
-    <nav id="main_menu" role="navigation">
+    <nav id="main_menu" role="navigation" class="d-none d-lg-block">
         <ul class="menu_list">
-            <a href="{{path('showActivites')}}" class="menu_item {% if current_menu is defined and current_menu == 'activites' %}active{% endif %}">
+            <a href="{{path('showActivites')}}" class="menu_item d-inline-block mx-3 {% if current_menu is defined and current_menu == 'activites' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/brush_ico.svg')}}" alt="" class="menu_icon">
                     Activités
                 </li>
             </a>
-            <a href="#" class="menu_item {% if current_menu is defined and current_menu == 'soutenir' %}active{% endif %}">
+            <a href="#" class="menu_item d-inline-block mx-3 {% if current_menu is defined and current_menu == 'soutenir' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/heart_ico.svg')}}" alt="" class="menu_icon">
                     Nous soutenir
                 </li>
             </a>
-            <a href="{{path('contact')}}" class="menu_item {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
+            <a href="{{path('contact')}}" class="menu_item d-inline-block mx-3 {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/contact_ico.svg')}}" alt="" class="menu_icon">
                     contact
@@ -32,15 +34,17 @@
     </a>
     {% endif %}
 
-    {% if app.user %}
-        <a href="{{path('logout')}}" class="connect">
-            <img src="{{ asset('assets/img/SVG/user_ico.svg')}}" alt="" class="menu_icon">
-            <span>Se déconnecter</span>
-        </a>
-        {% else %}
-            <a href="{{path('login')}}" class="connect {% if current_menu is defined and current_menu == 'login' %}active{% endif %}">
+    <div>
+        {% if app.user %}
+            <a href="{{path('logout')}}" class="connect">
                 <img src="{{ asset('assets/img/SVG/user_ico.svg')}}" alt="" class="menu_icon">
-                <span>Se connecter</span>
+                <span class="d-lg-inline d-none">Se déconnecter</span>
             </a>
-    {% endif %}
+            {% else %}
+                <a href="{{path('login')}}" class="connect {% if current_menu is defined and current_menu == 'login' %}active{% endif %}">
+                    <img src="{{ asset('assets/img/SVG/user_ico.svg')}}" alt="" class="menu_icon">
+                    <span class="d-lg-inline d-none">Se connecter</span>
+                </a>
+        {% endif %}
+    </div>
 </div>

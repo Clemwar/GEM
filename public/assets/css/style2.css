@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "Hind";
+  src: url("https://fonts.googleapis.com/css?family=Hind&display=swap"); }
+@font-face {
+  font-family: "EasyReadingPRO";
+  src: url("../fonts/EasyReadingPRO.ttf");
+  src: url("../fonts/EasyReadingPRO.woff"); }
+ul {
+  margin: 0; }
+  ul li {
+    list-style-type: none; }
+
+body {
+  font-family: 'EasyReadingPRO', sans-serif; }
+
+#top_bar {
+  background-color: rgba(255, 255, 255, 0.85);
+  font-family: "Hind", sans-serif;
+  text-transform: uppercase; }
+  #top_bar #logo {
+    width: 8rem; }
+    #top_bar #logo:hover, #top_bar #logo .active {
+      filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
+  #top_bar .menu_icon {
+    width: 2rem; }
+  #top_bar a {
+    color: black; }
+    #top_bar a:hover {
+      color: #43a9ff;
+      text-decoration: none; }
+      #top_bar a:hover .menu_icon {
+        filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
+  #top_bar .active {
+    color: #43a9ff;
+    text-decoration: none; }
+    #top_bar .active .menu_icon {
+      filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
+
+#mobile_menu {
+  background-color: #1d496d;
+  box-shadow: 3px -3px 6px #43a9ff; }
+  #mobile_menu .glow {
+    background: linear-gradient(0deg, rgba(67, 169, 255, 0.8) 20%, rgba(67, 169, 255, 0.1) 100%); }
+
+.full {
+  height: 100vh; }
+
+#aboutGEM {
+  height: calc(100% - 70px);
+  background-image: url(../img/gem_groupe1.jpg);
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative; }
+  #aboutGEM .about {
+    position: absolute;
+    top: 45%; }
+    #aboutGEM .about article {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 0 2rem 2rem 0; }
+    #aboutGEM .about .menu_icon {
+      width: 3rem; }
+    #aboutGEM .about .arrow_icon {
+      height: 2rem;
+      width: 2rem; }
+
+#coordonnees {
+  background-color: #1d496d;
+  color: white; }
+  #coordonnees iframe {
+    width: 100%;
+    height: 450px;
+    margin: 0 auto;
+    border-radius: 10%; }
+
+@media screen and (max-width: 992px) {
+  #aboutGEM .about {
+    top: 50%;
+    transform: translateY(-50%); } }
+
+/*# sourceMappingURL=style2.css.map */

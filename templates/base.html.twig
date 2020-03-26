@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        {% include('elements/_head.html.twig') %}
-        {% block link %}{% endblock %}
-        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-        <title>{% block title %}GEM, Bassin d'Arcachon{% endblock %}</title>
+    {% include('elements/_head.html.twig') %}
+    {% block link %}{% endblock %}
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    {#<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">#}
+    <link rel="stylesheet" href="{{ asset('assets/css/style2.css') }}">
+    <title>{% block title %}GEM, Bassin d'Arcachon{% endblock %}</title>
     </head>
 
     <body>
-        {% include('elements/_topBar.html.twig') %}
-        <header {% block class %}{% endblock %}>
-            {% block insight %}{% endblock %}
-        </header>
-        <main>
-            {% block main %}{% endblock %}
-        </main>
-        {% block footer %}{% include('elements/_footer.html.twig') %}{% endblock %}
-        {% include('elements/_navbar.html.twig') %}
-        {% block javascripts %}{% endblock %}
+    {% include('elements/_topBar.html.twig') %}
+    <header {% block class %}{% endblock %}>
+        {% block insight %}{% endblock %}
+    </header>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    {% block footer %}{% include('elements/_footer.html.twig') %}{% endblock %}
+    {% include('elements/_navbar.html.twig') %}
+    {% block javascripts %}{% endblock %}
     </body>
-</html>
+    </html>
