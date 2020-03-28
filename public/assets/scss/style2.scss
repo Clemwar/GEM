@@ -33,12 +33,18 @@ font-family: 'EasyReadingPRO', sans-serif;
   background-color:rgba($color: #FFF, $alpha: 0.85);
   font-family: "Hind", sans-serif;
   text-transform: uppercase;
+  box-shadow:  3px 0 12px black;
 
   #logo{
     width: 8rem;
     &:hover, .active{
       filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
     }
+  }
+
+  .menu_item
+  {
+    display: inline-block;
   }
 
   .menu_icon
@@ -49,7 +55,7 @@ font-family: 'EasyReadingPRO', sans-serif;
   a{
     color:black;
     
-    &:hover
+    &:hover, &:focus
     {
       color: $base-color;
       text-decoration: none;
@@ -84,13 +90,13 @@ font-family: 'EasyReadingPRO', sans-serif;
 //Header -------------------------------
 .full
 {
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 
-//Page Home
+//Page Home -----------------------------
 #aboutGEM
 {
-  height: calc(100% - 70px);
+  height: 100%;
   background-image: url(../img/gem_groupe1.jpg);
   background-size: cover;
   background-position-y: center;
@@ -132,6 +138,7 @@ font-family: 'EasyReadingPRO', sans-serif;
   text-transform: uppercase;
   position : relative;
   text-align: center;
+  border-radius: 10px;
 
   &:hover
   {
@@ -157,7 +164,79 @@ font-family: 'EasyReadingPRO', sans-serif;
   }
 }
 
-//Page Contact ------------------------
+//Page Activités --------------------
+#activites
+{
+  height: 100%;
+  background-image: url(../img/larros.jpg);
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position : relative;
+
+  .insight
+  {
+    background-color: rgba($color: #FFF, $alpha: 0.85);
+    border-radius: 10px;
+    position: absolute;
+    top : 50%;
+    transform: translateY(-50%);
+
+    &:first-of-type
+    {
+      left : 5%;
+    }
+
+    &:last-of-type
+    {
+      right : 5%;
+    }
+
+    .image
+    {
+      overflow: hidden;
+
+      .anime
+      {
+        transform: scale(1.1);
+        transition: all 1s ease;
+      }
+    }
+
+    h2
+    {
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    p
+    {
+      text-align: center;
+    }
+
+    a
+    {
+      &:hover, &:focus
+      {
+        text-decoration: none;
+        color : $deep-color;
+
+        .bouton
+        {
+          background-color: $deep-color;
+        }
+
+        .image .anime
+        {
+          transform: scale(1.5);
+        }
+      }
+    }
+  }
+}
+
+//Page Contact -----------------------
 #coordonnees
 {
     background-color: $deep-color;
@@ -171,10 +250,25 @@ font-family: 'EasyReadingPRO', sans-serif;
     }
 }
 
-//Medias Queries
+//Footer -------------------------------
+footer
+{
+  a
+  {
+    color : $base-color;
+    
+    &:hover, &:focus
+    {
+      color : $deep-color;
+      text-decoration: none;
+    }
+  }
+}
+
+//Medias Queries -----------------------
 @media screen and (max-width:992px)
 {
-  //Page Home
+  //Page Home ---------
   #aboutGEM
   {
     .about
@@ -182,5 +276,19 @@ font-family: 'EasyReadingPRO', sans-serif;
       top : 50%;
       transform: translateY(-50%);
     }
+  }
+
+  //Footer ---------
+  footer
+  {
+    margin-bottom: 160px;
+  }
+}
+
+@media screen and (max-width:768px)
+{
+  footer
+  {
+    margin-bottom: 80px;
   }
 }

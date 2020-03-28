@@ -3,32 +3,32 @@
 {% block class %}class="full"{% endblock %}
 
 {% block insight %}
-    <section class="insight_zone activites">
-        <div class="insight">
-            <a href="#ateliers">
+    <section id="activites" class="container-fluid">
+        <div class="insight col-5 p-2">
+            <a href="#ateliers" id="linka">
                 <article>
                     <h2>Ateliers</h2>
                     <hr>
                     <div class="image">
-                        <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="imgw">
+                        <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="img-fluid anime">
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut.</p>
-                    <p class="press">
+                    <p class="bouton">
                         Découvrir les ateliers
                     </p>
                 </article>
             </a>
         </div>
-        <div class="insight">
-            <a href="#events">
+        <div class="insight col-5 p-2">
+            <a href="#events" id="linke">
                 <article>
                     <h2>Événements</h2>
                     <hr>
                     <div class="image">
-                        <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="imgw">
+                        <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="img-fluid anime">
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia.</p>
-                    <p class="press">
+                    <p class="bouton">
                         Découvrir les événements
                     </p>
                 </article>
@@ -160,4 +160,8 @@
             {% endif %}
         </div>
     </section>
+{% endblock %}
+
+{% block javascripts %}
+{#<script type="text/javascript" src="{{ asset('assets/js/script.js') }}" ></script>#}
 {% endblock %}

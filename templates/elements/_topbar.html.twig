@@ -7,19 +7,19 @@
 
     <nav id="main_menu" role="navigation" class="d-none d-lg-block">
         <ul class="menu_list">
-            <a href="{{path('showActivites')}}" class="menu_item d-inline-block mx-3 {% if current_menu is defined and current_menu == 'activites' %}active{% endif %}">
+            <a href="{{path('showActivites')}}" class="menu_item mx-3 {% if current_menu is defined and current_menu == 'activites' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/brush_ico.svg')}}" alt="" class="menu_icon">
                     Activités
                 </li>
             </a>
-            <a href="#" class="menu_item d-inline-block mx-3 {% if current_menu is defined and current_menu == 'soutenir' %}active{% endif %}">
+            <a href="#" class="menu_item mx-3 {% if current_menu is defined and current_menu == 'soutenir' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/heart_ico.svg')}}" alt="" class="menu_icon">
                     Nous soutenir
                 </li>
             </a>
-            <a href="{{path('contact')}}" class="menu_item d-inline-block mx-3 {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
+            <a href="{{path('contact')}}" class="menu_item mx-3 {% if current_menu is defined and current_menu == 'contact' %}active{% endif %}">
                 <li>
                     <img src="{{ asset('assets/img/SVG/contact_ico.svg')}}" alt="" class="menu_icon">
                     contact

@@ -16,19 +16,22 @@ body {
 #top_bar {
   background-color: rgba(255, 255, 255, 0.85);
   font-family: "Hind", sans-serif;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  box-shadow: 3px 0 12px black; }
   #top_bar #logo {
     width: 8rem; }
     #top_bar #logo:hover, #top_bar #logo .active {
       filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
+  #top_bar .menu_item {
+    display: inline-block; }
   #top_bar .menu_icon {
     width: 2rem; }
   #top_bar a {
     color: black; }
-    #top_bar a:hover {
+    #top_bar a:hover, #top_bar a:focus {
       color: #43a9ff;
       text-decoration: none; }
-      #top_bar a:hover .menu_icon {
+      #top_bar a:hover .menu_icon, #top_bar a:focus .menu_icon {
         filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg); }
   #top_bar .active {
     color: #43a9ff;
@@ -43,10 +46,10 @@ body {
     background: linear-gradient(0deg, rgba(67, 169, 255, 0.8) 20%, rgba(67, 169, 255, 0.1) 100%); }
 
 .full {
-  height: 100vh; }
+  height: calc(100vh - 70px); }
 
 #aboutGEM {
-  height: calc(100% - 70px);
+  height: 100%;
   background-image: url(../img/gem_groupe1.jpg);
   background-size: cover;
   background-position-y: center;
@@ -72,7 +75,8 @@ body {
   color: white;
   text-transform: uppercase;
   position: relative;
-  text-align: center; }
+  text-align: center;
+  border-radius: 10px; }
   .bouton:hover {
     background-color: #1d496d;
     text-decoration: none;
@@ -88,6 +92,42 @@ body {
     transform: translateY(-50%);
     right: 10px; }
 
+#activites {
+  height: 100%;
+  background-image: url(../img/larros.jpg);
+  background-size: cover;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative; }
+  #activites .insight {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+    #activites .insight:first-of-type {
+      left: 5%; }
+    #activites .insight:last-of-type {
+      right: 5%; }
+    #activites .insight .image {
+      overflow: hidden; }
+      #activites .insight .image .anime {
+        transform: scale(1.1);
+        transition: all 1s ease; }
+    #activites .insight h2 {
+      text-align: center;
+      text-transform: uppercase; }
+    #activites .insight p {
+      text-align: center; }
+    #activites .insight a:hover, #activites .insight a:focus {
+      text-decoration: none;
+      color: #1d496d; }
+      #activites .insight a:hover .bouton, #activites .insight a:focus .bouton {
+        background-color: #1d496d; }
+      #activites .insight a:hover .image .anime, #activites .insight a:focus .image .anime {
+        transform: scale(1.5); }
+
 #coordonnees {
   background-color: #1d496d;
   color: white; }
@@ -97,9 +137,21 @@ body {
     margin: 0 auto;
     border-radius: 10%; }
 
+footer a {
+  color: #43a9ff; }
+  footer a:hover, footer a:focus {
+    color: #1d496d;
+    text-decoration: none; }
+
 @media screen and (max-width: 992px) {
   #aboutGEM .about {
     top: 50%;
-    transform: translateY(-50%); } }
+    transform: translateY(-50%); }
+
+  footer {
+    margin-bottom: 160px; } }
+@media screen and (max-width: 768px) {
+  footer {
+    margin-bottom: 80px; } }
 
 /*# sourceMappingURL=style2.css.map */
