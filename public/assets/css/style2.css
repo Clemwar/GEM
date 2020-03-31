@@ -153,8 +153,14 @@ body {
 
 footer {
   box-shadow: 1px -1px 6px #1d496d; }
+  footer ul {
+    padding: 0; }
   footer a {
     color: #43a9ff; }
+    footer a .img-fluid {
+      max-width: 60px; }
+    footer a p {
+      margin: 0; }
     footer a:hover, footer a:focus {
       color: #1d496d;
       text-decoration: none; }
@@ -168,6 +174,10 @@ footer {
     margin-bottom: 160px; } }
 @media screen and (max-width: 768px) {
   footer {
-    margin-bottom: 80px; } }
+    margin-bottom: 80px; }
+    footer .logo {
+      padding: 2rem;
+      background-color: rgba(67, 169, 255, 0.2);
+      border-radius: 10px; } }
 
 /*# sourceMappingURL=style2.css.map */

@@ -293,9 +293,24 @@ footer
 
   box-shadow: 1px -1px 6px $deep-color;
 
+  ul
+  {
+    padding: 0;
+  }
+
   a
   {
     color : $base-color;
+    
+    .img-fluid
+    {
+      max-width: 60px;
+    }
+
+    p
+    {
+      margin: 0;
+    }
     
     &:hover, &:focus
     {
@@ -330,5 +345,12 @@ footer
   footer
   {
     margin-bottom: 80px;
+
+    .logo
+    {
+      padding: 2rem;
+      background-color: rgba(67,169,255,0.2);
+      border-radius: 10px;
+    }
   }
 }
