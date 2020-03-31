@@ -29,9 +29,24 @@
     </nav>
 
     {% if is_granted('ROLE_ADMIN') %}
-    <a href="{{path('admin')}}" class="menu_item {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}">
+    {#<a href="{{path('admin')}}" class="menu_item {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}">
         <span>admin</span>
-    </a>
+    </a>#}
+        <div class="dropdown">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ADMIN
+            <span class="carret"></span></button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a href="{{path('admin')}}" class="dropdown-item">
+                    Ateliers
+                </a>
+                <a href="{{path('admin_events')}}" class="dropdown-item">
+                    Événements
+                </a>
+                <a href="{{ path('admin_users') }}" class="dropdown-item">
+                    Utilisateurs
+                </a>
+            </div>
+        </div>
     {% endif %}
 
     <div>
