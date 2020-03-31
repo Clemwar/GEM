@@ -13,7 +13,7 @@
     <header {% block class %}{% endblock %}>
         {% block insight %}{% endblock %}
     </header>
-    <main>
+    <main {% block mainclass %}{% endblock %}>
         {% block main %}{% endblock %}
     </main>
     {% block footer %}{% include('elements/_footer.html.twig') %}{% endblock %}

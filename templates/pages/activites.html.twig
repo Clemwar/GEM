@@ -3,13 +3,13 @@
 {% block class %}class="full"{% endblock %}
 
 {% block insight %}
-    <section id="activites" class="container-fluid">
-        <div class="insight col-5 p-2">
+    <section id="activites" class="container-fluid d-flex flex-column flex-md-row justify-content-center justify-content-md-around align-items-center">
+        <div class="insight col-md-5 p-2">
             <a href="#ateliers" id="linka">
                 <article>
                     <h2>Ateliers</h2>
                     <hr>
-                    <div class="image">
+                    <div class="image d-none d-md-block">
                         <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="img-fluid anime">
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut.</p>
@@ -19,12 +19,12 @@
                 </article>
             </a>
         </div>
-        <div class="insight col-5 p-2">
+        <div class="insight col-md-5 p-2 mt-sm-0 mt-4">
             <a href="#events" id="linke">
                 <article>
                     <h2>Événements</h2>
                     <hr>
-                    <div class="image">
+                    <div class="image d-none d-md-block">
                         <img src="{{ asset('assets/img/pinceauxwide.jpg')}}" alt="" class="img-fluid anime">
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, deserunt ipsa quaerat est qui obcaecati et ex ut mollitia.</p>
@@ -37,33 +37,34 @@
     </section>
 {% endblock %}
 
+{% block mainclass %}class="container mt-4"{% endblock %}
 {% block main %}
-    <section class="show" id="ateliers">
+    <section id="ateliers">
         <h1>Les prochains ateliers</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
             illum ipsa laboriosam.</p>
-        <div class="flex">
+        <div class="show d-md-flex justify-content-around flex-md-wrap">
             {% for date in dates %}
-                <div class="showActivite">
+                <div class="showActivite d-flex justify-content-between align-items-center col-md-5 pl-0 mt-4">
                     <div class="content">
-                        <div class="cover">
-                            <img src="{% if date.atelier.cover %}{{ asset('assets/img/upl/'~date.atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if date.atelier.alt %}{{ date.atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                        <div class="image">
+                            <img src="{% if date.atelier.cover %}{{ asset('assets/img/upl/'~date.atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if date.atelier.alt %}{{ date.atelier.alt }}{% else %}Absence d'image{% endif %}" class="img-fluid">
                         </div>
-                        <article class="description">
+                        <article class="description p-4">
                             <h2>{{ date.atelier.nom }}</h2>
                             <p>{{ date.atelier.description }}</p>
                         </article>
                     </div>
-                    <div class="soon">
+                    <div class="soon pl-4 text-center">
                         <h2>Prochain Atelier</h2>
                         <p>{{ date.date | date('D') }}</p>
                         <p>{{ date.date | date('d') }}</p>
                         <p>{{ date.date | date('M') }}</p>
                         <p>{{ date.date | date('H:i') }}</p>
                         {% if app.user in date.participants %}
-                            <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler ?')">
+                            <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir vous désinscrire de l\'atelier {{ date.atelier.nom }} ?')">
                                 <input type="hidden" name="_token" value="{{ csrf_token('annulation' ~ app.user.id) }}">
-                                <button class="cancelbtn">Se désinscrire</button>
+                                <button class="bouton red">Se désinscrire</button>
                             </form>
                         {% else %}
                             {% if date.places and date.participants |length >= date.places %}
@@ -72,10 +73,10 @@
                                 {% if app.user %}
                                     <form action="{{ path('reservation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token('reservation' ~ app.user.id) }}">
-                                        <button class="neobtn">S'inscrire</button>
+                                        <button class="bouton">S'inscrire</button>
                                     </form>
                                 {% else %}
-                                    <a href="{{ path('login', {'anchor':'ateliers'}) }}" class="neobtn">S'inscrire</a>
+                                    <a href="{{ path('login', {'anchor':'ateliers'}) }}" class="bouton">S'inscrire</a>
                                 {% endif %}
                             {% endif %}
                         {% endif %}
@@ -84,23 +85,23 @@
             {% endfor %}
         </div>
     </section>
-    <section class="show" id="ateliers">
+    <section class="mt-4">
         <h1>Nos autres ateliers</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
             illum ipsa laboriosam.</p>
-        <div class="flex">
+        <div class="show d-md-flex justify-content-around flex-md-wrap">
             {% for atelier in ateliers %}
-                <div class="showActivite">
+                <div class="showActivite d-flex justify-content-between align-items-center col-md-5 pl-0 mt-4">
                     <div class="content">
-                        <div class="cover">
-                            <img src="{% if atelier.cover %}{{ asset('assets/img/upl/'~atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if atelier.alt %}{{ atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                        <div class="image">
+                            <img src="{% if atelier.cover %}{{ asset('assets/img/upl/'~atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if atelier.alt %}{{ atelier.alt }}{% else %}Absence d'image{% endif %}" class="img-fluid">
                         </div>
-                        <article class="description">
+                        <article class="description p-4">
                             <h2>{{ atelier.nom }}</h2>
                             <p>{{ atelier.description }}</p>
                         </article>
                     </div>
-                    <div class="soon">
+                    <div class="soon pl-4 text-center">
                         <h2>Prochain Atelier</h2>
                         <p>Aucune date prévue</p>
                     </div>
@@ -108,24 +109,24 @@
             {% endfor %}
         </div>
     </section>
-    <section class="show" id="events">
+    <section class="show mt-4" id="events">
         <h1>Les événements</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequatur, dolor eveniet fuga
             illum ipsa laboriosam.</p>
-        <div class="flex">
+        <div class="show">
             {% if events |length >0 %}
                 {% for event in events %}
-                    <div class="showEvent">
+                    <div class="showActivite d-flex justify-content-between align-items-center pl-0 mt-4 mb-4">
                         <div class="content">
-                            <div class="cover">
-                                <img src="{% if event.atelier.cover %}{{ asset('assets/img/upl/'~event.atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if event.atelier.alt %}{{ event.atelier.alt }}{% else %}Absence d'image{% endif %}" class="imgh">
+                            <div class="image">
+                                <img src="{% if event.atelier.cover %}{{ asset('assets/img/upl/'~event.atelier.cover) }}{% else %}{{ asset('assets/img/none.jpg')}}{% endif %}" alt="{% if event.atelier.alt %}{{ event.atelier.alt }}{% else %}Absence d'image{% endif %}" class="img-fluid">
                             </div>
-                            <article class="description" id="chocolate">
+                            <article class="description p-4">
                                 <h2>{{ event.atelier.nom }}</h2>
                                 <p>{{ event.atelier.description }}</p>
                             </article>
                         </div>
-                        <div class="soon">
+                        <div class="soon p-4 text-center">
                             <h2>Prochain Événement</h2>
                             <p>{{ event.date | date('D') }}</p>
                             <p>{{ event.date | date('d') }}</p>
@@ -134,7 +135,7 @@
                             {% if app.user in event.participants %}
                                 <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler ?')">
                                     <input type="hidden" name="_token" value="{{ csrf_token('annulation' ~ app.user.id) }}">
-                                    <button class="cancelbtn">Se désinscrire</button>
+                                    <button class="bouton red">Se désinscrire</button>
                                 </form>
                             {% else %}
                                 {% if event.places and event.participants |length >= event.places %}
@@ -143,10 +144,10 @@
                                     {% if app.user %}
                                         <form action="{{ path('reservation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}">
                                             <input type="hidden" name="_token" value="{{ csrf_token('reservation' ~ app.user.id) }}">
-                                            <button class="neobtn">S'inscrire</button>
+                                            <button class="bouton">S'inscrire</button>
                                         </form>
                                     {% else %}
-                                        <a href="{{ path('login', {'anchor':'ateliers'}) }}" class="neobtn">S'inscrire</a>
+                                        <a href="{{ path('login', {'anchor':'ateliers'}) }}" class="bouton">S'inscrire</a>
                                     {% endif %}
                                 {% endif %}
                             {% endif %}
@@ -154,14 +155,10 @@
                     </div>
                 {% endfor %}
             {% else %}
-                <div class="content">
+                <div class="text-center">
                     <h2>Aucun événement prévu</h2>
                 </div>
             {% endif %}
         </div>
     </section>
-{% endblock %}
-
-{% block javascripts %}
-{#<script type="text/javascript" src="{{ asset('assets/js/script.js') }}" ></script>#}
 {% endblock %}

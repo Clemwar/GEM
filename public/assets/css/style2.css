@@ -76,7 +76,10 @@ body {
   text-transform: uppercase;
   position: relative;
   text-align: center;
-  border-radius: 10px; }
+  border-radius: 10px;
+  border: none;
+  font: inherit;
+  cursor: pointer; }
   .bouton:hover {
     background-color: #1d496d;
     text-decoration: none;
@@ -98,22 +101,17 @@ body {
   background-size: cover;
   background-position-y: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  position: relative; }
+  background-attachment: fixed; }
   #activites .insight {
     background-color: rgba(255, 255, 255, 0.85);
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); }
-    #activites .insight:first-of-type {
-      left: 5%; }
-    #activites .insight:last-of-type {
-      right: 5%; }
+    border-radius: 10px; }
+    #activites .insight h2 {
+      margin-bottom: 0; }
     #activites .insight .image {
       overflow: hidden; }
+      #activites .insight .image .img-fluid {
+        min-width: 100%; }
       #activites .insight .image .anime {
-        transform: scale(1.1);
         transition: all 1s ease; }
     #activites .insight h2 {
       text-align: center;
@@ -126,7 +124,23 @@ body {
       #activites .insight a:hover .bouton, #activites .insight a:focus .bouton {
         background-color: #1d496d; }
       #activites .insight a:hover .image .anime, #activites .insight a:focus .image .anime {
-        transform: scale(1.5); }
+        transform: scale(1.2); }
+
+.show .showActivite {
+  border-radius: 25px;
+  border: #1d496d 2px solid;
+  overflow: hidden; }
+  .show .showActivite .content {
+    background-color: #1d496d;
+    color: white;
+    min-height: 100%; }
+  .show .showActivite .soon .bouton {
+    margin-bottom: 0;
+    width: 100%; }
+  .show .showActivite .soon .red {
+    background-color: coral; }
+    .show .showActivite .soon .red:hover, .show .showActivite .soon .red:focus {
+      background-color: chocolate; }
 
 #coordonnees {
   background-color: #1d496d;
@@ -137,11 +151,13 @@ body {
     margin: 0 auto;
     border-radius: 10%; }
 
-footer a {
-  color: #43a9ff; }
-  footer a:hover, footer a:focus {
-    color: #1d496d;
-    text-decoration: none; }
+footer {
+  box-shadow: 1px -1px 6px #1d496d; }
+  footer a {
+    color: #43a9ff; }
+    footer a:hover, footer a:focus {
+      color: #1d496d;
+      text-decoration: none; }
 
 @media screen and (max-width: 992px) {
   #aboutGEM .about {

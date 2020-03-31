@@ -5,10 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/js/script.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/assets/scss/style2.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style2.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/elements/_footer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/elements/_topbar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -213,6 +212,8 @@
       <workItem from="1584523521131" duration="171000" />
       <workItem from="1585229965901" duration="12332000" />
       <workItem from="1585314567575" duration="6292000" />
+      <workItem from="1585415273185" duration="266000" />
+      <workItem from="1585669384632" duration="6256000" />
     </task>
     <task id="LOCAL-00001" summary="Securisation reservation">
       <created>1584523576404</created>
@@ -295,10 +296,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="253" key="Vcs.Push.Dialog.v2/0.0.2560.1040@0.0.2560.1040" timestamp="1584523581145" />
-    <state x="271" y="76" width="737" height="894" key="find.popup" timestamp="1578252321238">
+    <state x="271" y="76" width="737" height="894" key="find.popup" timestamp="1585669581633">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="271" y="76" width="737" height="894" key="find.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578252321238" />
+    <state x="271" y="76" width="737" height="894" key="find.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585669581633" />
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup" timestamp="1577547074710">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

@@ -139,6 +139,9 @@ font-family: 'EasyReadingPRO', sans-serif;
   position : relative;
   text-align: center;
   border-radius: 10px;
+  border:none;
+  font: inherit;
+  cursor: pointer;
 
   &:hover
   {
@@ -173,33 +176,28 @@ font-family: 'EasyReadingPRO', sans-serif;
   background-position-y: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  position : relative;
 
   .insight
   {
     background-color: rgba($color: #FFF, $alpha: 0.85);
     border-radius: 10px;
-    position: absolute;
-    top : 50%;
-    transform: translateY(-50%);
 
-    &:first-of-type
+    h2
     {
-      left : 5%;
-    }
-
-    &:last-of-type
-    {
-      right : 5%;
+      margin-bottom: 0;
     }
 
     .image
     {
       overflow: hidden;
 
+      .img-fluid
+      {
+        min-width: 100%;
+      }
+
       .anime
       {
-        transform: scale(1.1);
         transition: all 1s ease;
       }
     }
@@ -229,7 +227,45 @@ font-family: 'EasyReadingPRO', sans-serif;
 
         .image .anime
         {
-          transform: scale(1.5);
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+
+//Présentation des ateliers
+.show
+{
+
+  .showActivite
+  {
+  border-radius: 25px;
+  border: $deep-color 2px solid;
+  overflow: hidden;
+
+    .content
+    {
+      background-color: $deep-color;
+      color : white;
+      min-height: 100%;
+    }
+
+    .soon
+    {
+      .bouton
+      {
+        margin-bottom: 0;
+        width: 100%;
+      }
+
+      .red
+      {
+        background-color: coral;
+
+        &:hover, &:focus
+        {
+          background-color: chocolate;
         }
       }
     }
@@ -253,6 +289,9 @@ font-family: 'EasyReadingPRO', sans-serif;
 //Footer -------------------------------
 footer
 {
+
+  box-shadow: 1px -1px 6px $deep-color;
+
   a
   {
     color : $base-color;
