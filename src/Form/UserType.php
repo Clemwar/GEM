@@ -14,6 +14,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class UserType extends AbstractType
 {
@@ -33,40 +36,25 @@ class UserType extends AbstractType
                 'required' => false,
                 'label' => 'Numéro de téléphone'
             ])
-            ->add('adresse', TextType::class, [
-                'required' => false,
-                'label' => 'Adresse'
-            ])
-            ->add('complement', TextType::class, [
-                'required' => false,
-                'label' => 'Complément d\'adresse'
-            ])
-            ->add('codepostal', IntegerType::class, [
-                'required' => false,
-                'label' => 'Code postal'
-            ])
-            ->add('ville', TextType::class, [
-                'required' => false,
-                'label' => 'Ville'
-            ])
-            ->add('password', PasswordType::class, [
-                'label' => 'Mot de passe'
-            ])
-            ->add('photo', FileType::class, [
-                'label' => 'Photo (JPG file)',
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
                 'mapped' => false,
-                'required' => false,
+                'invalid_message' => 'Les mots de passe doivent correspondre.',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
                 'constraints' => [
-                    new File([
-                        'maxSize' => '1024k',
-                        'mimeTypes' => [
-                            'image/jpeg',
-                        ],
-                        'mimeTypesMessage' => 'Merci de n\'envoyer que des jpeg'
-                    ])
+                 new NotBlank([
+                     'message' => 'Entrez un mot de passe',
+                 ]),
+                 new Length([
+                     'min' => 6,
+                     'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} caractères',
+                     'max' => 64,
+                 ]),
                 ],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Confirmer le mot de passe'],
             ])
-            ->add('Enregistrer', SubmitType::class)
         ;
     }
 

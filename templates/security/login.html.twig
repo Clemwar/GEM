@@ -12,32 +12,33 @@
         <form action="{{ path('login') }}" method="post" id="login" class="col-md-6 p-3">
 
             <h1 class="mb-1">Se connecter</h1>
+
+            <div class="form-group">
+                {% if error %}
+                    <p class="error text-danger">{{ error.messageKey | trans(error.messagedata, 'security') }}</p>
+                {% endif %}
+                {% for label, messages in app.flashes(['success', 'warning']) %}
+                    {% for message in messages %}
+                        <p class="{{ label }}">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
             <p class="mb-3">
                 Vous êtes un nouvel utilisateur ? <a href="{{ path('add_user') }}">Créez un compte</a>
             </p>
-            
+
             <div class="form-group">
-           {% if error %}
-               <p class="error">{{ error.messageKey | trans(error.messagedata, 'security') }}</p>
-           {% endif %}
-           {% for label, messages in app.flashes(['success', 'warning']) %}
-               {% for message in messages %}
-                   <p class="{{ label }}">
-                       {{ message }}
-                   </p>
-               {% endfor %}
-            {% endfor %}
+                <label for="email">Adresse e-mail</label>
+                <input type="email" id="email" class="form-control" name="_username" value="{{ last_username }}" >
             </div>
 
-                <div class="form-group">
-                    <label for="email">Adresse e-mail</label>
-                    <input type="email" id="email" class="form-control" name="_username" value="{{ last_username }}" >
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Mot de passe</label>
-                    <input type="password" id="password" class="form-control" name="_password" >
-                </div>
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" class="form-control" name="_password" >
+            </div>
 
             <div class="form-row">
                 <div class="col">

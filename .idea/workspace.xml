@@ -2,24 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/GEM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GEM.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/register.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/scss/style2.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style2.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/DetailsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DetailsType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/_topbar.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/ateliers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/ateliers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/events.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/events.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/form2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/form2.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/pw_atelier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/pw_atelier.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/pw_date.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/pw_date.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pwup/users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/users.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,21 +141,21 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\GEM\src\Notification" />
-      <recent name="C:\wamp64\www\GEM\src\Controller" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\GEM\templates\pages" />
       <recent name="C:\wamp64\www\GEM\src\Form" />
+      <recent name="C:\wamp64\www\GEM\templates\pages" />
       <recent name="C:\wamp64\www\GEM\templates\elements" />
       <recent name="C:\wamp64\www\GEM\templates\pwup" />
       <recent name="C:\wamp64\www\GEM" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\GEM\src\Notification" />
+      <recent name="C:\wamp64\www\GEM\src\Controller" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -226,7 +217,7 @@
       <workItem from="1585314567575" duration="6292000" />
       <workItem from="1585415273185" duration="266000" />
       <workItem from="1585669384632" duration="11478000" />
-      <workItem from="1585754508925" duration="10581000" />
+      <workItem from="1585754508925" duration="13900000" />
     </task>
     <task id="LOCAL-00001" summary="Securisation reservation">
       <created>1584523576404</created>
@@ -283,10 +274,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="800" y="299" key="EditFileWatcherDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585231162686" />
-    <state x="799" y="294" key="FileChooserDialogImpl" timestamp="1585231193540">
+    <state x="799" y="294" key="FileChooserDialogImpl" timestamp="1585767420756">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="799" y="294" key="FileChooserDialogImpl/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585231193540" />
+    <state x="799" y="294" key="FileChooserDialogImpl/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585767420756" />
     <state width="189" height="363" key="HiddenNamespacesPopup" timestamp="1580889440886">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

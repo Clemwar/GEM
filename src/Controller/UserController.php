@@ -68,6 +68,7 @@ class UserController extends AbstractController
      * @Route("/user/add", name="add_user")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \Exception
      */
     public function addUser(Request $request)
     {
@@ -120,7 +121,7 @@ class UserController extends AbstractController
 
                 $this->addFlash('success', 'Bienvenue, inscription terminée');
 
-                // On enregistre notre objet $user dans la base de données, par exemple
+                // On enregistre notre objet $user dans la base de données
                 $this->em->persist($user);
                 $this->em->flush();
 
@@ -134,7 +135,7 @@ class UserController extends AbstractController
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
-        return $this->render('/pages/form.html.twig', [
+        return $this->render('/pages/register.html.twig', [
             'form' => $form->createView(),
             'current_menu' => 'login'
         ]);

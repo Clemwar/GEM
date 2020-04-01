@@ -27,6 +27,21 @@ body
 font-family: 'EasyReadingPRO', sans-serif;
 }
 
+.success
+{
+  color : green;
+}
+
+.warning
+{
+  color : orange;
+}
+
+.error
+{
+  color : red;
+}
+
 //Top Bar -------------------------------
 #top_bar{
   
@@ -126,6 +141,16 @@ font-family: 'EasyReadingPRO', sans-serif;
         color : $deep-color;
       }
     }
+  }
+}
+
+//Page Register
+#register_zone
+{
+  h1
+  {
+    color : $base-color;
+    margin-bottom: 1rem;
   }
 }
 

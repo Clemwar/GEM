@@ -13,6 +13,15 @@ ul {
 body {
   font-family: 'EasyReadingPRO', sans-serif; }
 
+.success {
+  color: green; }
+
+.warning {
+  color: orange; }
+
+.error {
+  color: red; }
+
 #top_bar {
   background-color: rgba(255, 255, 255, 0.85);
   font-family: "Hind", sans-serif;
@@ -61,6 +70,10 @@ body {
     color: #43a9ff; }
     #login_zone #login a:hover, #login_zone #login a:focus {
       color: #1d496d; }
+
+#register_zone h1 {
+  color: #43a9ff;
+  margin-bottom: 1rem; }
 
 #aboutGEM {
   height: 100%;
