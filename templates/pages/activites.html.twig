@@ -56,10 +56,10 @@
                         </article>
                     </div>
                     <div class="soon pl-4 text-center">
-                        <h2>Prochain Atelier</h2>
-                        <p>{{ date.date | date('D') }}</p>
+                        <h2 class="mb-4">Prochain Atelier</h2>
+                        <p>{{ date.date | format_datetime(pattern="EEEE", locale="fr") | upper }}</p>
                         <p>{{ date.date | date('d') }}</p>
-                        <p>{{ date.date | date('M') }}</p>
+                        <p>{{ date.date | format_datetime(pattern="LLLL", locale="fr") | upper }}</p>
                         <p>{{ date.date | date('H:i') }}</p>
                         {% if app.user in date.participants %}
                             <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : date.id, 'event':'0' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir vous désinscrire de l\'atelier {{ date.atelier.nom }} ?')">
@@ -127,10 +127,10 @@
                             </article>
                         </div>
                         <div class="soon p-4 text-center">
-                            <h2>Prochain Événement</h2>
-                            <p>{{ event.date | date('D') }}</p>
+                            <h2 class="mb-4">Prochain Événement</h2>
+                            <p>{{ event.date | format_datetime(pattern="EEEE", locale="fr") | upper }}</p>
                             <p>{{ event.date | date('d') }}</p>
-                            <p>{{ event.date | date('M') }}</p>
+                            <p>{{ event.date | format_datetime(pattern="LLLL", locale="fr") | upper }}</p>
                             <p>{{ event.date | date('H:i') }}</p>
                             {% if app.user in event.participants %}
                                 <form action="{{ path('annulation', {'userID' : app.user.id, 'detailID' : event.id, 'event':'1' }) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir annuler ?')">

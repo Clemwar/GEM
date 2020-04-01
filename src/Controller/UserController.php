@@ -114,6 +114,10 @@ class UserController extends AbstractController
                 $password = $form['password']->getData();
                 $user->setPassword($this->encoder->encodePassword($user, $password));
 
+                //On note la date d'inscription
+                $date = new \DateTime();
+                $user->setCreatedAt($date);
+
                 $this->addFlash('success', 'Bienvenue, inscription terminée');
 
                 // On enregistre notre objet $user dans la base de données, par exemple
@@ -222,6 +226,10 @@ class UserController extends AbstractController
                 //On traite l'encodage du mot de passe
                 $password = $form['password']->getData();
                 $user->setPassword($this->encoder->encodePassword($user, $password));
+
+                //On note la date d'inscription
+                $date = new \DateTime();
+                $user->setUpdatedAt($date);
 
                 $this->addFlash('success', 'Mise à jour de contact terminée');
 

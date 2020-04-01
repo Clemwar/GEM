@@ -22,6 +22,33 @@ class User implements UserInterface,\Serializable
     private $id;
 
     /**
+     * @ORM\Column(type="datetime", nullable=false)
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    private $updatedAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    private $passwordResquestedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $token;
+
+    /**
      * @ORM\Column(type="string", length=50)
      */
     private $nom;
@@ -370,5 +397,79 @@ class User implements UserInterface,\Serializable
     {
         $this->reservations->removeElement($details);
     }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     * @return User
+     */
+    public function setCreatedAt(\DateTime $createdAt): User
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): \DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     * @return User
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): User
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPasswordResquestedAt(): \DateTime
+    {
+        return $this->passwordResquestedAt;
+    }
+
+    /**
+     * @param \DateTime $passwordResquestedAt
+     * @return User
+     */
+    public function setPasswordResquestedAt(\DateTime $passwordResquestedAt): User
+    {
+        $this->passwordResquestedAt = $passwordResquestedAt;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
+    }
+
+    /**
+     * @param string $token
+     * @return User
+     */
+    public function setToken(string $token): User
+    {
+        $this->token = $token;
+        return $this;
+    }
+
+
 
 }

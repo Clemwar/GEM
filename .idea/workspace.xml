@@ -2,14 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/GEM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/GEM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/scss/style2.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style2.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/DetailsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/DetailsType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/activites.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/activites.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/_topbar.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/ateliers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/ateliers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/events.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/events.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/form2.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/form2.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/pw_atelier.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/pw_atelier.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/pw_date.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/pw_date.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pwup/users.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pwup/users.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,6 +133,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
+      <path value="$PROJECT_DIR$/vendor/twig/intl-extra" />
     </include_path>
   </component>
   <component name="ProjectId" id="1VZkZyjyOQd7QzoUtjqMzToAf5n" />
@@ -215,7 +226,7 @@
       <workItem from="1585314567575" duration="6292000" />
       <workItem from="1585415273185" duration="266000" />
       <workItem from="1585669384632" duration="11478000" />
-      <workItem from="1585754508925" duration="4717000" />
+      <workItem from="1585754508925" duration="10581000" />
     </task>
     <task id="LOCAL-00001" summary="Securisation reservation">
       <created>1584523576404</created>
@@ -244,10 +255,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578341783428" />
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1579376477901">
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser" timestamp="1585760222095">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579376477901" />
+    <state x="1073" y="237" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585760222095" />
     <state x="960" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1578435824611">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -256,6 +267,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="919" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578418415824" />
+    <state x="1010" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585765073515">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1010" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585765073515" />
     <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578939319792">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -306,10 +321,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="921" y="246" width="700" height="530" key="recent.locations.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1577547074710" />
-    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup" timestamp="1582658692531">
+    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup" timestamp="1585763560916">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579382959257" />
+    <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585763560916" />
     <state x="943" y="225" width="1148" height="753" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1582658692531" />
   </component>
 </project>
