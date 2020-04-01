@@ -1,11 +1,22 @@
 {% extends('base.html.twig') %}
 
-{% block main %}
-    <section class="add">
-       <form action="{{ path('login') }}" method="post">
+{% block class %}class="full"{% endblock %}
 
-           <h1>Connexion</h1>
+{% block insight %}
+    <section id="login_zone" class="container d-flex justify-content-around align-items-center h-100">
+        <div class="intitule d-none d-md-block col-4">
+            <img src="{{ asset('assets/img/logo_gem_color.png') }}" alt="Logo du GEM Bassin d'Arcachon" class="img-fluid mb-2">
+            <p>Se connecter ou créer un compte</p>
+        </div>
 
+        <form action="{{ path('login') }}" method="post" id="login" class="col-md-6 p-3">
+
+            <h1 class="mb-1">Se connecter</h1>
+            <p class="mb-3">
+                Vous êtes un nouvel utilisateur ? <a href="{{ path('add_user') }}">Créez un compte</a>
+            </p>
+            
+            <div class="form-group">
            {% if error %}
                <p class="error">{{ error.messageKey | trans(error.messagedata, 'security') }}</p>
            {% endif %}
@@ -15,20 +26,30 @@
                        {{ message }}
                    </p>
                {% endfor %}
-           {% endfor %}
+            {% endfor %}
+            </div>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="_username" value="{{ last_username }}" >
+                <div class="form-group">
+                    <label for="email">Adresse e-mail</label>
+                    <input type="email" id="email" class="form-control" name="_username" value="{{ last_username }}" >
+                </div>
 
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="_password" >
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" class="form-control" name="_password" >
+                </div>
 
-            <button type="submit">Se connecter</button>
+            <div class="form-row">
+                <div class="col">
+                    <a href="#" class="">Mot de passe oublié</a>
+                </div>
+                <div class="col">
+                    <button type="submit" class="bouton form-control">Se connecter</button>
+                </div>
+            </div>
+
 
            <input type="hidden" name="_target_path" value="{{ referer }}" />
-
-           <button type="button" onclick="window.location.href = '{{ path('add_user') }}';">S'enregistrer</button>
         </form>
     </section>
 {% endblock %}
-{% block footer %}{% endblock %}

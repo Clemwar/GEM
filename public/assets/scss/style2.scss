@@ -94,6 +94,41 @@ font-family: 'EasyReadingPRO', sans-serif;
   height: calc(100vh - 70px);
 }
 
+//Page login ----------------------------
+#login_zone
+{
+  .intitule
+  {
+    text-align: center;
+    
+    .img-fluid
+    {
+      max-width: 200px;
+    }
+  }
+
+  #login
+  {
+    box-shadow: 6px 6px 12px grey;
+    border-radius: 1rem;
+
+    h1
+    {
+      color: $base-color;
+    }
+
+    a
+    {
+      color : $base-color;
+
+      &:hover, &:focus
+      {
+        color : $deep-color;
+      }
+    }
+  }
+}
+
 //Page Home -----------------------------
 #aboutGEM
 {
@@ -285,6 +320,11 @@ font-family: 'EasyReadingPRO', sans-serif;
         margin : 0 auto;
         border-radius: 10%;
     }
+}
+
+#contact_titre
+{
+  color: $base-color;
 }
 
 //Footer -------------------------------

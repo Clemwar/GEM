@@ -48,6 +48,20 @@ body {
 .full {
   height: calc(100vh - 70px); }
 
+#login_zone .intitule {
+  text-align: center; }
+  #login_zone .intitule .img-fluid {
+    max-width: 200px; }
+#login_zone #login {
+  box-shadow: 6px 6px 12px grey;
+  border-radius: 1rem; }
+  #login_zone #login h1 {
+    color: #43a9ff; }
+  #login_zone #login a {
+    color: #43a9ff; }
+    #login_zone #login a:hover, #login_zone #login a:focus {
+      color: #1d496d; }
+
 #aboutGEM {
   height: 100%;
   background-image: url(../img/gem_groupe1.jpg);
@@ -150,6 +164,9 @@ body {
     height: 450px;
     margin: 0 auto;
     border-radius: 10%; }
+
+#contact_titre {
+  color: #43a9ff; }
 
 footer {
   box-shadow: 1px -1px 6px #1d496d; }
