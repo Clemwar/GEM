@@ -9,7 +9,7 @@
             <p>Se connecter ou créer un compte</p>
         </div>
 
-        <form action="{{ path('login') }}" method="post" id="login" class="col-md-6 p-3">
+        <form action="{{ path('login') }}" method="POST" class="col-md-6 p-3 login">
 
             <h1 class="mb-1">Se connecter</h1>
 
@@ -17,7 +17,7 @@
                 {% if error %}
                     <p class="error text-danger">{{ error.messageKey | trans(error.messagedata, 'security') }}</p>
                 {% endif %}
-                {% for label, messages in app.flashes(['success', 'warning']) %}
+                {% for label, messages in app.flashes(['success', 'warning', 'notice']) %}
                     {% for message in messages %}
                         <p class="{{ label }}">
                             {{ message }}
@@ -42,7 +42,7 @@
 
             <div class="form-row">
                 <div class="col">
-                    <a href="#" class="">Mot de passe oublié</a>
+                    <a href="{{path('resettingRequest')}}" class="">Mot de passe oublié</a>
                 </div>
                 <div class="col">
                     <button type="submit" class="bouton form-control">Se connecter</button>

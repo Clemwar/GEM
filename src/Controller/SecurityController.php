@@ -19,8 +19,11 @@ class SecurityController extends AbstractController
     {
         $referer = $request->headers->get('referer');
         $anchor = $request->get('anchor');
+        $refererUrl = null;
 
-        $refererUrl = $referer . "#" . $anchor;
+        if ((!strpos($referer, "user/add")) && (!strpos($referer, "resetting"))){
+            $refererUrl = $referer . "#" . $anchor;
+        }
 
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();

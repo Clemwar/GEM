@@ -9,12 +9,17 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\DetailsRepository;
 use App\Repository\UserRepository;
+use DateTime;
+use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -40,6 +45,8 @@ class UserController extends AbstractController
     /**
      * UserController constructor.
      * @param UserRepository $repository
+     * @param UserPasswordEncoderInterface $encoder
+     * @param EntityManagerInterface $em
      */
     public function __construct(UserRepository $repository, UserPasswordEncoderInterface $encoder, EntityManagerInterface $em)
     {
@@ -50,8 +57,8 @@ class UserController extends AbstractController
 
     /**
      * @Route("/pwup/users", name="admin_users")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Doctrine\DBAL\DBALException
+     * @return Response
+     * @throws DBALException
      */
     public function getUsers()
     {
@@ -65,10 +72,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * Method to add new user
      * @Route("/user/add", name="add_user")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     * @throws \Exception
+     * @return RedirectResponse|Response
+     * @throws Exception
      */
     public function addUser(Request $request)
     {
@@ -86,37 +94,12 @@ class UserController extends AbstractController
             // On vérifie que les valeurs entrées sont correctes
             if ($form->isValid()) {
 
-                //On traite l'ajout d'image
-                /** @var UploadedFile $image */
-                $image = $form['photo']->getData();
-
-                // On vérifie la présence d'un fichier uploadé
-                if ($image) {
-                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                    // this is needed to safely include the file name as part of the URL
-                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
-
-                    //On place le fichier dans le dossier prévu sur le serveur
-                    try {
-                        $image->move(
-                            $this->getParameter('photos_directory'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        $this->addFlash('warning', 'L\'envoi de la photo a échoué');
-                    }
-
-                    // On ajoute le nom de l'image à l'utilisateur concerné
-                    $user->setPhoto($newFilename);
-                }
-
                 //On traite l'encodage du mot de passe
                 $password = $form['password']->getData();
                 $user->setPassword($this->encoder->encodePassword($user, $password));
 
                 //On note la date d'inscription
-                $date = new \DateTime();
+                $date = new DateTime();
                 $user->setCreatedAt($date);
 
                 $this->addFlash('success', 'Bienvenue, inscription terminée');
@@ -142,7 +125,11 @@ class UserController extends AbstractController
     }
 
     /**
+     * Delete user method, administrators only
      * @Route("/pwup/user/delete/{id}", name="admin_delete_user", methods="DELETE")
+     * @param $id //to find user
+     * @param Request $request to catch the token
+     * @return RedirectResponse
      */
     public function deleteUser ($id, Request $request){
 
@@ -171,7 +158,8 @@ class UserController extends AbstractController
      * @Route("/user/update/{id}", name="update_user")
      * @param $id
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
+     * @throws Exception
      */
     public function updateUser($id, Request $request)
     {
@@ -229,7 +217,7 @@ class UserController extends AbstractController
                 $user->setPassword($this->encoder->encodePassword($user, $password));
 
                 //On note la date d'inscription
-                $date = new \DateTime();
+                $date = new DateTime();
                 $user->setUpdatedAt($date);
 
                 $this->addFlash('success', 'Mise à jour de contact terminée');
@@ -258,7 +246,7 @@ class UserController extends AbstractController
      * @Route("/pwup/user/addRole/{id}", name="add_role")
      * @param $id
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     public function addRole($id, Request $request, ValidatorInterface $validator)
     {
@@ -298,7 +286,7 @@ class UserController extends AbstractController
      * @Route("pages/reservation/{userID}/{detailID}/{event}", name="reservation")
      * @param $id
      * @param Details $details
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
     public function addReservation($userID, $detailID, DetailsRepository $detailsRepository, $event, Request $request)
     {
@@ -320,8 +308,14 @@ class UserController extends AbstractController
     }
 
     /**
- * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
- */
+     * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
+     * @param $userID
+     * @param $detailID
+     * @param DetailsRepository $detailsRepository
+     * @param $event
+     * @param Request $request
+     * @return RedirectResponse
+     */
     public function delReservation($userID, $detailID, DetailsRepository$detailsRepository, $event, Request $request)
     {
         $participant = $this->repository->find($userID);
@@ -340,6 +334,10 @@ class UserController extends AbstractController
 
     /**
      * @Route("pwup/annulation/{userID}/{detailID}", name="admin_annulation")
+     * @param $userID
+     * @param $detailID
+     * @param DetailsRepository $detailsRepository
+     * @return RedirectResponse
      */
     public function rmvReservation($userID, $detailID, DetailsRepository$detailsRepository)
     {

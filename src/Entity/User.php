@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Serializable;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -12,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("email", message="Cet email est déjà enregistré")
  */
-class User implements UserInterface,\Serializable
+class User implements UserInterface, Serializable
 {
     /**
      * @ORM\Id()
@@ -23,24 +25,18 @@ class User implements UserInterface,\Serializable
 
     /**
      * @ORM\Column(type="datetime", nullable=false)
-     * @Assert\DateTime
-     * @var string A "Y-m-d H:i:s" formatted value
      */
     private $createdAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime
-     * @var string A "Y-m-d H:i:s" formatted value
      */
     private $updatedAt;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
-     * @Assert\DateTime
-     * @var string A "Y-m-d H:i:s" formatted value
      */
-    private $passwordResquestedAt;
+    private $passwordRequestedAt;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -398,76 +394,73 @@ class User implements UserInterface,\Serializable
         $this->reservations->removeElement($details);
     }
 
-    /**
-     * @return \DateTime
-     */
-    public function getCreatedAt(): \DateTime
+
+    public function getCreatedAt() : DateTime
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      * @return User
      */
-    public function setCreatedAt(\DateTime $createdAt): User
+    public function setCreatedAt(DateTime $createdAt): self
     {
         $this->createdAt = $createdAt;
+
         return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime|null
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt() : ?DateTime
     {
         return $this->updatedAt;
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      * @return User
      */
-    public function setUpdatedAt(\DateTime $updatedAt): User
+    public function setUpdatedAt(DateTime $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
         return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return DateTime|null
      */
-    public function getPasswordResquestedAt(): \DateTime
+    public function getPasswordRequestedAt() : ?DateTime
     {
-        return $this->passwordResquestedAt;
+        return $this->passwordRequestedAt;
     }
 
     /**
-     * @param \DateTime $passwordResquestedAt
+     * @param DateTime $passwordRequestedAt
      * @return User
      */
-    public function setPasswordResquestedAt(\DateTime $passwordResquestedAt): User
+    public function setPasswordRequestedAt(DateTime $passwordRequestedAt = null): self
     {
-        $this->passwordResquestedAt = $passwordResquestedAt;
+        $this->passwordRequestedAt = $passwordRequestedAt;
         return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getToken(): string
+    public function getToken(): ?string
     {
         return $this->token;
     }
 
     /**
      * @param string $token
-     * @return User
      */
-    public function setToken(string $token): User
+    public function setToken(string $token = null): void
     {
         $this->token = $token;
-        return $this;
     }
 
 

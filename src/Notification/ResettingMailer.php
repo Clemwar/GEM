@@ -4,13 +4,13 @@
 namespace App\Notification;
 
 
-use App\Entity\Contact;
+use App\Entity\User;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 
-class ContactNotification extends AbstractController
+class ResettingMailer extends AbstractController
 {
     /**
      * @var MailerInterface
@@ -22,21 +22,22 @@ class ContactNotification extends AbstractController
         $this->mailer = $mailer;
     }
 
-    public function notify(Contact $contact){
+    public function notify(User $user){
 
         $email = (new TemplatedEmail())
-            ->from($contact->getEmail())
-            ->to('clement.jean@lapiscine.pro')
-            ->subject('Contact depuis le site GEM')
-            ->htmlTemplate('emails/contact.html.twig')
+            ->from('gem.bassinarcachon@gmail.com')
+            ->to($user->getEmail())
+            ->subject('GEM : réinitialisation du mot de passe')
+            ->htmlTemplate('emails/resetting.html.twig')
             ->context([
-                'contact' => $contact
+                'user' => $user
             ])
         ;
 
         try {
             $this->mailer->send($email);
         } catch (TransportExceptionInterface $e) {
+
         }
     }
 }

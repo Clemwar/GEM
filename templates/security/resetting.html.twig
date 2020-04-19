@@ -1,0 +1,42 @@
+{% extends('base.html.twig') %}
+
+{% block class %}class="full"{% endblock %}
+
+{% block insight %}
+    <section id="login_zone" class="container d-flex justify-content-around align-items-center h-100">
+        <div class="intitule d-none d-md-block col-4">
+            <img src="{{ asset('assets/img/logo_gem_color.png') }}" alt="Logo du GEM Bassin d'Arcachon" class="img-fluid mb-2">
+            <p>Modifier son mot de passe</p>
+        </div>
+
+        {{form_start(form, {'attr':{'class':'col-md-6 p-3 login'}})}}
+
+            <h1 class="mb-1">Nouveau mot de passe</h1>
+
+            <div class="form-group">
+                {% for label, messages in app.flashes(['success', 'warning', 'notice']) %}
+                    {% for message in messages %}
+                        <p class="{{ label }}">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+        <div class="form-group">
+            {{ form_label(form.password.first) }}
+            <div class="error">{{ form_errors(form.password.first) }}</div>
+            {{ form_widget(form.password.first, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.password.second) }}
+            {{ form_widget(form.password.second, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="bouton form-control">Continuer</button>
+            </div>
+        {{form_end(form)}}
+    </section>
+{% endblock %}

@@ -122,7 +122,7 @@ font-family: 'EasyReadingPRO', sans-serif;
     }
   }
 
-  #login
+  .login
   {
     box-shadow: 6px 6px 12px grey;
     border-radius: 1rem;
@@ -147,6 +147,19 @@ font-family: 'EasyReadingPRO', sans-serif;
 //Page Register
 #register_zone
 {
+
+  position : relative;
+
+  #register_form
+  {
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 6px 6px 12px grey;
+    border-radius: 1rem;
+  }
+
   h1
   {
     color : $base-color;

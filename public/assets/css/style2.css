@@ -61,19 +61,28 @@ body {
   text-align: center; }
   #login_zone .intitule .img-fluid {
     max-width: 200px; }
-#login_zone #login {
+#login_zone .login {
   box-shadow: 6px 6px 12px grey;
   border-radius: 1rem; }
-  #login_zone #login h1 {
+  #login_zone .login h1 {
     color: #43a9ff; }
-  #login_zone #login a {
+  #login_zone .login a {
     color: #43a9ff; }
-    #login_zone #login a:hover, #login_zone #login a:focus {
+    #login_zone .login a:hover, #login_zone .login a:focus {
       color: #1d496d; }
 
-#register_zone h1 {
-  color: #43a9ff;
-  margin-bottom: 1rem; }
+#register_zone {
+  position: relative; }
+  #register_zone #register_form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 6px 6px 12px grey;
+    border-radius: 1rem; }
+  #register_zone h1 {
+    color: #43a9ff;
+    margin-bottom: 1rem; }
 
 #aboutGEM {
   height: 100%;
