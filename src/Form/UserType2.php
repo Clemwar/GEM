@@ -2,33 +2,37 @@
 
 namespace App\Form;
 
-use App\Entity\Ateliers;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
 
-class AteliersType extends AbstractType
+class UserType2 extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom', TextType::class, [
-                'label' => 'Nom'
+            ->add('adresse', TextType::class, [
+                'required' => false,
+                'label' => 'Adresse'
             ])
-            ->add('description', TextareaType::class, [
-                'label' => 'Description'
+            ->add('complement', TextType::class, [
+                'required' => false,
+                'label' => 'Complément d\'adresse'
             ])
-            ->add('visibility', CheckboxType::class, [
-                'label' => 'Afficher sur le site',
-                'required' => false
+            ->add('codepostal', IntegerType::class, [
+                'required' => false,
+                'label' => 'Code postal'
             ])
-            ->add('cover', FileType::class, [
+            ->add('ville', TextType::class, [
+                'required' => false,
+                'label' => 'Ville'
+            ])
+            ->add('photo', FileType::class, [
                 'label' => 'Photo (JPG file)',
                 'mapped' => false,
                 'required' => false,
@@ -42,18 +46,13 @@ class AteliersType extends AbstractType
                     ])
                 ]
             ])
-            ->add('alt', TextType::class, [
-                'label' => 'Contenu de la photo',
-                'required' => false
-            ])
-            ->add('Enregistrer', SubmitType::class)
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Ateliers::class,
+            'data_class' => User::class,
         ]);
     }
 }

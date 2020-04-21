@@ -1,0 +1,46 @@
+{% extends('base.html.twig') %}
+
+{% block class %}class="full"{% endblock %}
+
+{% block insight %}
+    <section id="register_zone" class="h-100 my-4">
+        <div id="register_form" class="container p-2">
+            <h1>Nouvelle inscription</h1>
+            {{ form_start(form) }}
+            <h4>Informations facultatives</h4>
+
+            <div class="form-group">
+                {{ form_label(form.adresse) }}
+                <div class="error"> {{ form_errors(form.adresse) }}</div>
+                {{ form_widget(form.adresse, {'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.complement) }}
+                <div class="error">{{ form_errors(form.complement) }}</div>
+                {{ form_widget(form.complement, {'attr':{'class':'form-control'}}) }}
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col">
+                    {{ form_label(form.codepostal) }}
+                    <div class="error">{{ form_errors(form.codepostal) }}</div>
+                    {{ form_widget(form.codepostal, {'attr':{'class':'form-control'}}) }}
+                </div>
+                <div class="form-group col">
+                    {{ form_label(form.ville) }}
+                    {{ form_widget(form.ville, {'attr':{'class':'form-control'}}) }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {{ form_row(form.photo) }}
+            </div>
+
+            <div class="form-group">
+                <button class="bouton btn btn-block" type="submit">Terminer</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+{% endblock %}

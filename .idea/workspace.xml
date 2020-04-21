@@ -2,24 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50831660-9475-4851-8d43-6838e13e6dd2" name="Default Changelist" comment="Adding forgot password manager :&#10;new class -&gt; ResettingController.php&#10;new type -&gt; ResettingType.php&#10;new mailer -&gt; ResettingMailer.php&#10;new mail template -&gt; resetting.html.twig&#10;new forms page -&gt; request.html.twig &amp;&amp; resetting">
-      <change afterPath="$PROJECT_DIR$/src/Controller/ResettingController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ResettingType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Notification/ResettingMailer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/emails/resetting.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/security/request.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/security/resetting.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ImageController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/ReservationController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/UserType2.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/UserTypeFull.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/pages/register2.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/css/style2.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/style2.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/scss/style2.scss" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/scss/style2.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/upl/photos/photo_idcj2018-5e1e01f5898ed.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AteliersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AteliersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ResettingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ResettingController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notification/ContactNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notification/ContactNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AteliersType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AteliersType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pages/form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/form.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,21 +149,21 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="com.jetbrains.php.lang.actions.generation.PhpGenerateFieldAccessorHandlerBase$MyMemberChooser.fluent.setters.last.selected" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\GEM\src\Form" />
+      <recent name="C:\wamp64\www\GEM\templates\pages" />
+      <recent name="C:\wamp64\www\GEM\templates\security" />
+      <recent name="C:\wamp64\www\GEM\templates\emails" />
+      <recent name="C:\wamp64\www\GEM\src\Notification" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\GEM\src\Notification" />
       <recent name="C:\wamp64\www\GEM\src\Controller" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\GEM\templates\security" />
-      <recent name="C:\wamp64\www\GEM\src\Form" />
-      <recent name="C:\wamp64\www\GEM\templates\emails" />
-      <recent name="C:\wamp64\www\GEM\src\Notification" />
-      <recent name="C:\wamp64\www\GEM\templates\pages" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -234,7 +229,8 @@
       <workItem from="1585867905065" duration="151000" />
       <workItem from="1586028947370" duration="6000" />
       <workItem from="1587296525959" duration="10693000" />
-      <workItem from="1587307238100" duration="6674000" />
+      <workItem from="1587307238100" duration="6833000" />
+      <workItem from="1587480931121" duration="10634000" />
     </task>
     <task id="LOCAL-00001" summary="Securisation reservation">
       <created>1584523576404</created>
@@ -250,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585772474141</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Adding forgot password manager :&#10;new class -&gt; ResettingController.php&#10;new type -&gt; ResettingType.php&#10;new mailer -&gt; ResettingMailer.php&#10;new mail template -&gt; resetting.html.twig&#10;new forms page -&gt; request.html.twig &amp;&amp; resetting">
+      <created>1587313921150</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587313921150</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,16 +279,16 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1010" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585765073515" />
-    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587305474483">
+    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587488768701">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1578939319792" />
-    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1587305474483" />
-    <state x="905" y="114" width="1149" height="893" key="CommitChangelistDialog2" timestamp="1587313692206">
+    <state x="1010" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1587488768701" />
+    <state x="905" y="114" width="1149" height="893" key="CommitChangelistDialog2" timestamp="1587491580335">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="531" y="43" width="1149" height="893" key="CommitChangelistDialog2/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585772473768" />
-    <state x="905" y="114" key="CommitChangelistDialog2/0.0.2560.1040@0.0.2560.1040" timestamp="1587313692206" />
+    <state x="905" y="114" key="CommitChangelistDialog2/0.0.2560.1040@0.0.2560.1040" timestamp="1587491580335" />
     <state x="74" y="55" key="DiffContextDialog" timestamp="1585769347013">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -302,11 +305,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="189" height="363" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1580889440886" />
-    <state x="726" y="306" key="NewPhpClassDialog" timestamp="1587299936656">
+    <state x="726" y="306" key="NewPhpClassDialog" timestamp="1587484008512">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1095" y="334" key="NewPhpClassDialog/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1579375528413" />
-    <state x="726" y="306" key="NewPhpClassDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1587299936656" />
+    <state x="726" y="306" key="NewPhpClassDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1587484008512" />
     <state x="1114" y="444" key="NewPhpFileDialog" timestamp="1579370182828">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -320,11 +323,11 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state width="550" height="446" key="SwitcherDM/0.0.2560.1040@0.0.2560.1040" timestamp="1582991823658" />
-    <state x="872" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585772478472">
+    <state x="872" y="253" key="Vcs.Push.Dialog.v2" timestamp="1587313974357">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="872" y="253" key="Vcs.Push.Dialog.v2/0.0.2560.1040/2560.0.1920.1040@0.0.2560.1040" timestamp="1585772478472" />
-    <state x="872" y="253" key="Vcs.Push.Dialog.v2/0.0.2560.1040@0.0.2560.1040" timestamp="1584523581145" />
+    <state x="872" y="253" key="Vcs.Push.Dialog.v2/0.0.2560.1040@0.0.2560.1040" timestamp="1587313974357" />
     <state x="412" y="254" key="VcsDiffUtil.ChangesDialog" timestamp="1585772423503">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

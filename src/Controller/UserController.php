@@ -3,25 +3,23 @@
 
 namespace App\Controller;
 
-
-use App\Entity\Details;
 use App\Entity\User;
 use App\Form\UserType;
-use App\Repository\DetailsRepository;
+use App\Form\UserType2;
+use App\Form\UserTypeFull;
 use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\DBAL\DBALException;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
@@ -75,10 +73,11 @@ class UserController extends AbstractController
      * Method to add new user
      * @Route("/user/add", name="add_user")
      * @param Request $request
+     * @param TokenGeneratorInterface $tokenGenerator
      * @return RedirectResponse|Response
      * @throws Exception
      */
-    public function addUser(Request $request)
+    public function addUser(Request $request, TokenGeneratorInterface $tokenGenerator)
     {
         $user = new User();
 
@@ -102,14 +101,16 @@ class UserController extends AbstractController
                 $date = new DateTime();
                 $user->setCreatedAt($date);
 
-                $this->addFlash('success', 'Bienvenue, inscription terminée');
+                $user->setToken($tokenGenerator->generateToken());
 
                 // On enregistre notre objet $user dans la base de données
                 $this->em->persist($user);
                 $this->em->flush();
 
                 // On redirige vers la page de connexion
-                return $this->redirectToRoute('login', [
+                return $this->redirectToRoute('addUserBis', [
+                    'id' => $user->getId(),
+                    'token'=> $user->getToken(),
                     'current_menu' => 'login'
                 ]);
             }
@@ -125,27 +126,60 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/user/add2/{id}/{token}", name="addUserBis")
+     * @param Request $request
+     * @param $id
+     * @param $token
+     * @param ImageController $imageController
+     * @return Response
+     */
+    public function addUserBis (Request $request, $id, $token, ImageController $imageController){
+        $user = $this->repository->find($id);
+        $form = $this->createForm(UserType2::class, $user);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            // On vérifie que les valeurs entrées sont correctes
+            if ($form->isValid() && !$user->getToken() === null || $token == $user->getToken()) {
+                $this->addFlash('success', 'Bienvenue, inscription terminée');
+
+                /** @var UploadedFile $image */
+                $image = $form['photo']->getData();
+
+                if ($image) {
+                    $imageController->addImage($image, $user);
+                }
+
+                $user->setToken();
+
+                $this->em->flush();
+
+                return $this->redirectToRoute('login', [
+                    'current_menu' => 'login'
+                ]);
+            }
+        }
+
+        return $this->render('/pages/register2.html.twig', [
+            'form' => $form->createView(),
+            'current_menu' => 'login'
+        ]);
+    }
+
+    /**
      * Delete user method, administrators only
      * @Route("/pwup/user/delete/{id}", name="admin_delete_user", methods="DELETE")
      * @param $id //to find user
      * @param Request $request to catch the token
+     * @param ImageController $imageController
      * @return RedirectResponse
      */
-    public function deleteUser ($id, Request $request){
-
+    public function deleteUser ($id, Request $request, ImageController $imageController){
         $user = $this->repository->find($id);
 
         if ($this->isCsrfTokenValid('delete' . $id, $request->get('_token'))) {
-
-            //Je m'assure qu'une image est liée à l'utilisateur
-            if ($user->getPhoto() !== null) {
-                //J'appelle le gestionnaire de fichier
-                $filesystem = new Filesystem();
-                //Je vérifie si le fichier existe, si oui, symfony le supprime
-                if ($filesystem->exists($imageURL = $this->getParameter('photos_directory') . "/" . $user->getPhoto())) {
-                    $filesystem->remove([$imageURL]);
-                }
-            }
+            $imageController->deleteImage($user);
 
             $this->em->remove($user);
             $this->em->flush();
@@ -158,84 +192,48 @@ class UserController extends AbstractController
      * @Route("/user/update/{id}", name="update_user")
      * @param $id
      * @param Request $request
+     * @param ImageController $imageController
      * @return RedirectResponse|Response
      * @throws Exception
      */
-    public function updateUser($id, Request $request)
+    public function updateUser($id, Request $request, ImageController $imageController)
     {
         $user = $this->repository->find($id);
 
-        // On crée le FormBuilder en appelant le formtype
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UserTypeFull::class, $user);
 
-        // Si la requête est en POST
         if ($request->isMethod('POST')) {
-            // On fait le lien Requête <-> Formulaire
-            // À partir de maintenant, la variable $user contient les valeurs entrées dans le formulaire par le visiteur
+
             $form->handleRequest($request);
 
-            // On vérifie que les valeurs entrées sont correctes
             if ($form->isValid()) {
 
-                //On traite l'ajout d'image
                 /** @var UploadedFile $image */
                 $image = $form['photo']->getData();
 
-                // On vérifie la présence d'un fichier uploadé
                 if ($image) {
-                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                    // this is needed to safely include the file name as part of the URL
-                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
-
-                    //Je vérifie si une image est liée à l'utilisateur
-                    if ($user->getPhoto() !== null) {
-                        //J'appelle le gestionnaire de fichier
-                        $filesystem = new Filesystem();
-                        //Je vérifie si le fichier existe, si oui, symfony le supprime
-                        if ($filesystem->exists($imageURL = $this->getParameter('photos_directory') . "/" . $user->getPhoto())) {
-                            $filesystem->remove([$imageURL]);
-                        }
-                    }
-
-                    //On place le fichier dans le dossier prévu sur le serveur
-                    try {
-                        $image->move(
-                            $this->getParameter('photos_directory'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        $this->addFlash('warning', 'L\'envoi de la photo a échoué');
-                    }
-
-                    // On ajoute le nom de l'image à l'utilisateur concerné
-                    $user->setPhoto($newFilename);
+                    $imageController->addImage($image, $user);
                 }
 
-                //On traite l'encodage du mot de passe
                 $password = $form['password']->getData();
-                $user->setPassword($this->encoder->encodePassword($user, $password));
+                if ($password){
+                    $user->setPassword($this->encoder->encodePassword($user, $password));
+                }
 
-                //On note la date d'inscription
                 $date = new DateTime();
                 $user->setUpdatedAt($date);
 
                 $this->addFlash('success', 'Mise à jour de contact terminée');
 
-                // On enregistre notre objet $user dans la base de données, par exemple
                 $this->em->persist($user);
                 $this->em->flush();
 
-                // On redirige vers la page de connexion
                 return $this->redirectToRoute('login', [
                     'current_menu' => 'login'
                 ]);
             }
         }
 
-        // À ce stade, le formulaire n'est pas valide car :
-        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
-        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('/pages/form.html.twig', [
             'form' => $form->createView(),
             'current_menu' => 'login'
@@ -246,24 +244,20 @@ class UserController extends AbstractController
      * @Route("/pwup/user/addRole/{id}", name="add_role")
      * @param $id
      * @param Request $request
+     * @param ValidatorInterface $validator
      * @return RedirectResponse
      */
     public function addRole($id, Request $request, ValidatorInterface $validator)
     {
         $user = $this->repository->find($id);
 
-        //On récupère les données du formulaire
         $role = $request->get('role');
 
-        //On insert les données dans l'objet avant la validation
         $user->setRoles([$role]);
 
-        //On vérifie si les données sont conformes en listant les erreurs
         $listErrors = $validator->validate($user);
 
-        //Les données sont conformes
         if (count($listErrors) === 0) {
-            //On vérifie le token pour valider le flush
             if ($this->isCsrfTokenValid('roles' . $id, $request->get('_token'))) {
                 $this->em->flush();
                 $this->addFlash('success', 'Changement de rôle réussi');
@@ -282,77 +276,4 @@ class UserController extends AbstractController
         return $this->redirectToRoute('admin_users');
     }
 
-    /**
-     * @Route("pages/reservation/{userID}/{detailID}/{event}", name="reservation")
-     * @param $id
-     * @param Details $details
-     * @return RedirectResponse
-     */
-    public function addReservation($userID, $detailID, DetailsRepository $detailsRepository, $event, Request $request)
-    {
-        $details = $detailsRepository->find($detailID);
-        $user= $this->repository->find($userID);
-        $fragment = ($event) ? 'events':'ateliers';
-        $places = $details->getPlaces();
-
-        if ((isset($places) && (count($details->getParticipants()) < $places)) || (empty($places))) {
-            if ($this->isCsrfTokenValid('reservation' . $userID, $request->get('_token'))) {
-                $user->setReservations($details);
-                $details->setParticipants($user);
-
-                $this->em->flush();
-            }
-        }
-
-        return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
-    }
-
-    /**
-     * @Route("pages/annulation/{userID}/{detailID}/{event}", name="annulation")
-     * @param $userID
-     * @param $detailID
-     * @param DetailsRepository $detailsRepository
-     * @param $event
-     * @param Request $request
-     * @return RedirectResponse
-     */
-    public function delReservation($userID, $detailID, DetailsRepository$detailsRepository, $event, Request $request)
-    {
-        $participant = $this->repository->find($userID);
-        $reservation = $detailsRepository->find($detailID);
-        $fragment = ($event) ? 'events':'ateliers';
-
-        if ($this->isCsrfTokenValid('annulation' . $userID, $request->get('_token'))) {
-            $participant->removeReservation($reservation);
-            $reservation->removeParticipant($participant);
-
-            $this->em->flush();
-        }
-
-        return $this->redirectToRoute('showActivites', ['_fragment' => $fragment]);
-    }
-
-    /**
-     * @Route("pwup/annulation/{userID}/{detailID}", name="admin_annulation")
-     * @param $userID
-     * @param $detailID
-     * @param DetailsRepository $detailsRepository
-     * @return RedirectResponse
-     */
-    public function rmvReservation($userID, $detailID, DetailsRepository$detailsRepository)
-    {
-        $participant = $this->repository->find($userID);
-        $reservation = $detailsRepository->find($detailID);
-
-        $participant->removeReservation($reservation);
-        $reservation->removeParticipant($participant);
-
-        $this->em->flush();
-
-        $this->addFlash('success', 'Participant retiré');
-
-        return $this->redirectToRoute('getDetails', [
-            'id'=> $detailID
-        ]);
-    }
 }

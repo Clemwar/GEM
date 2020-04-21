@@ -99,6 +99,11 @@ class ResettingController extends AbstractController
 
     }
 
+    /**
+     * @param Datetime|null $passwordRequestedAt
+     * @return bool
+     * @throws Exception
+     */
     private function isRequestInTime(Datetime $passwordRequestedAt = null)
     {
         if ($passwordRequestedAt === null)

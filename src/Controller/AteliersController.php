@@ -10,10 +10,11 @@ use App\Repository\AteliersRepository;
 use App\Repository\DetailsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AteliersController extends AbstractController
@@ -41,8 +42,8 @@ class AteliersController extends AbstractController
 
     /**
      * @Route("/activites", name="showActivites")
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Doctrine\DBAL\DBALException
+     * @param DetailsRepository $detailsRepository
+     * @return Response
      */
     public function showActivites(DetailsRepository $detailsRepository)
     {
@@ -56,6 +57,7 @@ class AteliersController extends AbstractController
             $atelierID = $details->getAtelier()->getID();
 
             if (in_array($atelierID, $ateliersIDs)){
+
                 unset($dates[$date]);
             }
             else {
@@ -74,7 +76,7 @@ class AteliersController extends AbstractController
     /**
      * @Route("/activites/{id}", name="getAtelier")
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function getAtelier($id)
     {
@@ -89,7 +91,7 @@ class AteliersController extends AbstractController
      * @Route("/pwup/activites/add/{event}", name="addActivite")
      * @param $event
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
     public function addAtelier($event, Request $request)
     {
@@ -158,24 +160,17 @@ class AteliersController extends AbstractController
      * @Route("/pwup/activite/delete/{id}", name="delAtelier", methods="DELETE")
      * @param $id
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @param ImageController $imageController
+     * @return RedirectResponse
      */
-    public function delAtelier($id, Request $request)
+    public function delAtelier($id, Request $request, ImageController $imageController)
     {
         $atelier = $this->repository->find($id);
         $event = $atelier->getEvent() ? true:false;
 
         if ($this->isCsrfTokenValid('delete' . $id, $request->get('_token'))) {
 
-            //Je m'assure qu'une image est liée à l'utilisateur
-            if ($atelier->getCover() !== null) {
-                //J'appelle le gestionnaire de fichier
-                $filesystem = new Filesystem();
-                //Je vérifie si le fichier existe, si oui, symfony le supprime
-                if ($filesystem->exists($imageURL = $this->getParameter('images_directory') . "/" . $atelier->getCover())) {
-                    $filesystem->remove([$imageURL]);
-                }
-            }
+            $imageController->deleteImage($atelier);
 
             $this->em->remove($atelier);
             $this->em->flush();
@@ -194,9 +189,10 @@ class AteliersController extends AbstractController
      * @Route("/pwup/activite/update/{id}", name="updateAtelier")
      * @param $id
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @param ImageController $imageController
+     * @return RedirectResponse|Response
      */
-    public function updateAtelier($id, Request $request)
+    public function updateAtelier($id, Request $request, ImageController $imageController)
     {
         $atelier = $this->repository->find($id);
         $menu = $atelier->getEvent() ? 'events':'atelier';
@@ -218,32 +214,9 @@ class AteliersController extends AbstractController
 
                 // On vérifie la présence d'un fichier uploadé
                 if ($image) {
-                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                    // this is needed to safely include the file name as part of the URL
-                    $safeFilename = transliterator_transliterate('Any-Latin; Latin-ASCII; [^A-Za-z0-9_] remove; Lower()', $originalFilename);
-                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
-
-                    //Je m'assure qu'une image est liée à l'utilisateur
-                    if ($atelier->getCover() !== null) {
-                        //J'appelle le gestionnaire de fichier
-                        $filesystem = new Filesystem();
-                        //Je vérifie si le fichier existe, si oui, symfony le supprime
-                        if ($filesystem->exists($imageURL = $this->getParameter('images_directory') . "/" . $atelier->getCover())) {
-                            $filesystem->remove([$imageURL]);
-                        }
+                    if ($image) {
+                        $imageController->addImage($image, $atelier);
                     }
-
-                    //On place le fichier dans le dossier prévu sur le serveur
-                    try {
-                        $image->move(
-                            $this->getParameter('images_directory'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        $this->addFlash('warning', 'L\'envoi de la photo a échoué');
-                    }
-
-                    $atelier->setCover($newFilename);
                 }
 
                 //on enregistre l'objet obtenu dans la bdd
@@ -269,10 +242,9 @@ class AteliersController extends AbstractController
     /**
      * @Route("/pwup/activite/visibility/{id}", name="toggleVisibility")
      * @param $id
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      */
-    public function toggleVisibility($id, Request $request)
+    public function toggleVisibility($id)
     {
         $atelier = $this->repository->find($id);
         $visibility = $atelier->getVisibility();
@@ -288,7 +260,7 @@ class AteliersController extends AbstractController
     /**
      * @Route("/pwup/atelier/{id}", name="pwAtelier")
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function pwAtelier($id)
     {
